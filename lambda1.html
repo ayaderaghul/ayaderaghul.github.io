@@ -1077,14 +1077,14 @@ BR is the fixpoint of the function H, just like we need to solve for the fixpoin
 of the function f=x*x (which is 0 &amp; 1 i think)</p>
 
 <p>now we assume we got a function Y that inputs another function and
-return the fixpoint of that function.
+return (another) function which the fixpoint of that input function.
 we call Y a fixpoint combinator.</p>
 
 <blockquote>
 <p>by definition, Y H = BR</p>
 </blockquote>
 
-<p>the convenience of Y is that we can define BR = Y H which is a non recursive function</p>
+<p>the convenience of Y is that we can define BR = Y H which is a non recursive function.</p>
 
 <p>to check if Y H works like BR:</p>
 
@@ -1148,7 +1148,7 @@ this is it:</p>
 (the first term is the function, the second is the argument)</p>
 
 <p>= H ( (λx. H (x x)) (λx. H (x x)) )
-(inside is (Y H) we write in the second equality)</p>
+(inside the parenstheses is the (Y H) that we write in the second equality)</p>
 
 <p>= H (Y H)</p>
 </blockquote>
@@ -1188,7 +1188,7 @@ your expectation of my type... this argument can be looped forever.</p>
 
 <p>this is the paradox we see above, and we know that
 we got a paradox machine to bear the collapse of it: Y-combinator.
-we know that there are some fixed expectation of the system.
+we know that there are some fixed expectation function of the system.
 and there can be more than one solution but Y-combinator returns the least fixpoint.</p>
 
 <p>if i'm not wrong, this is what economists call the <em>rational expectation</em>,
@@ -1205,7 +1205,7 @@ as predicted? yes, why not?</p>
 <p>Simon once wrote paper about: if the poll vote is public, would it drives crowd vote
 in a predicted way? yes. but Simon doesnt cross the line.</p>
 
-<p>but if you base on the fixpoint of the infinite regress of expectation:</p>
+<p>but if you base on the fixpoint of the infinite regress of expectation function:</p>
 
 <blockquote>
 <p>EXP = λx. (...EXP...)</p>
@@ -1218,7 +1218,7 @@ so that if they all conform, the crowd will be set on a roll toward <em>a fantas
 this sounds good. but if the number of players increases one or two more persons, it starts getting complicated.
 and the society is vast, its behavior is so complex that no one can cover the whole sky with his bare hand.
 second, if one insists on this fiction intentionally,
-it sounds like monopoly of truth, faith &amp; love to me.</p>
+it sounds like monopoly of faith, love &amp; truth to me.</p>
 
 <p>monopoly of oil? im not sure good or bad,</p>
 

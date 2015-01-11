@@ -1,0 +1,310 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/lambda1.html)
+
+#lambda calculus, infinite regress & rational expectation
+
+recently i got haunted by this little thing called *lambda calculus*.
+it's truly a wonder because it starts so simple and lovely but it doesnt even
+need to grow complicated in order to shock & awe you. it shocks and awes you
+because it elaborate wildly complex while the core stays seriously humble.
+
+i write this obsession in my head down with some reference to economics,
+even if it is much more poorly written than
+the crystally lucid explanation in the
+[book](http://research.microsoft.com/en-us/um/people/simonpj/papers/slpj-book-1987/)
+i read, because i hope it will get rid of me and haunt you readers instead (if you
+havent had contact with it before :D)
+
+the structure of this note has 3 parts:
+- lambda calculus introduction
+- lambda calculus solves the infinite regress
+- rational expectation, then what?
+
+## expression
+before we categories lambda calculus into tags like *computer science*,
+*scarry mathematics*, i would like to approach it like a layperson, a kid with no
+assumption or any premise at all.
+
+hence i will construct this lambda calculus as i construct a language step by step.
+this language is to write down the world in symbols. and it has tools (logic)
+to manipulate symbols it writes down also (like in mathematics language).
+
+what does a language need? first and foremost, verb, then comes the noun.
+to do what? to express an expression.
+
+##function
+lambda calculus treats function (the verb) as fundamental & first-class unit, both
+syntactically and ideally speaking. why i say syntactically? you may ask:
+
+- how to build a language that *syntactically* treats
+function as a central object of interest?
+
+- simple. to do that, we can at least mimic the syntax of functions.
+here the word function refers as loosely as it can to the elementary
+mathematics unit or to the action that we carry out as a process.
+
+example:
+
+>(do laundry)
+
+>(wash 10-clothes)
+
+>(+ 1 2)
+
+>(+ (- 4 5) (* 2 1))
+
+(+ 1 2) is an expression, just like the expression "do laundry".
+you may notice its structure, it starts with a verb, followed by objects (nouns) that
+will be put under the action of the verb.
+
+in a generic notation, we write
+> f x
+
+it looks like function. and lambda calculus uses that grammar syntax,
+so it looks like it treats function. then:
+
+- how to know that lambda calculus *truly is* a treatment of
+abstract function we want?
+
+- this is to be answered later.
+
+##lambda abstraction
+there are different types of expression, a constant or a variable can be an expression.
+but the biggest interest is in an expression that *works* - a verb, a function.
+they are called lambda abstraction.
+
+this is lambda abstraction grammar syntax:
+
+> (λ x . + 1 x)
+
+> λ is a special note
+
+> x is the variable
+
+> . is the signal that we start the body of the expression
+
+> () signals the open & end of an expression
+
+now if we want to know f(x) at x=3, we write:
+> f 3
+
+> = (λ x . + 1 x) 3
+
+how do we apply the lambda abstraction to the argument 3?
+
+> we write down the body of the expression + 1 x
+
+> we replace the varible x with the argument 3
+
+> -> + 1 3 = 4
+
+function can be argument, too.
+
+> (λf.f 3) (λx. + 1 x)
+
+how do we process this expression? we execute them *leftmost outermost*.
+we see that the lambda abstraction (λf.f 3) is the function
+and (λx. + 1 x) is the argument.
+
+> so we write down the body of the function: f 3
+
+> and we replace the variable f with the argument (λx. + 1 x)
+
+> -> (λx. + 1 x) 3
+
+> write down the body of the function + 1 x
+
+> replace variable x with argument 3
+
+> -> + 1 3 = 4
+
+we can denote capital letter to be a function, like F = (λx. - x 1)
+(in maths: f(x) = x - 1)
+
+here we are done with grammar syntax of lambda language,
+we even show some calculation, the ability to do calculation
+makes the name *lambda calculus*.
+
+##recursion
+
+from the lambda grammar above, do you think that a lambda abstraction can be
+capable of describing recursion?
+
+i would like to take an economics example.
+
+consider the game beauty contest. there is a crowd. each one gives a number.
+if that number = 1/2 * average -> the person wins.
+
+the recursive nature of this calculation is:
+
+> take the average number as 50 or whatever (not relevant here)
+
+> if 50 is the average, your best response should be taking half of that 1/2 * 50
+
+> but the best response for the above action is to take half 1/2 \* 1/2 * 50
+
+> ..
+
+so the recursive function of best response looks like:
+
+> BR = (λx. BR (* .5 x))
+
+we can't do this. in order to do this, we need to be able to name a function
+and refer to *that* function inside its body. lambda calculus doesnt allow this.
+because lambda abstraction is an *anonymous* function.
+
+for example: if you see me but never knows my name, you cannot refer to me later on.
+
+we continue to simplify the above recursive function we desire:
+
+> BR = λx. (...BR...)
+
+this is equivalent to:
+
+> BR = (λbr.λx. (...br...)) BR
+
+we separate the BR as an argument to a normal lambda abstraction (λbr.λx. (...br...)).
+we call this function H = (λbr.λx. (...br...))
+
+> -> BR = H BR
+
+this equation is like the mathematical equation:
+
+x = x*x
+
+now if we can solve the equation BR = H BR, the solution is BR.
+BR is the fixpoint of the function H, just like we need to solve for the fixpoints
+of the function f=x*x (which is 0 & 1 i think)
+
+now we assume we got a function Y that inputs another function and
+return (another) function which the fixpoint of that input function.
+we call Y a fixpoint combinator.
+
+> by definition, Y H = BR
+
+the convenience of Y is that we can define BR = Y H which is a non recursive function.
+
+to check if Y H works like BR:
+
+> this is H = (λbr.λx. br (* .5 x))
+
+> we try BR 100
+
+>= Y H 100
+
+>= H (Y H) 100
+
+>= (λbr.λx. br (* .5 x)) (Y H) 100
+
+>= (λx. Y H (* .5 x)) 100
+
+>= Y H (* .5 100)
+
+>= Y H 50
+
+>= H (Y H) 50
+
+>= ....
+
+
+this is a best response function that continually takes half of the previous best response.
+so if we got this Y combinator, we are done. lambda abstraction can speak recursive itself.
+
+before go to Y, we finish this game first. the result is
+
+> (1/2)^∞ * 50 = 0
+
+we can say the fixpoint of the function .5x is 0.
+this calculation will loop infinitely even at x=0.
+in general, we need to tell when to terminate, for example, when x reaches 0.
+
+but if you are in the game, would you really choose 0 in the first try?
+if not, what is the value of the prediction 0?
+what is the relevance of the theory that predict 0?
+
+anyway, continue with the Y combinator.
+you may ask, if we have to borrow Y combinator from another language to make lambda
+language capable of exhibiting recursion, is it in vain?
+not, the miracle is that Y can be written as a lambda abstraction also!
+this is it:
+
+> Y = (λh. (λx. h (x x))  (λx. h (x x)))
+
+we check to see if Y really have that property:
+
+>Y H
+
+>= (λh. (λx. h (x x))  (λx. h (x x))) H
+
+>= (λx. H (x x))  (λx. H (x x))
+(the first term is the function, the second is the argument)
+
+>= H ( (λx. H (x x)) (λx. H (x x)) )
+(inside the parenstheses is the (Y H) that we write in the second equality)
+
+>= H (Y H)
+
+
+# rational expectation, then what?
+
+this sounds very profound in a mathematical sense so i was searching to find
+this concept in economics.
+
+i was horrified. i found it this way.
+
+in a game of incomplete information, common knowledge is not all knowledge we have,
+each player may have private information about his type
+(for example: i can be forever selfish, or i can be
+a reciprocator). and you dont know which type i am, but you know that if i am selfish
+you should act selfish, but if i am a reciprocator, you will act generous because
+i will reciprocate your action and both will be better off.
+
+now solving this game is tricky. you have to form expectation (belief) about my type.
+but you know that i'll do the same to decide what i should do.
+so you also need to speculate
+on my expectation about your type. then you need to form expectation on my expectation on
+your expectation of my type... this argument can be looped forever.
+
+I define my expectation function like this, Harsanyi calls this infinite regress.
+
+>EXP = λx. (...EXP...)
+
+we rewrite this definition:
+
+>EXP = (λexp.λx. (...exp...)) EXP
+
+this is the paradox we see above, and we know that
+we got a paradox machine to bear the collapse of it: Y-combinator.
+we know that there are some fixed expectation function of the system.
+and there can be more than one solution but Y-combinator returns the least fixpoint.
+
+if i'm not wrong, this is what economists call the *rational expectation*,
+the least expectation, the quest for standard equilibrium. they believe that if government can trigger a rational prediction for the crowd, the crowd can start to roll toward an quilibrium which is perfect (full employment
+for example). i think "recursive macroeconomics" etc is about this. and i think they cross the line.
+
+for me, the profound Y-combinator in maths is not nonsense in economics. consider the beauty contest again.
+
+you may not choose 0 for the first try. but if this result is publicly taught to you,
+or the game is played repeatedly & you figure it out yourself, what will be the tendency
+of your number? your number will decrease, just like any others. will the result reach 0
+as predicted? yes, why not?
+
+Simon once wrote paper about: if the poll vote is public, would it drives crowd vote
+in a predicted way? yes. but Simon doesnt cross the line.
+
+but if you base on the fixpoint of the infinite regress of expectation function:
+
+> EXP = λx. (...EXP...)
+
+to claim that government policy can manipulate expectation of a complex social system,
+so that if they all conform, the crowd will be set on a roll toward *a fantastic equilibrium*???
+
+first, this sounds fictional. you can see that if the game has only 2-3 persons
+this sounds good. but if the number of players increases one or two more persons, it starts getting complicated.
+and the society is vast, its behavior is so complex that no one can cover the whole sky with his bare hand.
+second, if one insists on this fiction intentionally,
+it sounds like monopoly of faith, love & truth to me.
+
+monopoly of oil? im not sure good or bad,
+
+but i dont believe in especially
+monopoly of faith, love & truth.
