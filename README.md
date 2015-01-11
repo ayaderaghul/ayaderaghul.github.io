@@ -2,7 +2,7 @@
 
 ##my blog
 
-[my blog]
+[blog of a typical grad kid]
 (https://ayaderaghul.github.io/)
 
 ## license
