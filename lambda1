@@ -2,7 +2,7 @@
 
 #lambda calculus, infinite regress & rational expectation
 
-(substantially revise part 3 : 12/1/2015)
+*(obsessive compulsive important revision of part 3 : 12/1/2015)*
 
 recently i got haunted by this little thing called *lambda calculus*.
 it's truly a wonder because it starts so simple and lovely but it doesnt even
@@ -17,11 +17,11 @@ i read, because i hope it will get rid of me and haunt you readers instead (if y
 havent had contact with it before :D)
 
 the structure of this note has 3 parts:
-- lambda calculus introduction
-- lambda calculus solves the infinite regress
-- rational expectation, then what?
+- lambda calculus [introduction](#intro)
+- lambda calculus [*solves*](#re) the infinite regress
+- [rational expectation](#re), then what?
 
-## expression
+## expression <a name="intro"></a>
 before we categories lambda calculus into tags like *computer science*,
 *scarry mathematics*, i would like to approach it like a layperson, a kid with no
 assumption or any premise at all.
@@ -246,7 +246,7 @@ we check to see if Y really have that property:
 >= H (Y H)
 
 
-# rational expectation, then what?
+# rational expectation, then what? <a name="re"></a>
 
 this sounds very profound in a mathematical sense so i was searching to find
 this concept in economics.
@@ -279,9 +279,17 @@ we got a paradox machine to bear the collapse of it: Y-combinator.
 we know that there are some fixed expectation function of the system.
 and there can be more than one solution but Y-combinator returns the least fixpoint.
 
-note that this finding is striking for compiler's application: it makes possible to define a recursive function (expectation function in this case), however, it doesnt return the fixpoint of the function. for example, in the best response function above, the program reaches a fixpoint and keeps looping infinitely -> we have to specifically tell it when to terminate.
+note that this finding is striking for compiler's application:
+it makes possible to define a recursive function
+(expectation function in this case), however,
+it doesnt return the fixpoint of the function.
+for example, in the best response function above,
+the program reaches a fixpoint and keeps looping infinitely
+-> we have to specifically tell it when to terminate.
 
-we may tell it to return the value that it loops for n=100 times already maybe, and we got the solution of the game. the thing is, the game may have more than 1 fixpoint and depend on where the function starts, it may get stuck in a local fixpoint. 
+we may tell it to return the value that it loops for n=100 times already
+maybe, and we got the solution of the game. the thing is,
+the game may have more than 1 fixpoint and depend on where the function starts, it may get stuck in a local fixpoint.
 
 if i'm not wrong, the fixpoint of the function is what economists call the *rational expectation*, the quest for standard equilibrium. they believe that if government can trigger a rational prediction for the crowd, the crowd can start to roll toward an quilibrium which is perfect (full employment
 for example). i think "recursive macroeconomics" etc is about this. and i think they cross the line.
@@ -306,6 +314,39 @@ so that if they all conform, the crowd will be set on a roll toward *a fantastic
 first, this sounds fictional. you can see that if the game has only 2-3 persons
 this sounds good. but if the number of players increases one or two more persons, it starts getting complicated.
 and the society is vast, its behavior is so complex that no one can cover the whole sky with his bare hand.
+
+if in programming, we have functions that are self reference, in economics game,
+two players make up a mutually referential expectation function, and if we have
+more than 2, they make up a collectively referential expectation function.
+
+for example:
+
+>with 2 players: my best response BR1(x) = 2x + 2
+
+>assume that you face the same situation, your BR2(y)= 2y + 2 also.
+
+>in equilibrium: i choose x=a, you choose y=b
+
+> by definition of an equilibrium:
+
+> BR1(b) = a
+
+> BR2(a)=b
+
+>which means: BR1(BR2(a)) = a (all expectation comes true)
+
+> let f(z) = BR1(BR2(z)) = 2(2x + 2) + 2
+
+and this is the case of only two persons. if we got 3 persons in the society:
+
+> BR1(BR2(a,c), BR3(a,b)) = BR1(b,c) = a
+
+>..
+
+the complication will increase exponentially. and people change
+second from second. that's why i think that
+solving this is fictional.
+
 second, if one insists on this fiction intentionally,
 it sounds like monopoly of faith, love & truth to me.
 

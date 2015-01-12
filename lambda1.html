@@ -865,7 +865,7 @@ body .markdown-body
 <h1>
 <a id="user-content-lambda-calculus-infinite-regress--rational-expectation" class="anchor" href="#lambda-calculus-infinite-regress--rational-expectation" aria-hidden="true"><span class="octicon octicon-link"></span></a>lambda calculus, infinite regress &amp; rational expectation</h1>
 
-<p>(substantially revise part 3 : 12/1/2015)</p>
+<p><em>(obsessive compulsive important revision of part 3 : 12/1/2015)</em></p>
 
 <p>recently i got haunted by this little thing called <em>lambda calculus</em>.
 it's truly a wonder because it starts so simple and lovely but it doesnt even
@@ -882,13 +882,16 @@ havent had contact with it before :D)</p>
 <p>the structure of this note has 3 parts:</p>
 
 <ul>
-<li>lambda calculus introduction</li>
-<li>lambda calculus solves the infinite regress</li>
-<li>rational expectation, then what?</li>
+<li>lambda calculus <a href="#intro">introduction</a>
+</li>
+<li>lambda calculus <a href="#re"><em>solves</em></a> the infinite regress</li>
+<li>
+<a href="#re">rational expectation</a>, then what?</li>
 </ul>
 
 <h2>
-<a id="user-content-expression" class="anchor" href="#expression" aria-hidden="true"><span class="octicon octicon-link"></span></a>expression</h2>
+<a id="user-content-expression-" class="anchor" href="#expression-" aria-hidden="true"><span class="octicon octicon-link"></span></a>expression <a name="user-content-intro"></a>
+</h2>
 
 <p>before we categories lambda calculus into tags like <em>computer science</em>,
 <em>scarry mathematics</em>, i would like to approach it like a layperson, a kid with no
@@ -1156,7 +1159,8 @@ this is it:</p>
 </blockquote>
 
 <h1>
-<a id="user-content-rational-expectation-then-what" class="anchor" href="#rational-expectation-then-what" aria-hidden="true"><span class="octicon octicon-link"></span></a>rational expectation, then what?</h1>
+<a id="user-content-rational-expectation-then-what-" class="anchor" href="#rational-expectation-then-what-" aria-hidden="true"><span class="octicon octicon-link"></span></a>rational expectation, then what? <a name="user-content-re"></a>
+</h1>
 
 <p>this sounds very profound in a mathematical sense so i was searching to find
 this concept in economics.</p>
@@ -1193,9 +1197,17 @@ we got a paradox machine to bear the collapse of it: Y-combinator.
 we know that there are some fixed expectation function of the system.
 and there can be more than one solution but Y-combinator returns the least fixpoint.</p>
 
-<p>note that this finding is striking for compiler's application: it makes possible to define a recursive function (expectation function in this case), however, it doesnt return the fixpoint of the function. for example, in the best response function above, the program reaches a fixpoint and keeps looping infinitely -&gt; we have to specifically tell it when to terminate.</p>
+<p>note that this finding is striking for compiler's application:
+it makes possible to define a recursive function
+(expectation function in this case), however,
+it doesnt return the fixpoint of the function.
+for example, in the best response function above,
+the program reaches a fixpoint and keeps looping infinitely
+-&gt; we have to specifically tell it when to terminate.</p>
 
-<p>we may tell it to return the value that it loops for n=100 times already maybe, and we got the solution of the game. the thing is, the game may have more than 1 fixpoint and depend on where the function starts, it may get stuck in a local fixpoint. </p>
+<p>we may tell it to return the value that it loops for n=100 times already
+maybe, and we got the solution of the game. the thing is,
+the game may have more than 1 fixpoint and depend on where the function starts, it may get stuck in a local fixpoint.</p>
 
 <p>if i'm not wrong, the fixpoint of the function is what economists call the <em>rational expectation</em>, the quest for standard equilibrium. they believe that if government can trigger a rational prediction for the crowd, the crowd can start to roll toward an quilibrium which is perfect (full employment
 for example). i think "recursive macroeconomics" etc is about this. and i think they cross the line.</p>
@@ -1221,8 +1233,45 @@ so that if they all conform, the crowd will be set on a roll toward <em>a fantas
 
 <p>first, this sounds fictional. you can see that if the game has only 2-3 persons
 this sounds good. but if the number of players increases one or two more persons, it starts getting complicated.
-and the society is vast, its behavior is so complex that no one can cover the whole sky with his bare hand.
-second, if one insists on this fiction intentionally,
+and the society is vast, its behavior is so complex that no one can cover the whole sky with his bare hand.</p>
+
+<p>if in programming, we have functions that are self reference, in economics game,
+two players make up a mutually referential expectation function, and if we have
+more than 2, they make up a collectively referential expectation function.</p>
+
+<p>for example:</p>
+
+<blockquote>
+<p>with 2 players: my best response BR1(x) = 2x + 2</p>
+
+<p>assume that you face the same situation, your BR2(y)= 2y + 2 also.</p>
+
+<p>in equilibrium: i choose x=a, you choose y=b</p>
+
+<p>by definition of an equilibrium:</p>
+
+<p>BR1(b) = a</p>
+
+<p>BR2(a)=b</p>
+
+<p>which means: BR1(BR2(a)) = a (all expectation comes true)</p>
+
+<p>let f(z) = BR1(BR2(z)) = 2(2x + 2) + 2</p>
+</blockquote>
+
+<p>and this is the case of only two persons. if we got 3 persons in the society:</p>
+
+<blockquote>
+<p>BR1(BR2(a,c), BR3(a,b)) = BR1(b,c) = a</p>
+
+<p>..</p>
+</blockquote>
+
+<p>the complication will increase exponentially. and people change
+second from second. that's why i think that
+solving this is fictional.</p>
+
+<p>second, if one insists on this fiction intentionally,
 it sounds like monopoly of faith, love &amp; truth to me.</p>
 
 <p>monopoly of oil? im not sure good or bad,</p>
