@@ -17,11 +17,11 @@ i read, because i hope it will get rid of me and haunt you readers instead (if y
 havent had contact with it before :D)
 
 the structure of this note has 3 parts:
-- lambda calculus [introduction](#intro)
-- lambda calculus [*solves*](#re) the infinite regress
-- [rational expectation](#re), then what?
+- lambda calculus introduction
+- lambda calculus *solves* the infinite regress
+- rational expectation, then what?
 
-## expression <a name="intro"></a>
+## expression 
 before we categories lambda calculus into tags like *computer science*,
 *scarry mathematics*, i would like to approach it like a layperson, a kid with no
 assumption or any premise at all.
@@ -246,7 +246,7 @@ we check to see if Y really have that property:
 >= H (Y H)
 
 
-# rational expectation, then what? <a name="re"></a>
+# rational expectation, then what? 
 
 this sounds very profound in a mathematical sense so i was searching to find
 this concept in economics.
@@ -290,6 +290,8 @@ the program reaches a fixpoint and keeps looping infinitely
 we may tell it to return the value that it loops for n=100 times already
 maybe, and we got the solution of the game. the thing is,
 the game may have more than 1 fixpoint and depend on where the function starts, it may get stuck in a local fixpoint.
+anyway, you see that lambda calculus *almost* solves the infinite regress.
+
 
 if i'm not wrong, the fixpoint of the function is what economists call the *rational expectation*, the quest for standard equilibrium. they believe that if government can trigger a rational prediction for the crowd, the crowd can start to roll toward an quilibrium which is perfect (full employment
 for example). i think "recursive macroeconomics" etc is about this. and i think they cross the line.
