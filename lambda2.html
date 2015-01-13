@@ -860,10 +860,227 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>comic</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+}</style><title>lambda2</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+
+<h1>
+<a id="user-content-functional-language--the-nature-of-copyright" class="anchor" href="#functional-language--the-nature-of-copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>functional language, &amp; the nature of copyright</h1>
+
+<p>sometimes i wonder whether i just sucks at managing <em>the nerve tick</em> of <a href="https://medium.com/neuroscience-internet/how-the-internet-dopamine-and-your-brain-are-working-together-to-screw-your-potential-1ac176538961">dopamine craving</a>
+as a mature adult or i simply crossed the threshold of being statistically normal
+into obsessive compulsive.</p>
+
+<p>i use <em>the nerve tick</em> to describe
+the increasingly irritating <em>tick</em> (like a clock ticking
+inside my head) of a group of neurons demanding my attention
+toward a specific topic they are vibrantly discussing on, while i'm miserably trying
+to ignore their request to dictate my scarce-resourced brain on reading things that
+supposedly matter more at the present
+(like exam stuff).</p>
+
+<p>but you dont argue with your physiology program right?
+when im hungry, words putting before my eyes
+turn into squiggly symbols and
+not of my slightest interest any more.</p>
+
+<p>same as when i dont see any drops of dopamine on materials i read anymore.</p>
+
+<p>-&gt; other grad kids must either love all their subjects or able to manage
+boredom like a ninja.</p>
+
+<p>(you see? the perk of being a lazy student is that she develops sophisticated rationale
+to justify the failure of her exams - a brilliantly useful defense mechanism.)</p>
 
 <h2>
-<a id="user-content-random-comics" class="anchor" href="#random-comics" aria-hidden="true"><span class="octicon octicon-link"></span></a>random comics</h2>
+<a id="user-content-leftover-question" class="anchor" href="#leftover-question" aria-hidden="true"><span class="octicon octicon-link"></span></a>left·over question</h2>
 
-<p><a href="https://camo.githubusercontent.com/9842c849528f26d8367fa71889eed99cc5ba61e9/68747470733a2f2f666263646e2d7370686f746f732d612d612e616b616d616968642e6e65742f6870686f746f732d616b2d786166312f762f74312e302d392f31303337323735335f31303230333034323237303238343331305f313735373432313631393431363637373330355f6e2e6a70673f6f683d3461386230393362333961313934386335633733316339303938623038363638266f653d3535334634453137265f5f6764615f5f3d313432393635343433355f6336613263666137333934336434663233326264353439643138313337393331" target="_blank"><img src="https://camo.githubusercontent.com/9842c849528f26d8367fa71889eed99cc5ba61e9/68747470733a2f2f666263646e2d7370686f746f732d612d612e616b616d616968642e6e65742f6870686f746f732d616b2d786166312f762f74312e302d392f31303337323735335f31303230333034323237303238343331305f313735373432313631393431363637373330355f6e2e6a70673f6f683d3461386230393362333961313934386335633733316339303938623038363638266f653d3535334634453137265f5f6764615f5f3d313432393635343433355f6336613263666137333934336434663233326264353439643138313337393331" alt="talent-comic" data-canonical-src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/10372753_10203042270284310_1757421619416677305_n.jpg?oh=4a8b093b39a1948c5c731c9098b08668&amp;oe=553F4E17&amp;__gda__=1429654435_c6a2cfa73943d4f232bd549d18137931" style="max-width:100%;"></a></p>
+<p>from the previous post, we were saying that lambda calculus
+speaks in term of functions, syntactically and ideally.</p>
+
+<ul>
+<li>
+<p>how do we build a language that <em>syntactically</em> treats
+function as its first·class citizen?</p>
+
+<ul>
+<li>we mimic the syntax of the function so it looks like we
+speak functions -&gt; if we are reading the syntax, we are reading
+its <em>operational semantics</em>.</li>
+</ul>
+</li>
+<li>
+<p>when we speak lambda calculus, how do we know that
+we are <em>truly</em> expressing idea of abstract functions?</p>
+
+<ul>
+<li> we are able to give the syntactical expression a
+<em>denotational semantics</em>.</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="user-content-denotational-semantics" class="anchor" href="#denotational-semantics" aria-hidden="true"><span class="octicon octicon-link"></span></a>denotational semantics</h2>
+
+<p>the ability to read <em>denotational semantics</em> is the ability to read
+between the line. for example my modern native language uses latin
+alphabet &amp; its pronunciation. hence i can read (pronounce) italian
+words quite well without understanding a single thing.
+like a kid learning the face of letters &amp; symbols for the first time.
+kid can read symbols out loud for days before kid slowly makes sense out of
+those squiggles.</p>
+
+<p>so it happens that there are kids who cant even remember the squiggles 1+1=2 at all,
+and there are kids who successfully recreate a bunch of squiggles without
+understand what they denote, and there are kids who can comprehend the thing
+in vision but fail to abide rules of conventional squiggles..</p>
+
+<p>-&gt; put it simple, there are two things we need to separate here: symbol &amp; value.
+we live in a universe that makes it possible to write down information (value)
+in symbols. so we got writing as a tool to archive, transport &amp; refer to
+information for the sake of accumulating it. the thing is, value doesnt
+materially exist, and vision inside an artist's mind may be vibrant &amp; lovely
+but it desperately stays a vision. without the equipment to read mind directly,
+they have to write down their beautiful, vivid &amp; agonizing vision
+in languages (maths language, music language, painting language..).
+they have to express their idea into symbols.</p>
+
+<p>fail to separate this concern, and we got thing like copyright law.</p>
+
+<h2>
+<a id="user-content-the-soul-is-inherently-copyrighted" class="anchor" href="#the-soul-is-inherently-copyrighted" aria-hidden="true"><span class="octicon octicon-link"></span></a>the soul is inherently copyrighted</h2>
+
+<p><strong>consider this story</strong> in vietnamese fairy tale, one man plays chess so geniusly
+that the chess god descends from heaven to play with him. of course the
+man loses but the chess god leaves him some incense. the chess god says:
+if the man is in trouble, the man burns the incense
+&amp; the chess god will descend again to help him.</p>
+
+<p>after a time, the man dies a sudden die. the wife cleans the house &amp; sees
+some incense, she lights them on the husband altar to mourn him. the chess god descends
+but it's too late. the man's corspe has rotten. so the chess god says:
+recently in this village, there is a butcher who just died so the corpse
+is new, i will call back the soul of your husband into that corpse.</p>
+
+<p>the wife rushes to the butcher's house &amp; says he's her dear husband.
+the husband confirms but the
+sorrow family doesnt believe that. they all go to legal court.</p>
+
+<p>-&gt; the question is: how should the court decide?</p>
+
+<p>if we believe that the soul is separated from the body, that husband <em>is</em>
+the chess grandmaster. and the court in the story (the collective mind
+of vietnamese folklore tellers) agrees with that.</p>
+
+<p>i think he is neither the butcher nor the pure chess grandmaster anymore. the consciousness
+of the chess grandmaster (if can be recalled from death), now roots in a new
+body with different physical structure. the soul is the <a href="http://www.technologyreview.com/qa/528151/the-importance-of-feelings/">mental representation</a>
+of the physical aspect of the body in awareness of environment context.
+hence different physical structure may give rise to some new features
+of the chess master's mind.</p>
+
+<p>-&gt; the butcher wife surely cant
+copyright her husband corpse. the man may claim him as the chess master
+but
+if over time, the chess master's wife
+cant keep up with <em>him</em> having quite new features upgraded,
+they may break up also.</p>
+
+<p><strong>another situation</strong> is when you compare me in the past and me now.
+i'm surely not that person
+in the past, she is obviously not me.
+she faces struggles that physically changes her
+brain &amp; body cells (maybe her gene expression also) everyday
+&amp; among all the possibilities that she can evolve
+to be, I am the one that survives &amp; emerges.
+i <em>could have been</em> so much different
+among the infinite possibilities available.</p>
+
+<p>but the thing is, she once exists. no one can deny that. what she
+struggles to get &amp; to produce, she surely gets credits for that.
+if copyright is about copyrighting symbols, she - me in the past - has never
+been existed, got no credits at all. why? because not a single atom (or wave)
+in that person truly remains today. isnt it magnificient, to realise that
+<a href="http://www.ted.com/talks/richard_dawkins_on_our_queer_universe?language=en">waves &amp; atoms spontaneously come together to become you in each moment?</a></p>
+
+<p>but no one ever can erase that me in the past.
+because value is inherently copyrighted.</p>
+
+<p><strong>consider another case</strong>, i clone myself into another little Chi.
+we share a life UNTIL that moment. but FROM that moment on, she is not me
+and im not her. things may be complicated for others but we will go
+different ways of development from that moment on. if you advocate copyrighting
+symbols, can you say who deserve to be killed? does the clone violate
+copyright law? no.</p>
+
+<h2>
+<a id="user-content-what-is-the-meaning-of-copyrighting-symbols" class="anchor" href="#what-is-the-meaning-of-copyrighting-symbols" aria-hidden="true"><span class="octicon octicon-link"></span></a>what is the meaning of copyrighting symbols?</h2>
+
+<p>i may try to make <strong>another example</strong> closer to commercial product,
+<a href="http://ansuz.sooke.bc.ca/lawpoli/colour/2004061001.php">from here</a>
+and <a href="http://www.gwern.net/Copyright">here</a>.</p>
+
+<p>let's say i code a program
+that randomly generate all kinds of symbols, the symbols are all random
+and maybe repeated (like in a Babel book).</p>
+
+<p>now, i write an algorithm to extract a subset of symbols out of that
+program. truly coincidental, i got a version of Hamlet in vietnamese.
+now what do you think? does that <em>Hamlet</em> belong to me? or does that
+algorithm make me Shakespeare?</p>
+
+<p>sorry, it's obviously f*cking not.</p>
+
+<p>shakepeare value is his value. english symbols may hold that value.
+vietnamese symbols may hold that value.
+german symbols may hold that value.
+but the symbols are <em>not</em> the value. only the value can be the value itself.</p>
+
+<p>but you cant say the program or the algorithm violate copyright.
+the program generates random stuff. the algorithm do job of interpreting,
+it could produce some rubbish writing instead, who knows?</p>
+
+<p><strong>still</strong> think im tricking you? read <a href="http://www.qwantz.com/index.php?comic=353">this comic</a>.
+think about softwares like stata, or windows.
+these things are all binary numbers (0 1 0 1 0...).
+they <em>copyright</em> these chunks.
+now i got harmless chunks of 0s &amp; 1s
+which is completely different from the chunk of
+0s &amp; 1s in these products you buy. then i write algorithm to read my
+chunks in different ways. how far can i go?
+the algorithm may read my chunks &amp; return something like half of stata,
+is it illegal yet? can you really
+draw a fine line of violating?</p>
+
+<p>if not, maybe there is no violation at all.</p>
+
+<p>-&gt; the only point of coypright is for economic purpose.
+producing these stuff costs quite a lot resources in the old time.
+so distributors &amp; middlemen need to get some sure cash because
+they pay authors &amp; they bear the risk of the product failure.</p>
+
+<p>but we are now in the internet era, so this reason to protect the
+profit of distributors &amp; ancient middlemen doesnt really hold anymore.</p>
+
+<p>the thing is, creators &amp; inventors that i know are very open·minded
+&amp; they themselves promote these principles.
+it doesnt do any harm to give firm credits to authors &amp; at the same time
+<a href="http://www.gwern.net/Evolutionary%20Licenses">give freedom &amp; openness for users</a>.</p>
+
+<p>and free open·source solution is claiming a big share of profit in technology market.
+a vast set of free softwares that illiterate users like me
+are using everyday is just <em>by·product</em> of
+the free open·source ecosystem.
+users have enough <a href="http://web.archive.org/web/20110726084909/http://www.gnu.org/philosophy/free-sw.html">Freedom 0</a>
+to live a decent life.
+(if you get geeky, then you need freedom 1 &amp; open source principle &amp;
+they are also available).</p>
+
+<h3>
+<a id="user-content-note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>note</h3>
+
+<p>from denotational semantics to copyright is quite off·topic, but if you
+truly understand the separated nature of symbol &amp; value, you get the essential
+base of functional programing.</p>
+
+<p>also, for me, it makes my life easier.</p>
 </article></body></html>

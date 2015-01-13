@@ -1,0 +1,220 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) / [Comics](https://ayaderaghul.github.io/comic.html)
+
+#functional language, & the nature of copyright
+
+sometimes i wonder whether i just sucks at managing *the nerve tick* of [dopamine craving](https://medium.com/neuroscience-internet/how-the-internet-dopamine-and-your-brain-are-working-together-to-screw-your-potential-1ac176538961)
+as a mature adult or i simply crossed the threshold of being statistically normal
+into obsessive compulsive.
+
+i use *the nerve tick* to describe
+the increasingly irritating *tick* (like a clock ticking
+inside my head) of a group of neurons demanding my attention
+toward a specific topic they are vibrantly discussing on, while i'm miserably trying
+to ignore their request to dictate my scarce-resourced brain on reading things that
+supposedly matter more at the present
+(like exam stuff).
+
+but you dont argue with your physiology program right?
+when im hungry, words putting before my eyes
+turn into squiggly symbols and
+not of my slightest interest any more.
+
+same as when i dont see any drops of dopamine on materials i read anymore.
+
+-> other grad kids must either love all their subjects or able to manage
+boredom like a ninja.
+
+(you see? the perk of being a lazy student is that she develops sophisticated rationale
+to justify the failure of her exams - a brilliantly useful defense mechanism.)
+
+## left·over question
+
+from the previous post, we were saying that lambda calculus
+speaks in term of functions, syntactically and ideally.
+
+- how do we build a language that *syntactically* treats
+function as its first·class citizen?
+ - we mimic the syntax of the function so it looks like we
+speak functions -> if we are reading the syntax, we are reading
+its *operational semantics*.
+
+- when we speak lambda calculus, how do we know that
+we are *truly* expressing idea of abstract functions?
+ -  we are able to give the syntactical expression a
+ *denotational semantics*.
+
+## denotational semantics
+the ability to read *denotational semantics* is the ability to read
+between the line. for example my modern native language uses latin
+alphabet & its pronunciation. hence i can read (pronounce) italian
+words quite well without understanding a single thing.
+like a kid learning the face of letters & symbols for the first time.
+kid can read symbols out loud for days before kid slowly makes sense out of
+those squiggles.
+
+so it happens that there are kids who cant even remember the squiggles 1+1=2 at all,
+and there are kids who successfully recreate a bunch of squiggles without
+understand what they denote, and there are kids who can comprehend the thing
+in vision but fail to abide rules of conventional squiggles..
+
+-> put it simple, there are two things we need to separate here: symbol & value.
+we live in a universe that makes it possible to write down information (value)
+in symbols. so we got writing as a tool to archive, transport & refer to
+information for the sake of accumulating it. the thing is, value doesnt
+materially exist, and vision inside an artist's mind may be vibrant & lovely
+but it desperately stays a vision. without the equipment to read mind directly,
+they have to write down their beautiful, vivid & agonizing vision
+in languages (maths language, music language, painting language..).
+they have to express their idea into symbols.
+
+fail to separate this concern, and we got thing like copyright law.
+
+## the soul is inherently copyrighted
+
+**consider this story** in vietnamese fairy tale, one man plays chess so geniusly
+that the chess god descends from heaven to play with him. of course the
+man loses but the chess god leaves him some incense. the chess god says:
+if the man is in trouble, the man burns the incense
+& the chess god will descend again to help him.
+
+after a time, the man dies a sudden die. the wife cleans the house & sees
+some incense, she lights them on the husband altar to mourn him. the chess god descends
+but it's too late. the man's corspe has rotten. so the chess god says:
+recently in this village, there is a butcher who just died so the corpse
+is new, i will call back the soul of your husband into that corpse.
+
+the wife rushes to the butcher's house & says he's her dear husband.
+the husband confirms but the
+sorrow family doesnt believe that. they all go to legal court.
+
+-> the question is: how should the court decide?
+
+if we believe that the soul is separated from the body, that husband *is*
+the chess grandmaster. and the court in the story (the collective mind
+of vietnamese folklore tellers) agrees with that.
+
+i think he is neither the butcher nor the pure chess grandmaster anymore. the consciousness
+of the chess grandmaster (if can be recalled from death), now roots in a new
+body with different physical structure. the soul is the [mental representation](http://www.technologyreview.com/qa/528151/the-importance-of-feelings/)
+of the physical aspect of the body in awareness of environment context.
+hence different physical structure may give rise to some new features
+of the chess master's mind.
+
+-> the butcher wife surely cant
+copyright her husband corpse. the man may claim him as the chess master
+but
+if over time, the chess master's wife
+cant keep up with *him* having quite new features upgraded,
+they may break up also.
+
+
+**another situation** is when you compare me in the past and me now.
+i'm surely not that person
+in the past, she is obviously not me.
+she faces struggles that physically changes her
+brain & body cells (maybe her gene expression also) everyday
+& among all the possibilities that she can evolve
+to be, I am the one that survives & emerges.
+i *could have been* so much different
+among the infinite possibilities available.
+
+but the thing is, she once exists. no one can deny that. what she
+struggles to get & to produce, she surely gets credits for that.
+if copyright is about copyrighting symbols, she - me in the past - has never
+been existed, got no credits at all. why? because not a single atom (or wave)
+in that person truly remains today. isnt it magnificient, to realise that
+[waves & atoms spontaneously come together to become you in each moment?](http://www.ted.com/talks/richard_dawkins_on_our_queer_universe?language=en)
+
+but no one ever can erase that me in the past.
+because value is inherently copyrighted.
+
+**consider another case**, i clone myself into another little Chi.
+we share a life UNTIL that moment. but FROM that moment on, she is not me
+and im not her. things may be complicated for others but we will go
+different ways of development from that moment on. if you advocate copyrighting
+symbols, can you say who deserve to be killed? does the clone violate
+copyright law? no.
+
+##what is the meaning of copyrighting symbols?
+
+i may try to make **another example** closer to commercial product,
+[from here](http://ansuz.sooke.bc.ca/lawpoli/colour/2004061001.php)
+and [here](http://www.gwern.net/Copyright).
+
+let's say i code a program
+that randomly generate all kinds of symbols, the symbols are all random
+and maybe repeated (like in a Babel book).
+
+now, i write an algorithm to extract a subset of symbols out of that
+program. truly coincidental, i got a version of Hamlet in vietnamese.
+now what do you think? does that *Hamlet* belong to me? or does that
+algorithm make me Shakespeare?
+
+sorry, it's obviously f*cking not.
+
+shakepeare value is his value. english symbols may hold that value.
+vietnamese symbols may hold that value.
+german symbols may hold that value.
+but the symbols are *not* the value. only the value can be the value itself.
+
+but you cant say the program or the algorithm violate copyright.
+the program generates random stuff. the algorithm do job of interpreting,
+it could produce some rubbish writing instead, who knows?
+
+**still** think im tricking you? read [this comic](http://www.qwantz.com/index.php?comic=353).
+think about softwares like stata, or windows.
+these things are all binary numbers (0 1 0 1 0...).
+they *copyright* these chunks.
+now i got harmless chunks of 0s & 1s
+which is completely different from the chunk of
+0s & 1s in these products you buy. then i write algorithm to read my
+chunks in different ways. how far can i go?
+the algorithm may read my chunks & return something like half of stata,
+is it illegal yet? can you really
+draw a fine line of violating?
+
+if not, maybe there is no violation at all.
+
+-> the only point of coypright is for economic purpose.
+producing these stuff costs quite a lot resources in the old time.
+so distributors & middlemen need to get some sure cash because
+they pay authors & they bear the risk of the product failure.
+
+but we are now in the internet era, so this reason to protect the
+profit of distributors & ancient middlemen doesnt really hold anymore.
+
+the thing is, creators & inventors that i know are very open·minded
+& they themselves promote these principles.
+it doesnt do any harm to give firm credits to authors & at the same time
+[give freedom & openness for users](http://www.gwern.net/Evolutionary%20Licenses).
+
+and free open·source solution is claiming a big share of profit in technology market.
+a vast set of free softwares that illiterate users like me
+are using everyday is just *by·product* of
+the free open·source ecosystem.
+users have enough [Freedom 0](http://web.archive.org/web/20110726084909/http://www.gnu.org/philosophy/free-sw.html)
+to live a decent life.
+(if you get geeky, then you need freedom 1 & open source principle &
+they are also available).
+
+###note
+from denotational semantics to copyright is quite off·topic, but if you
+truly understand the separated nature of symbol & value, you get the essential
+base of functional programing.
+
+also, for me, it makes my life easier.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
