@@ -1,0 +1,174 @@
+# types
+
+
+
+
+##types
+
+
+there is no other means to refer to a value without using symbol
+(you may try).
+to make it less confused, we classify value into *types*,
+then we let different types dress differently as much as possible.
+for the rest, there needs to be other way of knowing.
+
+for example: numbers have special denotions, this symbol 5 represents
+the abstract number 5. or if we see guys dressing like this: "a",
+we know they are string type.
+
+##stacking data
+number & string are ordinary citizens of the world. if i give you a lot of
+these types: 1 2 3 "a" "b" "c" & tell you to stack them on the table.
+you may stack them as you want. (when the stack falls over, we call it
+[*stackoverflow*](stackoverflow.com).) there are two ways to stack them. i give you 1 2 3
+respectively and you may stack them 1 2 3. in this way, you have 3 on top.
+or you can stack them 3 2 1. in this way, you can grab 1 first out of the
+stack. does it make any difference stacking them in these two reverse ways?
+it doesnt if the order of data doesnt matter when you make analysis.
+but sometimes order matters. like when you stack a sandwich.
+
+example: you may give kids two numbers 1 & 2. then you give them *plus*.
+
+(+ 1 2) = (+ 2 1) = 3. the order doesnt matter.
+
+but if you give kids *minus*, and some kid reverses the order of
+1 & 2 like no big deal, then that kid stays in elementary
+a little bit longer.
+
+now what is the order that you prefer when stacking your data?
+it's actually not very obvious that we like the stacking that put number 1
+on top. it's a historical accident. in other words, it's a convention
+that we process the expression (- 1 2) from left to right and
+this gives rise to the stacking way that puts 1 on top. and we got a process
+that do exactly that thing. that process gets the privilege & becomes
+fundamental building block of functional programming paradigm: list.
+
+##why listing the world?
+
+##eval
+
+language of the world is in symbol, in order to know what value type
+the symbol is holding, we *evaluate* that symbol:
+
+```racket
+> (eval 5)  ; the symbol '5 is evaluated
+5           ; & it returns the abstract value 5
+
+> (eval "hello world 2015!")
+"hello world 2015!"
+```
+
+what happens if we evaluate a symbol 'a:
+
+```
+> (eval a)
+undefined
+```
+
+that symbol doesnt hold any value (yet). so *eval* returns *undefined*.
+
+whatever you type in keyboard, the computer reads as string.
+
+for example: you type 2-0-1-5. do you think you are typing a number?
+what kind of manipulative action you have done to make 2, 0, 1, and 5 into 2015?
+of course 2+0+1+5 doesnt equal 2015, so what you do is not *adding* numbers (you dont
+treat these objects as numbers), but you are *appending* them (you treat them as strings).
+
+we just mention another *type* of agents: the *type* that goes to manipulate
+the ordinary citizens like string & number. they are real soldiers, they *work*.
+and they are *functions*.
+
+for example:
+> here is agent + in action: + 1 2 = 3
+
+> here is agent *append* in action: (string-append "a" "b") = "ab"
+
+first thing to note here: they are all symbols, more specifically, they are
+a list of symbols. the symbol + represents a verb, the symbol string-append
+represents another verb. we write them like expression with respect to
+lambda grammar. we express them according to operational semantics.
+
+now in order to know their denotational sematics, we evaluate:
+
+
+> (eval expression) = value-of-the-expression
+
+the beauty of the above expression is that it shows the ability to speak high-level
+expression of lambda calculus, still using the simple grammatical syntax consistently.
+
+what makes human wonderful? it's the ability to think in high-level thinking:
+think about its existence reason & all the stuff using that same way of thinking
+while it think about anything else. i use the same brain to perform thinking about food,
+as well as i think about the existence reason of myself in this universe. isnt it neat?
+
+a knife is a tool (that we made) that can cut a lot of thing
+but it is not able to cut its handle itself. but lambda calculus is a
+knife that can cut itself open or even produce more knives itself.
+
+
+
+##other types
+these types are statistically popular, but there are other important types with smaller
+representation in the population. what is missing? we got nouns, we got verbs,
+what about the first adjective of the world?
+
+first adjective of the world must be TRUE, FALSE, another freak: NULL.
+*null* belongs to a family of *nothingness*. (Nothingness is quite important hence
+we need a representation of it.) Example of nothingness can be: number 0, null, void,
+empty, undefined.
+
+
+
+
+these agents of nothingness can be defined a little bit difference across languages.
+as Scheme (Racket) is what i do, i will always refer to Scheme.
+in Scheme, both null & empty are adjective of list. they refer to a list with length 0.
+
+```racket
+> (length null)
+0
+> (length empty)
+0
+> (length '())
+0
+
+```
+
+undefined & void are constant.
+
+```racket
+> x
+undefined
+> (void)
+
+```
+
+
+
+
+## types in a game
+in a game, apart from common knowledge, each player may have private information about
+his *type*. private information makes the game asymmetric. a symmetric game is the game
+that we assume we are the same (on every single aspect). so you can map your
+mental representation on me to predict what i will do
+(by simply contemplate on what would you do at that tree node).
+
+but in an asymmetric game, we may be slightly different. i may know something
+about the way i would act in some tree node. and you dont know that information.
+in some tree node, you may choose to turn left if you are in the situation, but
+i would turn right, because i do. this difference renders you unable to
+predict my action based on your mental representation of yourself.
+
+-> and you say that i'm a different *type* from you.
+
+now solving this game is tricky. you have to form subjective expectation
+(belief) on things you dont know (which is my *type*). and me in turn has
+to form expectation
+on your expectation ... this loop is already mentioned in the previous of previous post.
+
+
+
+
+
+
+

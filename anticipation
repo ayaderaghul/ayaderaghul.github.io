@@ -1,0 +1,232 @@
+# utility, & utility of anticipation
+*(not that anticipated utility from Loewenstein, the one from Nash)*
+
+academia favors kids [with big RAM](http://www.ted.com/talks/ken_robinson_says_schools_kill_creativity?language=en#)
+to comprehend densed symbolisation stuff
+like maths.
+happening to be a grad kid that stays on the other extreme of that scale
+(2\*2\*2 = 6
+is the kind of maths i do),
+i have to *not·believe* in that.
+
+the thing is, most respected scholars jump to maths too fast as a
+way to shorthand all their thinking, just because they can.
+but what helps me *not·believe* in that mathness is the fact that there
+are genius who doesnt need the motto "if you do something complicated,
+you put it in the paper".
+and they dont try to put things simple just to avoid the awkwardness
+of teaching a stubborn with mild·dyslexia kid, they do that because it's their
+[principles to live by](https://www.maa.org/external_archive/devlin/LockhartsLament.pdf).
+
+anyway, i do see the mis·alignment between me & academia.
+to the end of my master,
+i find out that the things in class that significantly improve
+my daily life are the things that are irrelevant to my academic grades
+the most. (still dont feel bad about
+[not passing & low grades](https://www.youtube.com/watch?v=_X0mgOOSpLU) though).
+
+##what is utility?
+
+utility, in utilitarian view, is the pleasant you gets when you consume
+a good: eating a small orange for example. this makes me wonder about the social class of the person
+who originates this idea.
+
+anyway, Sen knows what's up. (maybe because he stands with the poor).
+Sen says:
+> utility is the degree of
+satisfaction of usage you get from a good.
+
+(Teacher says this is what the word litterally means in Latin languages,
+it's the same in my language also).
+
+so we need to decompose a good into a vector of its functioning.
+the ability to use, combine the functions of other goods is called
+*capability*.
+
+>the second part of utility is emotional.
+
+
+seeing utility this way makes it difficult to develop a mathematical
+model, but it clarifies many concerns for me.
+for example:
+two people take surgery. one for her cancer (which is for survival),
+the other for her plastic
+breast (which is one of the most f*cked up practices of the 20th century).
+
+another example can be two people buying stamps.
+one to send letters. the other for his fetish.
+
+
+- a funny story
+
+
+i was in a small party day of Ruby girls on Rail in the park of Trento.
+the organizers were giving the first contact to Ruby by aiding groups of girl
+to make their own very first app. my group has girls from management class
+
+by the way, MIM students are
+amazing, i saw their presentations on real world business application,
+they are doing real better than MEC students.
+MEC students may be pissed off thinking they are doing
+high·level stuff
+but i'm ready to claim this claim. putting us all in the turbulent market,
+i bet on MIM student survival. (phd doesnt count as real job,
+my fellow friends ^^).
+
+
+anyway, the girls were saying: maybe we do some apps for girls, because
+today is the girl day. i was a bit disappointed because 5 minutes into the
+work, and they already brought the gender onto the table. but then,
+another girl (i dont know this girl), said:
+
+\- let's do something functional.
+
+ this would be the single reminder for the rest of my life.
+
+## utility of anticipation
+
+the pre·assumption of studying decision making across time frame is that
+there is tomorrow.
+
+why do someone give up their immediate gratification for future consumption?
+they may say that they save for themselves. is it really the same person?
+
+no.
+
+is it the same as i'm giving up my immediate gratification for someone
+very else?
+
+yes.
+
+why?
+
+decomposing me & you get a set of functional skills & a set of knowledge.
+these two sets define me of today. tomorrow the sets widen ->
+tomorrow i·today cease to exit. hence, if im giving up my immediate
+gratification today, i'm giving it up for someone else.
+
+but do i get utility today if i give up my immediate gratification?
+there must be something. there must be a portion of utility in giving.
+it's the utility of anticipation.
+
+and it's not that anticipated utility function of Loewenstein which is
+a long line of mathematic symbols with discounting this & that.
+
+i'm saying the anticipation definition from Nash:
+if i think about tomorrow's consumption, i have an anticipation of
+it.
+
+take Nash's example:
+>if i know that tomorrow i got a Caddilac, then we say i have a
+Cadillac anticipation.
+
+## how can i consume the utility of another living thing?
+
+why do i care about a someone else at all? why do i give up my
+immediate gratification to them (given that i *can afford* to give).
+
+you talk to dolls in your childhood, dont you? you project your mental
+reperesentation on them. hence i
+[*mirror*](https://www.youtube.com/watch?v=l80zgw07W4Y)
+your consumption
+in my *self* & i consume that *derivative feeling*.
+
+it's called sympathy & we have a neural mechanism for that.
+of course it's not genuine as our own utility feeling but
+what i consume today (if i give up my immediate gratification) is
+not the utility of the consumption itself but from the
+the utility of the anticipation of it (i imagine it).
+just like what you consume if you give is not the consumption itself
+but it's the utility of the other's consumption.
+for the story of consuming the other's consumption, i cite one such
+story at the end of this post.
+
+*(off·track bragging: hehe i was in a workshop listening to prof
+Ferrari in Cimec some other day, i really didnt expect that,
+i was like let's come with some ignorant curiousity)*
+
+
+
+## a simple case of anticipation utility
+
+Loewenstein calls this delay-speedup asymmetry situation:
+
+- you will get a TV in 1 year, how much do you pay to have it today? 54$
+
+- you get a TV today, how much do you need to be paid to delay it 1 year? 126$
+
+why is it?
+
+in the first case, what i consume today is a TV anticipation.
+but i pay 54$ to get the TV today, so i got U(tv) - 54$. this must be
+equivalent to the utility of the anticipation of a TV in 1 year.
+
+> U(TV) - 54$ = utility of the TV anticipation [1]
+
+in the second case, what i consume today is a real TV.
+it's equivalent to: i get paid 126$ to delay the TV which means that
+i give up my TV consumption, i get 126$ and a TV anticipation.
+
+> \- U(TV) + 126 + a TV anticipation = U(TV) [2]
+
+> 126 + a TV anticipation = 2*U(tv)
+
+
+substitute [1] into [2] we get:
+
+> 126 + [U(tv) - 54] = 2*U(tv)
+
+> U(tv) = 126-54=72
+
+the utility of the TV today is equivalent to 72$
+
+-> no paradox.
+
+-> life would be so much easier if economists take their subjects simple.
+
+anyway, this is a very simple case. for other cases,
+the anticipation function is impossible to estimate.
+(is it a function at all?). in anticipating things, people
+may concentrate on one thing so big (the lobster), they ignore
+the other smaller elephant in the list (the french).
+
+but human behavior is complex anyway. it's also very much
+upto the environment
+
+-> a *sophisticated* decision maker
+must be the one that knows that they cannot predict their own preference.
+and the *naive* decision maker is the one that thinks they can.
+
+dealing with this, maybe the new method of statistics can help:
+neural network learning
+(deep learning). you feed it data, more data, big data, and it can estimate
+the pattern for you (in anyway, that pattern can't be discounted
+compound rate taking from the bank)
+
+the thing is, this business is for the one who has comparative advantage
+in resources (like money & a computer with big RAM). me no =.=
+
+so i'd better concentrate to pass exam instead.
+
+
+## a story of utility of anticipation
+
+i present here the only gift·exchange game
+i can recall of: the gift·exchange from
+["The gift of the Magi"](http://americanenglish.state.gov/files/ae/resource_files/1-the_gift_of_the_magi_0.pdf
+)
+, by O. Henry *not* et al. (1906)
+
+That literature addresses quite delicate (& lovely) theoretical issues.
+In the framing of Christmas, player A sells her hair to buy
+player B's a clock chain. Player B, simultaneously, sells his
+clock to buy player A a comb.
+
+They self-interest in the anticipation of joy of the other.
+Even if that anticipated joy turns out to be impossible,
+at the end, what they enjoy even more is the reciprocal
+(though failed) intentions (of love).
+
+O. Henry published quite a lot on these kinds of fun,
+short, spot-on social experiments :)
+
