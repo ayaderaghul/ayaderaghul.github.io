@@ -1,6 +1,8 @@
 # utility, & utility of anticipation
 *(not that anticipated utility from Loewenstein, the one from Nash)*
 
+*(small content patch on 19/1/2015)*
+
 academia favors kids [with big RAM](http://www.ted.com/talks/ken_robinson_says_schools_kill_creativity?language=en#)
 to comprehend densed symbolisation stuff
 like maths.
@@ -178,7 +180,7 @@ substitute [1] into [2] we get:
 
 > U(tv) = 126-54=72
 
-the utility of the TV today is equivalent to 72$
+the utility of the TV today is equivalent to 72$ -> the utility of anticipation = 72-54=18$
 
 -> no paradox.
 
@@ -226,7 +228,8 @@ In the framing of Christmas, player A sells her hair to buy
 player B's a clock chain. Player B, simultaneously, sells his
 clock to buy player A a comb.
 
-They self-interest in the anticipation of joy of the other.
+They self-interest in the joy of the other.
+Hence they have utility from the anticipation of that joy.
 Even if that anticipated joy turns out to be impossible,
 at the end, what they enjoy even more is the reciprocal
 (though failed) intentions (of love).
