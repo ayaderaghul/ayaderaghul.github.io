@@ -860,21 +860,378 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>post</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+}</style><title>markov</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+
+<h1>
+<a id="user-content-markov-chain" class="anchor" href="#markov-chain" aria-hidden="true"><span class="octicon octicon-link"></span></a>markov chain</h1>
+
+<p>statistics is not something one can live without, but i may try to live with least.
+<em>if you say tl;dr (too long, didnt read), the frog will be very very sad.</em></p>
+
+<h2>
+<a id="user-content-independent-randomness" class="anchor" href="#independent-randomness" aria-hidden="true"><span class="octicon octicon-link"></span></a>independent randomness</h2>
+
+<p>there is a frog and a lily pond with many lily pads.
+the frog likes to hop around on the lily pads.
+it decides to jump on whatever lily pads it wants, regardless of whatever.
+maybe it decides to spend more time on the lily pad it favors, but still.</p>
+
+<p><a href="https://camo.githubusercontent.com/90b3e2501cd5c904054e2a0bf6049cee30f5a4e4/68747470733a2f2f7777772e666c69636b722e636f6d2f70686f746f732f617961646572616768756c2f31363431323031353536342f" target="_blank"><img src="https://camo.githubusercontent.com/90b3e2501cd5c904054e2a0bf6049cee30f5a4e4/68747470733a2f2f7777772e666c69636b722e636f6d2f70686f746f732f617961646572616768756c2f31363431323031353536342f" alt="frog1" data-canonical-src="https://www.flickr.com/photos/ayaderaghul/16412015564/" style="max-width:100%;"></a></p>
+
+<p>that is independent randomness, each event is independent from any other.</p>
+
+<h2>
+<a id="user-content-dependent-randomness" class="anchor" href="#dependent-randomness" aria-hidden="true"><span class="octicon octicon-link"></span></a>dependent randomness</h2>
+
+<p>the frog travels to a new pond over the mountain.
+this pond is simple.
+lily pads growing in that pond have rules.
+for example, when the frog hops on the first lily pad, the lily pad says:</p>
 
 <ul>
-<li><p><a href="https://ayaderaghul.github.io/markov.html">markov chain</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/demoralise.html">dont be demoralised and dont be intimidated by labels</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/cat.html">a cat story</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/crazy.html">how much of that is possible</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/bargaining.html">stories that we'd tell in sunset</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mystique.html">mystique</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/love.html">is it today yet?</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/acad.html">the one thing that i like about academia</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/behavior.html">theoretical &amp; empirical: on the tension between game theory &amp; behavioral economics in me</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/blame.html">the veil of ignorance for a reality check</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/anticipation.html">utility, &amp; utility of anticipation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda2.html">functional language, &amp; the nature of copyright</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda1.html">lambda calculus, infinite regress and rational expectation</a></p></li>
+<li>from here, you jump to the lily pad over there.</li>
 </ul>
+
+<p><a href="https://camo.githubusercontent.com/4be3a50224ee7ec5f47e0deda58804664567a268/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67322e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/4be3a50224ee7ec5f47e0deda58804664567a268/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67322e68746d6c" alt="frog2" data-canonical-src="https://ayaderaghul.github.io/frog2.html" style="max-width:100%;"></a></p>
+
+<p>the frog is quite surprised. so after an afternoon hopping around the pond,
+the frog discovers all the rules of all the lily pads.</p>
+
+<p><a href="https://camo.githubusercontent.com/a17b5248dfea6b3de6346368d6973da434331614/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67332e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/a17b5248dfea6b3de6346368d6973da434331614/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67332e68746d6c" alt="frog3" data-canonical-src="https://ayaderaghul.github.io/frog3.html" style="max-width:100%;"></a></p>
+
+<p>for example, from the lily pad number 3, the frog can jump back lily pad 1 or
+it can jump to lily pad 4.</p>
+
+<p>so the next event depends on its preceding event like a chain.
+this is a markov chain.</p>
+
+<p>let's start with a smaller pond:</p>
+
+<p><a href="https://camo.githubusercontent.com/470be5e394dc49964b391a6cadc5a1e143ff6df6/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67372e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/470be5e394dc49964b391a6cadc5a1e143ff6df6/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67372e68746d6c" alt="frog7" data-canonical-src="https://ayaderaghul.github.io/frog7.html" style="max-width:100%;"></a></p>
+
+<p>here is the transition matrix of this markov process, each lily pad is a state:</p>
+
+<p><a href="https://camo.githubusercontent.com/1917cd988ec4eb299ff73b8cdb2126bbfe4d1e3a/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67342e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/1917cd988ec4eb299ff73b8cdb2126bbfe4d1e3a/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67342e68746d6c" alt="frog4" data-canonical-src="https://ayaderaghul.github.io/frog4.html" style="max-width:100%;"></a></p>
+
+<p>if the frog starts at state 1, it comes out at state 2.</p>
+
+<p><a href="https://camo.githubusercontent.com/f3dc9e6d70a6c28d85d49aa2c2ebd01d82ab690a/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67382e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/f3dc9e6d70a6c28d85d49aa2c2ebd01d82ab690a/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67382e68746d6c" alt="frog8" data-canonical-src="https://ayaderaghul.github.io/frog8.html" style="max-width:100%;"></a></p>
+
+<p><a href="https://camo.githubusercontent.com/8e22ee8cc64ae9a441f8094d6f074a46ebd7ab12/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67352e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/8e22ee8cc64ae9a441f8094d6f074a46ebd7ab12/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67352e68746d6c" alt="frog5" data-canonical-src="https://ayaderaghul.github.io/frog5.html" style="max-width:100%;"></a></p>
+
+<p>if the frog starts at state 2, in next step it can be at state 1 or 3, each at 50%.</p>
+
+<p><a href="https://camo.githubusercontent.com/ff7c69e2cc8d5b2804bb80eededde46d4ffe0ea0/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67392e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/ff7c69e2cc8d5b2804bb80eededde46d4ffe0ea0/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67392e68746d6c" alt="frog9" data-canonical-src="https://ayaderaghul.github.io/frog9.html" style="max-width:100%;"></a></p>
+
+<p>if the frog starts with probability?</p>
+
+<p><a href="https://camo.githubusercontent.com/192eccb661c36a41a8f440026f13d1deaef25048/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67362e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/192eccb661c36a41a8f440026f13d1deaef25048/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f67362e68746d6c" alt="frog6" data-canonical-src="https://ayaderaghul.github.io/frog6.html" style="max-width:100%;"></a></p>
+
+<p><a href="https://camo.githubusercontent.com/9248190e414a61b8cb7cab978561bf8a2dbefc3d/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f6731302e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/9248190e414a61b8cb7cab978561bf8a2dbefc3d/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f6731302e68746d6c" alt="frog10" data-canonical-src="https://ayaderaghul.github.io/frog10.html" style="max-width:100%;"></a></p>
+
+<p>so the next state of the world will depend on the current state.</p>
+
+<p>now if at step 1, the frog starts at state 2, where may the frog be in step 3?</p>
+
+<p>to answer the question, where may the frog be at step n (very large),
+we just raise the transition matrix to power n.</p>
+
+<p>let's raise it to power 100 to see what happens.</p>
+
+<p>weird. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).</p>
+
+<p><a href="https://camo.githubusercontent.com/31fbe41c35f7df10f242baf11883940674649562/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f6731312e68746d6c" target="_blank"><img src="https://camo.githubusercontent.com/31fbe41c35f7df10f242baf11883940674649562/68747470733a2f2f617961646572616768756c2e6769746875622e696f2f66726f6731312e68746d6c" alt="frog11" data-canonical-src="https://ayaderaghul.github.io/frog11.html" style="max-width:100%;"></a></p>
+
+<p>it means that, the frog can start with arbitrary distribution u, after n (large)
+steps, its distribution is v.</p>
+
+<p>u. P^n = v</p>
+
+<p>u . P^(n+1) = v</p>
+
+<p>-&gt; u . P^n . P = v</p>
+
+<p>-&gt; v . P = v</p>
+
+<p>this vector v is eigenvector of transition matrix P.
+this distribution is the long-range prediction of the frog, regardless of
+initial state.</p>
+
+<h2>
+<a id="user-content-what-do-you-think-when-you-think-of-matrix" class="anchor" href="#what-do-you-think-when-you-think-of-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>what do you think when you think of matrix</h2>
+
+<p>matrix is a space. it's described by a system of linear equations.
+if we multiply a row vector with a matrix, it's like the row vector has to go
+through a bunch of transformation.
+these transformations are described by the equations of
+the matrix and these transformations are parallel.</p>
+
+<p>for some matrix, there are some row vectors that can survive the transformation
+and still emerge out to be itself (or a multiple of itself).</p>
+
+<p>these are eigenvectors of the matrix.</p>
+
+<p>calculating eigenvector is not funny. anyway, we examine some particular types
+of transition matrix that can guarantee the existence of eigenvectors or
+interesting information.</p>
+
+<h2>
+<a id="user-content-regular-chain" class="anchor" href="#regular-chain" aria-hidden="true"><span class="octicon octicon-link"></span></a>regular chain</h2>
+
+<p>a regular transition matrix is a matrix that doesnt have too many zeros in it.
+so that, if you take power of it, some power of the matrix will not contain zeros
+anymore.</p>
+
+<p>so, if a matrix has some zeros, how long do you have to power them up before
+you give up and say that it's not regular?</p>
+
+<p>well, if P^(n+1) has zeros in the same place as P^n, it's likely that
+the zeros burn holes in the matrix in those place.
+these places will forever have zeros in it.</p>
+
+<p>a regular chain will end up having eigenvector that is strictly positive.</p>
+
+<p>Example: the Land of Oz is blessed with many things but nice weather.
+here is the transition matrix of weather in Land of Oz:</p>
+
+<p>|weather|rain|nice|snowy|
+|-|-|-|-|
+|r|1/2|1/4|1/4|
+|n|1/2|0|1/2|
+|s|1/4|1/4|1/2|</p>
+
+<p>raise power of P up to 6, we have</p>
+
+<p>|weather|rain|nice|snowy|
+|-|-|-|-|
+|r|.4|.2|.4|
+|n|.4|.2|.4|
+|s|.4|.2|.4|</p>
+
+<p>the good thing about regular chain is that we can always use a very primitive method
+to find the stationary distribution of the system: take P to power of n and
+we'll have the eigenvector.</p>
+
+<h2>
+<a id="user-content-absorbing-chain" class="anchor" href="#absorbing-chain" aria-hidden="true"><span class="octicon octicon-link"></span></a>absorbing chain</h2>
+
+<p>a transition matrix that has some 1s on its diagonal is an absorbing matrix.</p>
+
+<p>|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|.2|.3|.5|
+|3|.4|.2|.4|</p>
+
+<p>you can see that if the frog enters state 1, it can never leave that state again.
+death is an absorbing state. when you are alive, you can laugh, play, whine, smile..
+but once you are dead, you are dead forever.</p>
+
+<p>after 3 steps:</p>
+
+<p>|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|.64|.13|.23|
+|3|.73|.09|.17|</p>
+
+<p>we see that the probability of entering death increase quite fast.</p>
+
+<p>let's try to raise P to power of 100 to see what happens.</p>
+
+<p>|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|1|0|0|
+|3|1|0|0|</p>
+
+<p>regardless of initial state, we'll all die.</p>
+
+<p>consider a matrix with 2 absorbing states: state 1 and state 3</p>
+
+<p>|state|1|2|3|4|
+|-|-|-|-|-|
+|1|1|0|0|0|
+|2|.2|.3|.25|.25|
+|3|0|0|1|0|
+|4|0|.2|.4|.4|</p>
+
+<h3>
+<a id="user-content-canonical-form" class="anchor" href="#canonical-form" aria-hidden="true"><span class="octicon octicon-link"></span></a>canonical form</h3>
+
+<p>in order to analyse this matrix, we rearrange rows and columns a little bit to have
+this canonical form:</p>
+
+<p>|I|0|
+|-|-|
+|R|Q|</p>
+
+<p>I is an identity matrix (diagonal = 1)</p>
+
+<p>0 is a zero matrix</p>
+
+<p>Q is transient matrix because it composes of all transient states</p>
+
+<p>here is P after rearrangment:</p>
+
+<p>|state|1|3|2|4|
+|-|-|-|-|-|
+|1|1|0|0|0|
+|3|0|1|0|0|
+|2|.2|.25|.3|.25|
+|4|0|.4|.2|.4|</p>
+
+<p>here is Q</p>
+
+<p>|Q|2|4|
+|-|-|-|
+|2|.3|.25|
+|4|.2|.4|</p>
+
+<p>we can raise Q to 100 to see what happens. however, we know that in long-range
+all transient state will tend to 0 (the probability will be absorbed into absorbing
+states 1 and 3).</p>
+
+<h3>
+<a id="user-content-fundamental-matrix" class="anchor" href="#fundamental-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>fundamental matrix</h3>
+
+<p>we calculate a more fun matrix: the fundamental matrix N = (I-Q)^-1</p>
+
+<p>|N|2|4|
+|-|-|-|
+|2|1.62|.68|
+|4|.54|1.89|</p>
+
+<p>here is how to read N:
+if the frog starts in state 2, the frog will visits state 2 (in average)
+1.62 times before it is
+absorbed. it will visit state 4 .68 times before absorbed.</p>
+
+<p>now if we sum the rows of matrix N:</p>
+
+<p>|||
+|-|-|
+|2|2.3|
+|4|2.43|</p>
+
+<p>it says, if the frog starts in state 4, it can hop averagely
+2.43 steps before it hops into
+an absorbing state.</p>
+
+<p>but there are two absorbing states?</p>
+
+<p>we look at matrix R:</p>
+
+<p>|R|1|3|
+|-|-|-|
+|2|.2|.25|
+|4|0|.4|</p>
+
+<p>we multiply NR:</p>
+
+<p>|NR|1|3|
+|-|-|-|
+|2|.33|.67|
+|4|.11|.89|</p>
+
+<p>here is how to read NR:</p>
+
+<p>if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and
+67% of the time it will end up in state 3.</p>
+
+<h2>
+<a id="user-content-ergodic-irreducible-chain" class="anchor" href="#ergodic-irreducible-chain" aria-hidden="true"><span class="octicon octicon-link"></span></a>ergodic (irreducible) chain</h2>
+
+<p>ergodic markov chain is a chain that from any state, you can go to any state
+(not necessarily in 1 step, but still).</p>
+
+<p>ergodic matrix has many zeros (more than regular one), but still not too many to be
+reducible.</p>
+
+<p>a reducible matrix can be fragment into this:</p>
+
+<p>|0|X|
+|-|-|
+|Y|0|</p>
+
+<p>it has two part of 0 matrices so it looks like two separate systems.
+if we have systems that can be fragmented into two smaller systems, we should
+be analyising them separately.</p>
+
+<p>ergodic matrix doesnt have value 1 in its diagonal, which means it's not absorbing
+matrix.</p>
+
+<p>ergodic can still have stationary distribution, but i dont think we can always
+solve for it by taking power 100 of the transition matrix.</p>
+
+<p>we solve a linear system.</p>
+
+<p>let w be the eigenvector of P:</p>
+
+<p>w . P = w</p>
+
+<p>also, the component of w has to sum up to 1:</p>
+
+<p>w1 + w2 + ... = 1</p>
+
+<p>we solve by setting w1=1 and extract the matrix equation w . P = w into linear equations.</p>
+
+<p>after that we will have w1, w2, ...</p>
+
+<p>we sum up w1+w2+....=s (this s &gt; 1)</p>
+
+<p>we normalise s to 1, take percentage of w1/s..., and that'll be our eigenvector w.</p>
+
+<h3>
+<a id="user-content-mean-first-passage-time" class="anchor" href="#mean-first-passage-time" aria-hidden="true"><span class="octicon octicon-link"></span></a>mean first passage time</h3>
+
+<p>question: how many steps does it take to go from state i to state j, averagely?</p>
+
+<p>if state j is an absorbing state, we can easily answer this question.
+so, just make j an absorbing state, we change the probability of state j so that
+pjj = 1, all other 0s.</p>
+
+<p>is there any other way that is easier?</p>
+
+<p>yes, we try to have something similar to the fundamental matrix N of the absorbing
+process.</p>
+
+<p>Z = (I - P + W)^-1</p>
+
+<p>from this Z, we can calculate mean first passage time from state i to state j.</p>
+
+<p>mij = (zjj - zij)/wj</p>
+
+<p>(w is the fixed vector of P)</p>
+
+<h3>
+<a id="user-content-mean-recurrence-time" class="anchor" href="#mean-recurrence-time" aria-hidden="true"><span class="octicon octicon-link"></span></a>mean recurrence time</h3>
+
+<p>question: how many steps does it take for the system to go back the state i after it
+leaves state i?</p>
+
+<p>ri = 1/wi</p>
+
+<h2>
+<a id="user-content-eh-too-long-to-run-the-simulation-on-some-game" class="anchor" href="#eh-too-long-to-run-the-simulation-on-some-game" aria-hidden="true"><span class="octicon octicon-link"></span></a>eh, too long to run the simulation on some game</h2>
+
+<p>... eh..too tired..</p>
+
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
 </article></body></html>

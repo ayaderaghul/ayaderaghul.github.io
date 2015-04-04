@@ -1,0 +1,349 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) / [Comics](https://ayaderaghul.github.io/comic.html)
+
+#markov chain
+
+statistics is not something one can live without, but i may try to live with least.
+*if you say tl;dr (too long, didnt read), the frog will be very very sad.*
+
+##independent randomness
+
+there is a frog and a lily pond with many lily pads.
+the frog likes to hop around on the lily pads.
+it decides to jump on whatever lily pads it wants, regardless of whatever.
+maybe it decides to spend more time on the lily pad it favors, but still.
+
+![frog1](https://www.flickr.com/photos/ayaderaghul/16412015564/)
+
+that is independent randomness, each event is independent from any other.
+
+
+##dependent randomness
+
+the frog travels to a new pond over the mountain.
+this pond is simple.
+lily pads growing in that pond have rules.
+for example, when the frog hops on the first lily pad, the lily pad says:
+
+- from here, you jump to the lily pad over there.
+
+![frog2](https://ayaderaghul.github.io/frog2.html)
+
+the frog is quite surprised. so after an afternoon hopping around the pond,
+the frog discovers all the rules of all the lily pads.
+
+
+![frog3](https://ayaderaghul.github.io/frog3.html)
+
+for example, from the lily pad number 3, the frog can jump back lily pad 1 or
+it can jump to lily pad 4.
+
+so the next event depends on its preceding event like a chain.
+this is a markov chain.
+
+let's start with a smaller pond:
+
+![frog7](https://ayaderaghul.github.io/frog7.html)
+
+
+here is the transition matrix of this markov process, each lily pad is a state:
+
+
+![frog4](https://ayaderaghul.github.io/frog4.html)
+
+
+if the frog starts at state 1, it comes out at state 2.
+
+![frog8](https://ayaderaghul.github.io/frog8.html)
+
+
+![frog5](https://ayaderaghul.github.io/frog5.html)
+
+if the frog starts at state 2, in next step it can be at state 1 or 3, each at 50%.
+
+![frog9](https://ayaderaghul.github.io/frog9.html)
+
+if the frog starts with probability?
+
+![frog6](https://ayaderaghul.github.io/frog6.html)
+
+![frog10](https://ayaderaghul.github.io/frog10.html)
+
+
+so the next state of the world will depend on the current state.
+
+now if at step 1, the frog starts at state 2, where may the frog be in step 3?
+
+to answer the question, where may the frog be at step n (very large),
+we just raise the transition matrix to power n.
+
+let's raise it to power 100 to see what happens.
+
+weird. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).
+
+![frog11](https://ayaderaghul.github.io/frog11.html)
+
+it means that, the frog can start with arbitrary distribution u, after n (large)
+steps, its distribution is v.
+
+u. P^n = v
+
+u . P^(n+1) = v
+
+-> u . P^n . P = v
+
+-> v . P = v
+
+this vector v is eigenvector of transition matrix P.
+this distribution is the long-range prediction of the frog, regardless of
+initial state.
+
+##what do you think when you think of matrix
+
+matrix is a space. it's described by a system of linear equations.
+if we multiply a row vector with a matrix, it's like the row vector has to go
+through a bunch of transformation.
+these transformations are described by the equations of
+the matrix and these transformations are parallel.
+
+for some matrix, there are some row vectors that can survive the transformation
+and still emerge out to be itself (or a multiple of itself).
+
+these are eigenvectors of the matrix.
+
+calculating eigenvector is not funny. anyway, we examine some particular types
+of transition matrix that can guarantee the existence of eigenvectors or
+interesting information.
+
+##regular chain
+
+a regular transition matrix is a matrix that doesnt have too many zeros in it.
+so that, if you take power of it, some power of the matrix will not contain zeros
+anymore.
+
+so, if a matrix has some zeros, how long do you have to power them up before
+you give up and say that it's not regular?
+
+well, if P^(n+1) has zeros in the same place as P^n, it's likely that
+the zeros burn holes in the matrix in those place.
+these places will forever have zeros in it.
+
+a regular chain will end up having eigenvector that is strictly positive.
+
+Example: the Land of Oz is blessed with many things but nice weather.
+here is the transition matrix of weather in Land of Oz:
+
+|weather|rain|nice|snowy|
+|-|-|-|-|
+|r|1/2|1/4|1/4|
+|n|1/2|0|1/2|
+|s|1/4|1/4|1/2|
+
+raise power of P up to 6, we have
+
+|weather|rain|nice|snowy|
+|-|-|-|-|
+|r|.4|.2|.4|
+|n|.4|.2|.4|
+|s|.4|.2|.4|
+
+the good thing about regular chain is that we can always use a very primitive method
+to find the stationary distribution of the system: take P to power of n and
+we'll have the eigenvector.
+
+##absorbing chain
+
+a transition matrix that has some 1s on its diagonal is an absorbing matrix.
+
+|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|.2|.3|.5|
+|3|.4|.2|.4|
+
+you can see that if the frog enters state 1, it can never leave that state again.
+death is an absorbing state. when you are alive, you can laugh, play, whine, smile..
+but once you are dead, you are dead forever.
+
+
+after 3 steps:
+
+|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|.64|.13|.23|
+|3|.73|.09|.17|
+
+we see that the probability of entering death increase quite fast.
+
+let's try to raise P to power of 100 to see what happens.
+
+|state|1|2|3|
+|-|-|-|-|
+|1|1|0|0|
+|2|1|0|0|
+|3|1|0|0|
+
+regardless of initial state, we'll all die.
+
+consider a matrix with 2 absorbing states: state 1 and state 3
+
+
+|state|1|2|3|4|
+|-|-|-|-|-|
+|1|1|0|0|0|
+|2|.2|.3|.25|.25|
+|3|0|0|1|0|
+|4|0|.2|.4|.4|
+
+###canonical form
+in order to analyse this matrix, we rearrange rows and columns a little bit to have
+this canonical form:
+
+|I|0|
+|-|-|
+|R|Q|
+
+I is an identity matrix (diagonal = 1)
+
+0 is a zero matrix
+
+Q is transient matrix because it composes of all transient states
+
+here is P after rearrangment:
+
+|state|1|3|2|4|
+|-|-|-|-|-|
+|1|1|0|0|0|
+|3|0|1|0|0|
+|2|.2|.25|.3|.25|
+|4|0|.4|.2|.4|
+
+here is Q
+
+|Q|2|4|
+|-|-|-|
+|2|.3|.25|
+|4|.2|.4|
+
+we can raise Q to 100 to see what happens. however, we know that in long-range
+all transient state will tend to 0 (the probability will be absorbed into absorbing
+states 1 and 3).
+
+###fundamental matrix
+we calculate a more fun matrix: the fundamental matrix N = (I-Q)^-1
+
+|N|2|4|
+|-|-|-|
+|2|1.62|.68|
+|4|.54|1.89|
+
+here is how to read N:
+if the frog starts in state 2, the frog will visits state 2 (in average)
+1.62 times before it is
+absorbed. it will visit state 4 .68 times before absorbed.
+
+now if we sum the rows of matrix N:
+
+|||
+|-|-|
+|2|2.3|
+|4|2.43|
+
+it says, if the frog starts in state 4, it can hop averagely
+2.43 steps before it hops into
+an absorbing state.
+
+but there are two absorbing states?
+
+we look at matrix R:
+
+|R|1|3|
+|-|-|-|
+|2|.2|.25|
+|4|0|.4|
+
+we multiply NR:
+
+|NR|1|3|
+|-|-|-|
+|2|.33|.67|
+|4|.11|.89|
+
+here is how to read NR:
+
+if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and
+67% of the time it will end up in state 3.
+
+##ergodic (irreducible) chain
+
+ergodic markov chain is a chain that from any state, you can go to any state
+(not necessarily in 1 step, but still).
+
+ergodic matrix has many zeros (more than regular one), but still not too many to be
+reducible.
+
+a reducible matrix can be fragment into this:
+
+|0|X|
+|-|-|
+|Y|0|
+
+it has two part of 0 matrices so it looks like two separate systems.
+if we have systems that can be fragmented into two smaller systems, we should
+be analyising them separately.
+
+ergodic matrix doesnt have value 1 in its diagonal, which means it's not absorbing
+matrix.
+
+ergodic can still have stationary distribution, but i dont think we can always
+solve for it by taking power 100 of the transition matrix.
+
+we solve a linear system.
+
+let w be the eigenvector of P:
+
+w . P = w
+
+also, the component of w has to sum up to 1:
+
+w1 + w2 + ... = 1
+
+we solve by setting w1=1 and extract the matrix equation w . P = w into linear equations.
+
+after that we will have w1, w2, ...
+
+we sum up w1+w2+....=s (this s > 1)
+
+we normalise s to 1, take percentage of w1/s..., and that'll be our eigenvector w.
+
+###mean first passage time
+
+question: how many steps does it take to go from state i to state j, averagely?
+
+if state j is an absorbing state, we can easily answer this question.
+so, just make j an absorbing state, we change the probability of state j so that
+pjj = 1, all other 0s.
+
+is there any other way that is easier?
+
+yes, we try to have something similar to the fundamental matrix N of the absorbing
+process.
+
+Z = (I - P + W)^-1
+
+from this Z, we can calculate mean first passage time from state i to state j.
+
+mij = (zjj - zij)/wj
+
+(w is the fixed vector of P)
+
+###mean recurrence time
+
+question: how many steps does it take for the system to go back the state i after it
+leaves state i?
+
+ri = 1/wi
+
+## eh, too long to run the simulation on some game
+
+... eh..too tired..
