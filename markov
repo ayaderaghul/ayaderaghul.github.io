@@ -2,15 +2,11 @@
 
 #markov chain
 
-statistics is not something one can live without, but i may try to live with least.
-*if you say tl;dr (too long, didnt read), the frog will be very very sad.*
+statistics is not something one can live without, but i may try to live with least. *if you say tl;dr (too long, didnt read), the frog will be very very sad.*
 
 ##independent randomness
 
-there is a frog and a lily pond with many lily pads.
-the frog likes to hop around on the lily pads.
-it decides to jump on whatever lily pads it wants, regardless of whatever.
-maybe it decides to spend more time on the lily pad it favors, but still.
+there is a frog and a lily pond with many lily pads. the frog likes to hop around on the lily pads. it decides to jump on whatever lily pads it wants, regardless of whatever. maybe it decides to spend more time on the lily pad it favors, but still.
 
 ![frog1](https://cloud.githubusercontent.com/assets/7457301/6996048/e3c39532-db6f-11e4-8d30-742cd1771131.png)
 
@@ -19,29 +15,20 @@ that is independent randomness, each event is independent from any other.
 
 ##dependent randomness
 
-the frog travels to a new pond over the mountain.
-this pond is simple.
-lily pads growing in that pond have rules.
-for example, when the frog hops on the first lily pad, the lily pad says:
+the frog travels to a new pond over the mountain. this pond is simple.lily pads growing in that pond have rules. for example, when the frog hops on the first lily pad, the lily pad says:
 
 - from here, you jump to the lily pad over there.
 
 ![frog2](https://cloud.githubusercontent.com/assets/7457301/6996049/e3d153fc-db6f-11e4-8e7e-e7609ee7b2c6.png)
 
-the frog is quite surprised. so after an afternoon hopping around the pond,
-the frog discovers all the rules of all the lily pads.
+the frog is quite surprised. so after an afternoon hopping around the pond, the frog discovers all the rules of all the lily pads.
 
 
 ![frog3](https://cloud.githubusercontent.com/assets/7457301/6996052/e3f767c2-db6f-11e4-97b7-27c69eeb60c9.png)
 
-for example, from the lily pad number 3, the frog can jump back lily pad 1 or
-it can jump to lily pad 4. this means that the next event depends on its preceding event.
-events are hooked together like a chain - a Markov chain.
-
-let's start with a smaller pond:
+for example, from the lily pad number 3, the frog can jump back lily pad 1 or it can jump to lily pad 4. this means that the next event depends on its preceding event. events are hooked together like a chain - a Markov chain. let's start with a smaller pond:
 
 ![frog7](https://cloud.githubusercontent.com/assets/7457301/6996054/e4100f34-db6f-11e4-9fe3-3ee7e709474d.png)
-
 
 here is the transition matrix of this markov process, each lily pad is a state:
 
