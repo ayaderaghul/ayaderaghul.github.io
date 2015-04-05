@@ -35,10 +35,8 @@ the frog discovers all the rules of all the lily pads.
 ![frog3](https://cloud.githubusercontent.com/assets/7457301/6996052/e3f767c2-db6f-11e4-97b7-27c69eeb60c9.png)
 
 for example, from the lily pad number 3, the frog can jump back lily pad 1 or
-it can jump to lily pad 4.
-
-so the next event depends on its preceding event like a chain.
-this is a markov chain.
+it can jump to lily pad 4. this means that the next event depends on its preceding event.
+events are hooked together like a chain - a Markov chain.
 
 let's start with a smaller pond:
 
@@ -71,33 +69,34 @@ if the frog starts with probability?
 
 so the next state of the world will depend on the current state.
 
-now if at step 1, the frog starts at state 2, where may the frog be in step 3?
+###after n steps?
 
-to answer the question, where may the frog be at step n (very large),
-we just raise the transition matrix to power n.
+question: if at step 1, the frog starts at state 2, where may the frog be in step n?
 
-let's raise it to power 100 to see what happens.
+-> we just raise the transition matrix to power n.
 
-weird. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).
+let's raise it to power 100 to see what happens. 
+wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).
 
 ![frog11](https://cloud.githubusercontent.com/assets/7457301/6996056/e42da210-db6f-11e4-9bb0-7ce671fed9f9.png)
 
-it means that, the frog can start with arbitrary distribution u, after n (large)
-steps, its distribution is v.
+it means that, the frog can start with arbitrary distributions **u**, after n (large)
+steps, its distribution is always v (1/3,2/3,0).
 
-u. P^n = v
+**u**. **P**^n = **v**
 
-u . P^(n+1) = v
+**u** . **P**^(n+1) = **v**
 
--> u . P^n . P = v
+-> **u** . **P**^n . **P** = **v**
 
--> v . P = v
+-> **v** . **P** = **v**
 
-this vector v is eigenvector of transition matrix P.
-this distribution is the long-range prediction of the frog, regardless of
+this vector **v** is eigenvector of transition matrix **P**.
+this distribution is the long-range prediction
+(stationary vector) of the frog, regardless of
 initial state.
 
-##what do you think when you think of matrix
+##what do you think when you think of matrix?
 
 matrix is a space. it's described by a system of linear equations.
 if we multiply a row vector with a matrix, it's like the row vector has to go
@@ -117,14 +116,14 @@ interesting information.
 ##regular chain
 
 a regular transition matrix is a matrix that doesnt have too many zeros in it.
-so that, if you take power of it, some power of the matrix will not contain zeros
+when you take power of it, some power of the matrix will not contain zeros
 anymore.
 
-so, if a matrix has some zeros, how long do you have to power them up before
+question: if a matrix has some zeros, how long do you have to power them up before
 you give up and say that it's not regular?
 
-well, if P^(n+1) has zeros in the same place as P^n, it's likely that
-the zeros burn holes in the matrix in those place.
+-> well, if **P**^(n+1) has zeros in the same place as **P**^n, it means that
+these zeros burn holes in those place of the matrix.
 these places will forever have zeros in it.
 
 a regular chain will end up having eigenvector that is strictly positive.
