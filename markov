@@ -240,7 +240,7 @@ it has two part of 0 matrices so it looks like two separate systems. if we have 
 
 ergodic matrix doesnt have value 1 in its diagonal, which means it's not absorbing matrix.
 
-ergodic can still have stationary distribution, but i dont think we can always solve for it by taking power 100 of the transition matrix.
+ergodic can still have stationary distribution, but i dont think we can always solve for it by taking power 100 of the transition matrix. (not always, but still).
 
 -> we have the following information:
 
@@ -286,3 +286,4 @@ ri = 1/wi
 
 ... eh..too tired..
 
+anyway, i got results that look suspicious, better not post them =.= 
