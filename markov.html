@@ -1038,50 +1038,32 @@ body .markdown-body
 <p><img alt="frog5" src="https://cloud.githubusercontent.com/assets/7457301/6996050/e3db9d1c-db6f-11e4-81e9-0958c312d5c6.png" /></p>
 <p>if the frog starts at state 2, in next step it can be at state 1 or 3, each at 50%.</p>
 <p><img alt="frog9" src="https://cloud.githubusercontent.com/assets/7457301/6996087/faefbfb4-db70-11e4-8a9c-ce8df2532fa9.png" /></p>
-<p>if the frog starts with probability?</p>
+<p>question: what if the frog starts out with probability?</p>
 <p><img alt="frog6" src="https://cloud.githubusercontent.com/assets/7457301/6996053/e402e6f6-db6f-11e4-9e33-c55ee5b528d7.png" /></p>
 <p><img alt="frog10" src="https://cloud.githubusercontent.com/assets/7457301/6996061/1b59c048-db70-11e4-8a7b-92c90ed45026.png" /></p>
 <p>so the next state of the world will depend on the current state.</p>
 <h3 id="after-n-steps"><a name="user-content-after-n-steps" href="#after-n-steps" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>after n steps?</h3>
 <p>question: if at step 1, the frog starts at state 2, where may the frog be in step n?</p>
 <p>-&gt; we just raise the transition matrix to power n.</p>
-<p>let&rsquo;s raise it to power 100 to see what happens. <br />
-wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).</p>
+<p>let&rsquo;s raise it to power 100 to see what happens. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).</p>
 <p><img alt="frog11" src="https://cloud.githubusercontent.com/assets/7457301/6996056/e42da210-db6f-11e4-9bb0-7ce671fed9f9.png" /></p>
-<p>it means that, the frog can start with arbitrary distributions <strong>u</strong>, after n (large)<br />
-steps, its distribution is always v (1/3,2/3,0).</p>
+<p>it means that, the frog can start with arbitrary distributions <strong>u</strong>, after n (large) steps, its distribution is always v (1/3,2/3,0).</p>
 <p><strong>u</strong>. <strong>P</strong>^n = <strong>v</strong></p>
 <p><strong>u</strong> . <strong>P</strong>^(n+1) = <strong>v</strong></p>
 <p>-&gt; <strong>u</strong> . <strong>P</strong>^n . <strong>P</strong> = <strong>v</strong></p>
 <p>-&gt; <strong>v</strong> . <strong>P</strong> = <strong>v</strong></p>
-<p>this vector <strong>v</strong> is eigenvector of transition matrix <strong>P</strong>.<br />
-this distribution is the long-range prediction<br />
-(stationary vector) of the frog, regardless of<br />
-initial state.</p>
+<p>this vector <strong>v</strong> is eigenvector of transition matrix <strong>P</strong>. this distribution is the long-range prediction (stationary vector) of the frog, regardless of initial state.</p>
 <h2 id="what-do-you-think-when-you-think-of-matrix"><a name="user-content-what-do-you-think-when-you-think-of-matrix" href="#what-do-you-think-when-you-think-of-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>what do you think when you think of matrix?</h2>
-<p>matrix is a space. it&rsquo;s described by a system of linear equations.<br />
-if we multiply a row vector with a matrix, it&rsquo;s like the row vector has to go<br />
-through a bunch of transformation.<br />
-these transformations are described by the equations of<br />
-the matrix and these transformations are parallel.</p>
-<p>for some matrix, there are some row vectors that can survive the transformation<br />
-and still emerge out to be itself (or a multiple of itself).</p>
-<p>these are eigenvectors of the matrix.</p>
-<p>calculating eigenvector is not funny. anyway, we examine some particular types<br />
-of transition matrix that can guarantee the existence of eigenvectors or<br />
-interesting information.</p>
+<p>matrix is a space. it&rsquo;s described by a system of linear equations. if we multiply a row vector with a matrix, it&rsquo;s like the row vector has to go through a bunch of transformation. these transformations are described by the equations of the matrix and these transformations are parallel.</p>
+<p>for some matrix, there are some row vectors that can survive the transformation and still emerge out to be itself (or a multiple of itself). these are eigenvectors of the matrix.</p>
+<p>calculating eigenvector is not funny. anyway, we examine some particular types of transition matrix that can guarantee the existence of eigenvectors or interesting information.</p>
 <h2 id="regular-chain"><a name="user-content-regular-chain" href="#regular-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>regular chain</h2>
-<p>a regular transition matrix is a matrix that doesnt have too many zeros in it.<br />
-when you take power of it, some power of the matrix will not contain zeros<br />
-anymore.</p>
+<p>a regular transition matrix is a matrix that doesnt have too many zeros in it. when you take power of it, some power of the matrix will not contain zeros anymore.</p>
 <p>question: if a matrix has some zeros, how long do you have to power them up before<br />
 you give up and say that it&rsquo;s not regular?</p>
-<p>-&gt; well, if <strong>P</strong>^(n+1) has zeros in the same place as <strong>P</strong>^n, it means that<br />
-these zeros burn holes in those place of the matrix.<br />
-these places will forever have zeros in it.</p>
-<p>a regular chain will end up having eigenvector that is strictly positive.</p>
-<p>Example: the Land of Oz is blessed with many things but nice weather.<br />
-here is the transition matrix of weather in Land of Oz:</p>
+<p>-&gt; well, if <strong>P</strong>^(n+1) has zeros in the same place as <strong>P</strong>^n, it means that these zeros burn holes in those place of the matrix.<br />
+these places will forever have zeros in it. a regular chain will end up having eigenvector that is strictly positive.</p>
+<p>Example: the Land of Oz is blessed with many things but nice weather. here is the transition matrix of weather in Land of Oz:</p>
 <table>
 <thead>
 <tr>
@@ -1143,9 +1125,7 @@ here is the transition matrix of weather in Land of Oz:</p>
 </tr>
 </tbody>
 </table>
-<p>the good thing about regular chain is that we can always use a very primitive method<br />
-to find the stationary distribution of the system: take P to power of n and<br />
-we&rsquo;ll have the eigenvector.</p>
+<p>the good thing about regular chain is that we can always use a very primitive method to find the stationary distribution of the system: take P to power of n and we&rsquo;ll have the eigenvector.</p>
 <h2 id="absorbing-chain"><a name="user-content-absorbing-chain" href="#absorbing-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>absorbing chain</h2>
 <p>a transition matrix that has some 1s on its diagonal is an absorbing matrix.</p>
 <table>
@@ -1178,9 +1158,7 @@ we&rsquo;ll have the eigenvector.</p>
 </tr>
 </tbody>
 </table>
-<p>you can see that if the frog enters state 1, it can never leave that state again.<br />
-death is an absorbing state. when you are alive, you can laugh, play, whine, smile..<br />
-but once you are dead, you are dead forever.</p>
+<p>you can see that if the frog enters state 1, it can never leave that state again. death is an absorbing state. when you are alive, you can laugh, play, whine, smile.. but once you are dead, you are dead forever.</p>
 <p>after 3 steps:</p>
 <table>
 <thead>
@@ -1212,8 +1190,7 @@ but once you are dead, you are dead forever.</p>
 </tr>
 </tbody>
 </table>
-<p>we see that the probability of entering death increase quite fast.</p>
-<p>let&rsquo;s try to raise P to power of 100 to see what happens.</p>
+<p>we see that the probability of entering death increase quite fast. let&rsquo;s try to raise <strong>P</strong> to power of 100 to see what happens.</p>
 <table>
 <thead>
 <tr>
@@ -1245,6 +1222,7 @@ but once you are dead, you are dead forever.</p>
 </tbody>
 </table>
 <p>regardless of initial state, we&rsquo;ll all die.</p>
+<h3 id="2-absorbing-states"><a name="user-content-2-absorbing-states" href="#2-absorbing-states" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2 absorbing states</h3>
 <p>consider a matrix with 2 absorbing states: state 1 and state 3</p>
 <table>
 <thead>
@@ -1288,8 +1266,7 @@ but once you are dead, you are dead forever.</p>
 </tbody>
 </table>
 <h3 id="canonical-form"><a name="user-content-canonical-form" href="#canonical-form" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>canonical form</h3>
-<p>in order to analyse this matrix, we rearrange rows and columns a little bit to have<br />
-this canonical form:</p>
+<p>in order to analyse this matrix, we rearrange rows and columns a little bit to have this canonical form:</p>
 <table>
 <thead>
 <tr>
@@ -1299,15 +1276,15 @@ this canonical form:</p>
 </thead>
 <tbody>
 <tr>
-<td>R</td>
-<td>Q</td>
+<td><strong>R</strong></td>
+<td><strong>Q</strong></td>
 </tr>
 </tbody>
 </table>
-<p>I is an identity matrix (diagonal = 1)</p>
-<p>0 is a zero matrix</p>
-<p>Q is transient matrix because it composes of all transient states</p>
-<p>here is P after rearrangment:</p>
+<p><strong>I</strong> is an identity matrix (diagonal = 1)</p>
+<p><strong>0</strong> is a zero matrix</p>
+<p><strong>Q</strong> is transient matrix because it composes of all transient states</p>
+<p>here is <strong>P</strong> after rearrangment:</p>
 <table>
 <thead>
 <tr>
@@ -1349,7 +1326,7 @@ this canonical form:</p>
 </tr>
 </tbody>
 </table>
-<p>here is Q</p>
+<p>here is <strong>Q</strong></p>
 <table>
 <thead>
 <tr>
@@ -1371,11 +1348,9 @@ this canonical form:</p>
 </tr>
 </tbody>
 </table>
-<p>we can raise Q to 100 to see what happens. however, we know that in long-range<br />
-all transient state will tend to 0 (the probability will be absorbed into absorbing<br />
-states 1 and 3).</p>
+<p>we can raise <strong>Q</strong> to 100 to see what happens. however, we know that in long-range all transient state will tend to 0 (the probability will be absorbed into absorbing states 1 and 3).</p>
 <h3 id="fundamental-matrix"><a name="user-content-fundamental-matrix" href="#fundamental-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>fundamental matrix</h3>
-<p>we calculate a more fun matrix: the fundamental matrix N = (I-Q)^-1</p>
+<p>we calculate a more fun matrix: the fundamental matrix <strong>N</strong> = (<strong>I</strong>-<strong>Q</strong>)^-1</p>
 <table>
 <thead>
 <tr>
@@ -1397,11 +1372,11 @@ states 1 and 3).</p>
 </tr>
 </tbody>
 </table>
-<p>here is how to read N:<br />
-if the frog starts in state 2, the frog will visits state 2 (in average)<br />
-1.62 times before it is<br />
-absorbed. it will visit state 4 .68 times before absorbed.</p>
-<p>now if we sum the rows of matrix N:</p>
+<ul>
+<li>how to read <strong>N</strong>?</li>
+</ul>
+<p>if the frog starts in state 2, the frog will visits state 2 (in average) 1.62 times before it is absorbed. it will visit state 4 .68 times before absorbed.</p>
+<p>which means that if we sum the rows of matrix <strong>N</strong>, we have the expected number of steps the frog can hop (from an initial state) before being absorbed:</p>
 <table>
 <thead>
 <tr>
@@ -1420,11 +1395,11 @@ absorbed. it will visit state 4 .68 times before absorbed.</p>
 </tr>
 </tbody>
 </table>
-<p>it says, if the frog starts in state 4, it can hop averagely<br />
-2.43 steps before it hops into<br />
-an absorbing state.</p>
-<p>but there are two absorbing states?</p>
-<p>we look at matrix R:</p>
+<p>-&gt; it says, if the frog starts in state 4, it can hop averagely 2.43 steps before it hops into an absorbing state.</p>
+<ul>
+<li>but there are two absorbing states?</li>
+</ul>
+<p>we look at matrix <strong>R</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -1446,7 +1421,7 @@ an absorbing state.</p>
 </tr>
 </tbody>
 </table>
-<p>we multiply NR:</p>
+<p>we multiply <strong>NR</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -1468,15 +1443,13 @@ an absorbing state.</p>
 </tr>
 </tbody>
 </table>
-<p>here is how to read NR:</p>
-<p>if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and<br />
-67% of the time it will end up in state 3.</p>
+<ul>
+<li>how to read <strong>NR</strong>?</li>
+</ul>
+<p>if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and 67% of the time it will end up in state 3.</p>
 <h2 id="ergodic-irreducible-chain"><a name="user-content-ergodic-irreducible-chain" href="#ergodic-irreducible-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ergodic (irreducible) chain</h2>
-<p>ergodic markov chain is a chain that from any state, you can go to any state<br />
-(not necessarily in 1 step, but still).</p>
-<p>ergodic matrix has many zeros (more than regular one), but still not too many to be<br />
-reducible.</p>
-<p>a reducible matrix can be fragment into this:</p>
+<p>ergodic markov chain is a chain that from any state, you can go to any state (not necessarily in 1 step, but still). ergodic matrix has many zeros (more than regular one), but still not too many to be reducible.</p>
+<p>a reducible matrix can be fragmented into this:</p>
 <table>
 <thead>
 <tr>
@@ -1486,42 +1459,36 @@ reducible.</p>
 </thead>
 <tbody>
 <tr>
-<td>Y</td>
-<td>0</td>
+<td><strong>Y</strong></td>
+<td><strong>0</strong></td>
 </tr>
 </tbody>
 </table>
-<p>it has two part of 0 matrices so it looks like two separate systems.<br />
-if we have systems that can be fragmented into two smaller systems, we should<br />
-be analyising them separately.</p>
-<p>ergodic matrix doesnt have value 1 in its diagonal, which means it&rsquo;s not absorbing<br />
-matrix.</p>
-<p>ergodic can still have stationary distribution, but i dont think we can always<br />
-solve for it by taking power 100 of the transition matrix.</p>
-<p>we solve a linear system.</p>
-<p>let w be the eigenvector of P:</p>
-<p>w . P = w</p>
-<p>also, the component of w has to sum up to 1:</p>
+<p>it has two part of 0 matrices so it looks like two separate systems. if we have systems that can be fragmented into two smaller systems, we should be analyising them separately.</p>
+<p>ergodic matrix doesnt have value 1 in its diagonal, which means it&rsquo;s not absorbing matrix.</p>
+<p>ergodic can still have stationary distribution, but i dont think we can always solve for it by taking power 100 of the transition matrix.</p>
+<p>-&gt; we have the following information:</p>
+<p>let <strong>w</strong> be the eigenvector of <strong>P</strong>:</p>
+<p><strong>w</strong> . <strong>P</strong> = <strong>w</strong></p>
+<p>also, the component of <strong>w</strong> has to sum up to 1:</p>
 <p>w1 + w2 + &hellip; = 1</p>
-<p>we solve by setting w1=1 and extract the matrix equation w . P = w into linear equations.</p>
-<p>after that we will have w1, w2, &hellip;</p>
-<p>we sum up w1+w2+....=s (this s &gt; 1)</p>
-<p>we normalise s to 1, take percentage of w1/s&hellip;, and that&rsquo;ll be our eigenvector w.</p>
+<p>-&gt; we solve by setting w1=1 and extract the matrix equation <strong>w</strong> . <strong>P</strong> = <strong>w</strong> into linear equations.</p>
+<p>after solving for w1, w2,.., we sum up w1+w2+....=s.<br />
+this s &gt; 1 so we normalise s to 1, take percentage of w1/s&hellip;, and that&rsquo;ll be our eigenvector <strong>w</strong>.</p>
 <h3 id="mean-first-passage-time"><a name="user-content-mean-first-passage-time" href="#mean-first-passage-time" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>mean first passage time</h3>
 <p>question: how many steps does it take to go from state i to state j, averagely?</p>
-<p>if state j is an absorbing state, we can easily answer this question.<br />
-so, just make j an absorbing state, we change the probability of state j so that<br />
-pjj = 1, all other 0s.</p>
-<p>is there any other way that is easier?</p>
-<p>yes, we try to have something similar to the fundamental matrix N of the absorbing<br />
-process.</p>
-<p>Z = (I - P + W)^-1</p>
-<p>from this Z, we can calculate mean first passage time from state i to state j.</p>
+<p>if state j is an absorbing state, we can easily answer this question. so, just make j an absorbing state, we change the probability of state j so that pjj = 1, all other 0s.</p>
+<ul>
+<li>is there any other way that is easier?</li>
+</ul>
+<p>yes, we try to have something similar to the fundamental matrix <strong>N</strong> of the absorbing process.</p>
+<p><strong>Z</strong> = (<strong>I</strong> - <strong>P</strong> + <strong>W</strong>)^-1</p>
+<p>from this <strong>Z</strong>, we can calculate mean first passage time from state i to state j.</p>
 <p>mij = (zjj - zij)/wj</p>
-<p>(w is the fixed vector of P)</p>
+<p>(<strong>w</strong> is the fixed vector of <strong>P</strong>)</p>
 <h3 id="mean-recurrence-time"><a name="user-content-mean-recurrence-time" href="#mean-recurrence-time" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>mean recurrence time</h3>
 <p>question: how many steps does it take for the system to go back the state i after it<br />
 leaves state i?</p>
 <p>ri = 1/wi</p>
-<h2 id="eh-too-long-to-run-the-simulation-on-some-game"><a name="user-content-eh-too-long-to-run-the-simulation-on-some-game" href="#eh-too-long-to-run-the-simulation-on-some-game" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>eh, too long to run the simulation on some game</h2>
+<h2 id="eh-too-long-to-do-some-game"><a name="user-content-eh-too-long-to-do-some-game" href="#eh-too-long-to-do-some-game" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>eh, too long to do some game</h2>
 <p>&hellip; eh..too tired..</p></article></body></html>

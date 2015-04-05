@@ -47,12 +47,11 @@ if the frog starts at state 2, in next step it can be at state 1 or 3, each at 5
 
 ![frog9](https://cloud.githubusercontent.com/assets/7457301/6996087/faefbfb4-db70-11e4-8a9c-ce8df2532fa9.png)
 
-if the frog starts with probability?
+question: what if the frog starts out with probability?
 
 ![frog6](https://cloud.githubusercontent.com/assets/7457301/6996053/e402e6f6-db6f-11e4-9e33-c55ee5b528d7.png)
 
 ![frog10](https://cloud.githubusercontent.com/assets/7457301/6996061/1b59c048-db70-11e4-8a7b-92c90ed45026.png)
-
 
 so the next state of the world will depend on the current state.
 
@@ -62,13 +61,11 @@ question: if at step 1, the frog starts at state 2, where may the frog be in ste
 
 -> we just raise the transition matrix to power n.
 
-let's raise it to power 100 to see what happens. 
-wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).
+let's raise it to power 100 to see what happens. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).
 
 ![frog11](https://cloud.githubusercontent.com/assets/7457301/6996056/e42da210-db6f-11e4-9bb0-7ce671fed9f9.png)
 
-it means that, the frog can start with arbitrary distributions **u**, after n (large)
-steps, its distribution is always v (1/3,2/3,0).
+it means that, the frog can start with arbitrary distributions **u**, after n (large) steps, its distribution is always v (1/3,2/3,0).
 
 **u**. **P**^n = **v**
 
@@ -78,45 +75,27 @@ steps, its distribution is always v (1/3,2/3,0).
 
 -> **v** . **P** = **v**
 
-this vector **v** is eigenvector of transition matrix **P**.
-this distribution is the long-range prediction
-(stationary vector) of the frog, regardless of
-initial state.
+this vector **v** is eigenvector of transition matrix **P**. this distribution is the long-range prediction (stationary vector) of the frog, regardless of initial state.
 
 ##what do you think when you think of matrix?
 
-matrix is a space. it's described by a system of linear equations.
-if we multiply a row vector with a matrix, it's like the row vector has to go
-through a bunch of transformation.
-these transformations are described by the equations of
-the matrix and these transformations are parallel.
+matrix is a space. it's described by a system of linear equations. if we multiply a row vector with a matrix, it's like the row vector has to go through a bunch of transformation. these transformations are described by the equations of the matrix and these transformations are parallel.
 
-for some matrix, there are some row vectors that can survive the transformation
-and still emerge out to be itself (or a multiple of itself).
+for some matrix, there are some row vectors that can survive the transformation and still emerge out to be itself (or a multiple of itself). these are eigenvectors of the matrix.
 
-these are eigenvectors of the matrix.
-
-calculating eigenvector is not funny. anyway, we examine some particular types
-of transition matrix that can guarantee the existence of eigenvectors or
-interesting information.
+calculating eigenvector is not funny. anyway, we examine some particular types of transition matrix that can guarantee the existence of eigenvectors or interesting information.
 
 ##regular chain
 
-a regular transition matrix is a matrix that doesnt have too many zeros in it.
-when you take power of it, some power of the matrix will not contain zeros
-anymore.
+a regular transition matrix is a matrix that doesnt have too many zeros in it. when you take power of it, some power of the matrix will not contain zeros anymore.
 
 question: if a matrix has some zeros, how long do you have to power them up before
 you give up and say that it's not regular?
 
--> well, if **P**^(n+1) has zeros in the same place as **P**^n, it means that
-these zeros burn holes in those place of the matrix.
-these places will forever have zeros in it.
+-> well, if **P**^(n+1) has zeros in the same place as **P**^n, it means that these zeros burn holes in those place of the matrix.
+these places will forever have zeros in it. a regular chain will end up having eigenvector that is strictly positive.
 
-a regular chain will end up having eigenvector that is strictly positive.
-
-Example: the Land of Oz is blessed with many things but nice weather.
-here is the transition matrix of weather in Land of Oz:
+Example: the Land of Oz is blessed with many things but nice weather. here is the transition matrix of weather in Land of Oz:
 
 |weather|rain|nice|snowy|
 |-|-|-|-|
@@ -132,9 +111,7 @@ raise power of P up to 6, we have
 |n|.4|.2|.4|
 |s|.4|.2|.4|
 
-the good thing about regular chain is that we can always use a very primitive method
-to find the stationary distribution of the system: take P to power of n and
-we'll have the eigenvector.
+the good thing about regular chain is that we can always use a very primitive method to find the stationary distribution of the system: take P to power of n and we'll have the eigenvector.
 
 ##absorbing chain
 
@@ -146,10 +123,7 @@ a transition matrix that has some 1s on its diagonal is an absorbing matrix.
 |2|.2|.3|.5|
 |3|.4|.2|.4|
 
-you can see that if the frog enters state 1, it can never leave that state again.
-death is an absorbing state. when you are alive, you can laugh, play, whine, smile..
-but once you are dead, you are dead forever.
-
+you can see that if the frog enters state 1, it can never leave that state again. death is an absorbing state. when you are alive, you can laugh, play, whine, smile.. but once you are dead, you are dead forever.
 
 after 3 steps:
 
@@ -159,9 +133,7 @@ after 3 steps:
 |2|.64|.13|.23|
 |3|.73|.09|.17|
 
-we see that the probability of entering death increase quite fast.
-
-let's try to raise P to power of 100 to see what happens.
+we see that the probability of entering death increase quite fast. let's try to raise **P** to power of 100 to see what happens.
 
 |state|1|2|3|
 |-|-|-|-|
@@ -171,8 +143,9 @@ let's try to raise P to power of 100 to see what happens.
 
 regardless of initial state, we'll all die.
 
-consider a matrix with 2 absorbing states: state 1 and state 3
+###2 absorbing states
 
+consider a matrix with 2 absorbing states: state 1 and state 3
 
 |state|1|2|3|4|
 |-|-|-|-|-|
@@ -182,20 +155,19 @@ consider a matrix with 2 absorbing states: state 1 and state 3
 |4|0|.2|.4|.4|
 
 ###canonical form
-in order to analyse this matrix, we rearrange rows and columns a little bit to have
-this canonical form:
+in order to analyse this matrix, we rearrange rows and columns a little bit to have this canonical form:
 
 |I|0|
 |-|-|
-|R|Q|
+|**R**|**Q**|
 
-I is an identity matrix (diagonal = 1)
+**I** is an identity matrix (diagonal = 1)
 
-0 is a zero matrix
+**0** is a zero matrix
 
-Q is transient matrix because it composes of all transient states
+**Q** is transient matrix because it composes of all transient states
 
-here is P after rearrangment:
+here is **P** after rearrangment:
 
 |state|1|3|2|4|
 |-|-|-|-|-|
@@ -204,124 +176,104 @@ here is P after rearrangment:
 |2|.2|.25|.3|.25|
 |4|0|.4|.2|.4|
 
-here is Q
+here is **Q**
 
 |Q|2|4|
 |-|-|-|
 |2|.3|.25|
 |4|.2|.4|
 
-we can raise Q to 100 to see what happens. however, we know that in long-range
-all transient state will tend to 0 (the probability will be absorbed into absorbing
-states 1 and 3).
+we can raise **Q** to 100 to see what happens. however, we know that in long-range all transient state will tend to 0 (the probability will be absorbed into absorbing states 1 and 3).
 
 ###fundamental matrix
-we calculate a more fun matrix: the fundamental matrix N = (I-Q)^-1
+we calculate a more fun matrix: the fundamental matrix **N** = (**I**-**Q**)^-1
 
 |N|2|4|
 |-|-|-|
 |2|1.62|.68|
 |4|.54|1.89|
 
-here is how to read N:
-if the frog starts in state 2, the frog will visits state 2 (in average)
-1.62 times before it is
-absorbed. it will visit state 4 .68 times before absorbed.
+- how to read **N**?
 
-now if we sum the rows of matrix N:
+if the frog starts in state 2, the frog will visits state 2 (in average) 1.62 times before it is absorbed. it will visit state 4 .68 times before absorbed.
+
+which means that if we sum the rows of matrix **N**, we have the expected number of steps the frog can hop (from an initial state) before being absorbed:
 
 |||
 |-|-|
 |2|2.3|
 |4|2.43|
 
-it says, if the frog starts in state 4, it can hop averagely
-2.43 steps before it hops into
-an absorbing state.
+-> it says, if the frog starts in state 4, it can hop averagely 2.43 steps before it hops into an absorbing state.
 
-but there are two absorbing states?
+- but there are two absorbing states?
 
-we look at matrix R:
+we look at matrix **R**:
 
 |R|1|3|
 |-|-|-|
 |2|.2|.25|
 |4|0|.4|
 
-we multiply NR:
+we multiply **NR**:
 
 |NR|1|3|
 |-|-|-|
 |2|.33|.67|
 |4|.11|.89|
 
-here is how to read NR:
+- how to read **NR**?
 
-if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and
-67% of the time it will end up in state 3.
+if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and 67% of the time it will end up in state 3.
 
 ##ergodic (irreducible) chain
 
-ergodic markov chain is a chain that from any state, you can go to any state
-(not necessarily in 1 step, but still).
+ergodic markov chain is a chain that from any state, you can go to any state (not necessarily in 1 step, but still). ergodic matrix has many zeros (more than regular one), but still not too many to be reducible.
 
-ergodic matrix has many zeros (more than regular one), but still not too many to be
-reducible.
-
-a reducible matrix can be fragment into this:
+a reducible matrix can be fragmented into this:
 
 |0|X|
 |-|-|
-|Y|0|
+|**Y**|**0**|
 
-it has two part of 0 matrices so it looks like two separate systems.
-if we have systems that can be fragmented into two smaller systems, we should
-be analyising them separately.
+it has two part of 0 matrices so it looks like two separate systems. if we have systems that can be fragmented into two smaller systems, we should be analyising them separately.
 
-ergodic matrix doesnt have value 1 in its diagonal, which means it's not absorbing
-matrix.
+ergodic matrix doesnt have value 1 in its diagonal, which means it's not absorbing matrix.
 
-ergodic can still have stationary distribution, but i dont think we can always
-solve for it by taking power 100 of the transition matrix.
+ergodic can still have stationary distribution, but i dont think we can always solve for it by taking power 100 of the transition matrix.
 
-we solve a linear system.
+-> we have the following information:
 
-let w be the eigenvector of P:
+let **w** be the eigenvector of **P**:
 
-w . P = w
+**w** . **P** = **w**
 
-also, the component of w has to sum up to 1:
+also, the component of **w** has to sum up to 1:
 
 w1 + w2 + ... = 1
 
-we solve by setting w1=1 and extract the matrix equation w . P = w into linear equations.
+-> we solve by setting w1=1 and extract the matrix equation **w** . **P** = **w** into linear equations.
 
-after that we will have w1, w2, ...
-
-we sum up w1+w2+....=s (this s > 1)
-
-we normalise s to 1, take percentage of w1/s..., and that'll be our eigenvector w.
+after solving for w1, w2,.., we sum up w1+w2+....=s.
+this s > 1 so we normalise s to 1, take percentage of w1/s..., and that'll be our eigenvector **w**.
 
 ###mean first passage time
 
 question: how many steps does it take to go from state i to state j, averagely?
 
-if state j is an absorbing state, we can easily answer this question.
-so, just make j an absorbing state, we change the probability of state j so that
-pjj = 1, all other 0s.
+if state j is an absorbing state, we can easily answer this question. so, just make j an absorbing state, we change the probability of state j so that pjj = 1, all other 0s.
 
-is there any other way that is easier?
+- is there any other way that is easier?
 
-yes, we try to have something similar to the fundamental matrix N of the absorbing
-process.
+yes, we try to have something similar to the fundamental matrix **N** of the absorbing process.
 
-Z = (I - P + W)^-1
+**Z** = (**I** - **P** + **W**)^-1
 
-from this Z, we can calculate mean first passage time from state i to state j.
+from this **Z**, we can calculate mean first passage time from state i to state j.
 
 mij = (zjj - zij)/wj
 
-(w is the fixed vector of P)
+(**w** is the fixed vector of **P**)
 
 ###mean recurrence time
 
@@ -330,6 +282,7 @@ leaves state i?
 
 ri = 1/wi
 
-## eh, too long to run the simulation on some game
+## eh, too long to do some game
 
 ... eh..too tired..
+
