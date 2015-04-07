@@ -1042,19 +1042,19 @@ body .markdown-body
 </tbody>
 </table>
 <p>if the outcome is (C,C) -&gt; the payoff 3 for each is named Reward.</p>
-<p>if the outcome is (C,D) -&gt; the cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.</p>
+<p>if the outcome is (C,D) -&gt; being cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.</p>
 <p>if the outcome is (D,D) -&gt; the payoff 1 for both is Punishment payoff (because they could have been better together than that - both getting 3).</p>
 <h3 id="theoretical-back"><a name="user-content-theoretical-back" href="#theoretical-back" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>theoretical back</h3>
 <p>now if player 1 plays C, player 1&rsquo;ll either get Rewarded or become Sucker. if player 1 plays D, he&rsquo;ll either get Temptation or Punishment payoff.</p>
 <p><img alt="pd1" src="https://cloud.githubusercontent.com/assets/7457301/7022340/1bc414a4-dd2b-11e4-8a70-34a60f3dcfed.png" /></p>
 <p>in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, the best thing to do for player 1 is always Defecting.</p>
 <h3 id="states"><a name="user-content-states" href="#states" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>states</h3>
-<p>we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -&gt; S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state to calculate the optimal strategy to play. the agent will use the picture above, which says that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he&rsquo;s already playing D, maybe he&rsquo;s playing C).</p>
-<p>-&gt; this means that: the population will tend toward all Defect. we are curious about details in the process.</p>
+<p>we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -&gt; S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state then decide the optimal strategy. the agent will decide using the picture above. from the picture, he sees that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he&rsquo;s already playing D, maybe he&rsquo;s playing C).</p>
+<p>-&gt; this means that: the population will tend toward all Defect eventually. what we are curious about is the details in the process.</p>
 <p><img alt="pd2" src="https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png" /></p>
-<p>in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing Cooperate -&gt; he&rsquo;ll switch to playing Defect. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).</p>
+<p>in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing C -&gt; he&rsquo;ll switch to playing D. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).</p>
 <p>-&gt; this means that: from S0, there is probability 1 that the system will hop to state 1.</p>
-<p>in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a Cooperating agent.</p>
+<p>in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a C agent.</p>
 <p>-&gt; hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.</p>
 <p>note: the system can only switch one step back and forth because we allow only one agent to <em>learn</em> each time.</p>
 <h3 id="transition-matrix"><a name="user-content-transition-matrix" href="#transition-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>transition matrix</h3>
@@ -1168,9 +1168,9 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>-&gt; no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)</p>
+<p>-&gt; we know this. no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)</p>
 <h3 id="canonical-form"><a name="user-content-canonical-form" href="#canonical-form" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>canonical form</h3>
-<p>to look into details of the process, we see it in canonical form:</p>
+<p>to look into details of the process, we see the canonical form:</p>
 <table>
 <thead>
 <tr>
@@ -1256,7 +1256,7 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>we calculate <strong>NR</strong> matrix to answer the question, from an initial state, the system will end up in which absorbed state?</p>
+<p>we calculate <strong>NR</strong> matrix to answer the question: given an initial state, the system will end up in which absorbed state?</p>
 <table>
 <thead>
 <tr>
@@ -1283,11 +1283,11 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state.</p>
+<p>we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state 4.</p>
 <h3 id="pertubation"><a name="user-content-pertubation" href="#pertubation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>pertubation</h3>
 <p>now we introduce mistake. for example, in state S1, when we pick up a random agent, he&rsquo;s already playing D, but at epsilon probability, he makes a mistake and switch to playing C.</p>
 <p>-&gt; this means that: at S1, there is an epsilon probability for the system to go back to S0.</p>
-<p>=&gt; we have the new pertubed version of the transition matrix:</p>
+<p>=&gt; we have the new pertubed version of the transition matrix like this:</p>
 <table>
 <thead>
 <tr>
@@ -1342,7 +1342,7 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>we can see that this matrix is not absorbing anymore. let e=.1 and raise P to power of 100 to see what happens.</p>
+<p>we can see that this matrix is not absorbing anymore. let e=0.1 and raise P to power of 100 to see what happens.</p>
 <table>
 <thead>
 <tr>
@@ -1451,7 +1451,7 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because we just need to take the reciprocal of fixed vector elements:</p>
+<p>-&gt; regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to extract more information. for example, we try to calculate the mean recurrence time because we just need to take the reciprocal of fixed vector elements:</p>
 <table>
 <thead>
 <tr>
@@ -1485,16 +1485,16 @@ body .markdown-body
 <p>here is how to read <strong>R</strong></p>
 <ul>
 <li>
-<p>r0 = 1/0 = +inf: state 0 never recurs again (i told you, ergodic is not always as good as regular)</p>
+<p>r0 = 1/0 = +inf: state 0 will never recur again (i told you, ergodic is not always as good as regular)</p>
 </li>
 <li>
 <p>r1 = 100: after 100 steps, this state S1 is expected to happen again</p>
 </li>
 <li>
-<p>r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its time in state 4.</p>
+<p>r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its active time in state 4.</p>
 </li>
 </ul>
-<p>we can calculate the fundamental matrix <strong>Z</strong>=(<strong>I</strong>-<strong>P</strong>+<strong>W</strong>)^-1 to calculate the matrix of mean first passage time <strong>M</strong></p>
+<p>i try to calculate the fundamental matrix <strong>Z</strong>=(<strong>I</strong>-<strong>P</strong>+<strong>W</strong>)^-1 to have the matrix of mean first passage time <strong>M</strong></p>
 <table>
 <thead>
 <tr>
@@ -1537,6 +1537,7 @@ body .markdown-body
 <h3 id="question"><a name="user-content-question" href="#question" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>question</h3>
 <p>why does Nash do this to humanity? what does <a href="https://www.youtube.com/watch?v=i6esRZLAR1Q&amp;list=LLPcV7wAnTzTaq9392rV6eLg&amp;index=1">Nietzche say</a> about infinite recurrence? maybe it&rsquo;s true that we can&rsquo;t handle the fact that we are not real, in any sense of the word <em>real</em>.</p>
 
+
 <p>
 <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -1552,5 +1553,4 @@ body .markdown-body
   </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </p> 
-
 </article></body></html>

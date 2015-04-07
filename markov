@@ -94,8 +94,7 @@ a regular transition matrix is a matrix that doesnt have too many zeros in it. w
 question: if a matrix has some zeros, how long do you have to power them up before
 you give up and say that it's not regular?
 
--> well, if **P**^(n+1) has zeros in the same place as **P**^n, it means that these zeros burn holes in those place of the matrix.
-these places will forever have zeros in it. a regular chain will end up having eigenvector that is strictly positive.
+-> well, if **P**^(n+1) has zeros in the same place as **P**^n, it means that these zeros burn holes in those place of the matrix. these places will forever have zeros in it. a regular chain will end up having eigenvector that is strictly positive.
 
 Example: the Land of Oz is blessed with many things but nice weather. here is the transition matrix of weather in Land of Oz:
 

@@ -17,7 +17,7 @@ everybody knows prisoners' dilemma. this game even has name for each outcome:
 
 if the outcome is (C,C) -> the payoff 3 for each is named Reward.
 
-if the outcome is (C,D) -> the cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.
+if the outcome is (C,D) -> being cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.
 
 if the outcome is (D,D) -> the payoff 1 for both is Punishment payoff (because they could have been better together than that - both getting 3).
 
@@ -31,17 +31,17 @@ in the picture, qD is the probability that player 2 playing Defect. we see that 
 
 ### states
 
-we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -> S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state to calculate the optimal strategy to play. the agent will use the picture above, which says that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he's already playing D, maybe he's playing C).
+we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -> S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state then decide the optimal strategy. the agent will decide using the picture above. from the picture, he sees that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he's already playing D, maybe he's playing C).
 
--> this means that: the population will tend toward all Defect. we are curious about details in the process.
+-> this means that: the population will tend toward all Defect eventually. what we are curious about is the details in the process.
 
 ![pd2](https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png)
 
-in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing Cooperate -> he'll switch to playing Defect. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).
+in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing C -> he'll switch to playing D. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).
 
 -> this means that: from S0, there is probability 1 that the system will hop to state 1.
 
-in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a Cooperating agent.
+in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a C agent.
 
 -> hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.
 
@@ -69,10 +69,10 @@ let's raise the transition matrix P to power 100 to see what happens.
 |S3|0|0|0|0|1|
 |S4|0|0|0|0|1|
 
--> no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)
+-> we know this. no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)
 
 ###canonical form
-to look into details of the process, we see it in canonical form:
+to look into details of the process, we see the canonical form:
 
 |Q|R|
 |-|-|
@@ -100,7 +100,7 @@ here is **R**
 |S2|0
 |S3|1/4
 
-we calculate **NR** matrix to answer the question, from an initial state, the system will end up in which absorbed state?
+we calculate **NR** matrix to answer the question: given an initial state, the system will end up in which absorbed state?
 
 |NR|S4|
 |-|-|
@@ -109,7 +109,7 @@ we calculate **NR** matrix to answer the question, from an initial state, the sy
 |S2|1
 |S3|1
 
-we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state.
+we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state 4.
 
 ### pertubation
 
@@ -117,8 +117,7 @@ now we introduce mistake. for example, in state S1, when we pick up a random age
 
 -> this means that: at S1, there is an epsilon probability for the system to go back to S0.
 
-=> we have the new pertubed version of the transition matrix:
-
+=> we have the new pertubed version of the transition matrix like this:
 
 |P*|S0|S1|S2|S3|S4|
 |-|-|-|-|-|-|
@@ -128,7 +127,7 @@ now we introduce mistake. for example, in state S1, when we pick up a random age
 |S3|0|0|e|3/4-e|1/4|
 |S4|0|0|0|e|1-e||
 
-we can see that this matrix is not absorbing anymore. let e=.1 and raise P to power of 100 to see what happens.
+we can see that this matrix is not absorbing anymore. let e=0.1 and raise P to power of 100 to see what happens.
 
 |P*|S0|S1|S2|S3|S4|
 |-|-|-|-|-|-|
@@ -146,7 +145,7 @@ we can see that this matrix is not absorbing anymore. let e=.1 and raise P to po
 |S3|0|.01|.05|.27|.67|
 |S4|0|.01|.05|.27|.67|
 
-regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because we just need to take the reciprocal of fixed vector elements:
+-> regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to extract more information. for example, we try to calculate the mean recurrence time because we just need to take the reciprocal of fixed vector elements:
 
 |R|expected recurrence time|
 |-|-|
@@ -158,13 +157,13 @@ regardless of initial state, the population will mostly (67%) be in state 4 (all
 
 here is how to read **R**
 
-- r0 = 1/0 = +inf: state 0 never recurs again (i told you, ergodic is not always as good as regular)
+- r0 = 1/0 = +inf: state 0 will never recur again (i told you, ergodic is not always as good as regular)
 
 - r1 = 100: after 100 steps, this state S1 is expected to happen again
 
-- r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its time in state 4.
+- r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its active time in state 4.
 
-we can calculate the fundamental matrix **Z**=(**I**-**P**+**W**)^-1 to calculate the matrix of mean first passage time **M**
+i try to calculate the fundamental matrix **Z**=(**I**-**P**+**W**)^-1 to have the matrix of mean first passage time **M**
 
 |M|S0|S1|S2|S3|S4|
 |-|-|-|-|-|-|
