@@ -274,7 +274,7 @@ from this **Z**, we can calculate mean first passage time from state i to state 
 
 mij = (zjj - zij)/wj
 
-(**w** is the matrix of fixed vector of **P**)
+(**w** is the fixed vector of **P**)
 
 ###mean recurrence time
 
