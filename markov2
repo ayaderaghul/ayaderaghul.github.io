@@ -1,0 +1,194 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) / [Comics](https://ayaderaghul.github.io/comic.html)
+
+#markov chain 2: some simple games
+
+[part 1: markov chain](https://ayaderaghul.github.io/markov.html)
+
+[part2: prisoners' dilemma](https://ayaderaghul.github.io/markov2.html)
+
+part3: not yet
+
+
+*im very suspicious but the fastest way to see error is to have audience (effect).*
+
+## prisoners' dilemma
+
+everybody knows prisoners' dilemma. this game even has name for each outcome:
+
+||C|D|
+|-|-|-|
+|C|3,3|0,4|
+|D|4,0|1,1|
+
+if the outcome is (C,C) -> the payoff 3 for each is named Reward.
+
+if the outcome is (C,D) -> the cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.
+
+if the outcome is (D,D) -> the payoff 1 for both is Punishment payoff (because they could have been better together than that - both getting 3).
+
+### theoretical back
+
+now if player 1 plays C, he'll either get Rewarded or become Sucker.
+
+if player 1 plays D, he'll either get Temptation or Punishment payoff.
+
+![pd1](https://cloud.githubusercontent.com/assets/7457301/7022340/1bc414a4-dd2b-11e4-8a70-34a60f3dcfed.png)
+
+in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, player 1 always better off playing Defect.
+
+### states
+
+we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -> S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state hence calculate the optimal strategy to play. the agent will use the picture above, the optimal strategy is always Defect, the question is whether he has to switch to Defect or not (maybe he's playing Cooperate).
+
+-> this means that: the population will tend toward all defection. the question is how is the details in the process?
+
+![pd2](https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png)
+
+in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing Cooperate -> he'll switch to playing Defect. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).
+
+-> this means that: from S0, there is probability 1 that the system will hop to state 1.
+
+in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a Cooperating agent.
+
+-> hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.
+
+=> the system can only switch one step back and forth because each time we allow only one agent to *learn*.
+
+###transition matrix
+
+|P|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|0|1|0|0|0|
+|S1|0|1/4|3/4|0|0|
+|S2|0|0|1/2|1/2|0|
+|S3|0|0|0|3/4|1/4|
+|S4|0|0|0|0|1||
+
+S4 is an absorbing state (the value 1 is in the diagonal)! this is because when everybody is defecting, nobody wants to switch.
+
+let's raise the transition matrix P to power 100 to see what happens.
+
+|P^100|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|0|0|0|0|1|
+|S1|0|0|0|0|1|
+|S2|0|0|0|0|1|
+|S3|0|0|0|0|1|
+|S4|0|0|0|0|1|
+
+no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, see section below)
+
+###canonical form
+more fun about absorbing matrix is in its canonical form:
+
+|Q|R|
+|-|-|
+|**0**|**I**|
+
+we calculate the fundamental matrix **N** = (**I**-**Q**)^-1
+
+|N|S0|S1|S2|S3| row-sum|
+|-|-|-|-|-|
+|S0|1|1.33|2|4|8.33|
+|S1|0|1.33|2|4|7.33|
+|S2|0|0|2|4|6
+|S3|0|0|0|4|4
+
+what does this matrix says? it says that if the population starts in state 0, it will spend averagely 1 steps in state 0, 1.33 steps in state 1, 2 steps in  state 2 and 4 steps in state 3 before getting absorbed.
+
+we anticipate this! the amount of time (steps) the system stays in each state is proportional to the probability that we pick a guy already playing defect (so he doesnt switch and the population stay in the the same state). that probability of picking a guy already playing optimal grows as the amount of Defectors in the population increases.
+
+there is another piece of information: the **NR** matrix
+
+here is **R**
+
+|R|S4|
+|-|-|
+|S0|0
+|S1|0
+|S2|0
+|S3|1/4
+
+here is **NR**
+
+|NR|S4|
+|-|-|
+|S0|1
+|S1|1
+|S2|1
+|S3|1
+
+we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state.
+
+### pertubation
+
+now we introduce mistake. for example, in state S1, when we pick up a random agent, he's already playing D, but at epsilon probability, he makes a mistake and switch to playing C.
+
+-> this means that: at S1, there is an epsilon probability for the system to go back to S0.
+
+=> we have the new pertubed version of the transition matrix:
+
+
+|P*|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|e|1-e|0|0|0|
+|S1|e|1/4-e|3/4|0|0|
+|S2|0|e|1/2-e|1/2|0|
+|S3|0|0|e|3/4-e|1/4|
+|S4|0|0|0|e|1-e||
+
+we can see that this matrix is not absorbing anymore. let e=.1 and raise P to power of 100 to see what happens.
+
+|P*|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|.1|.9|0|0|0|
+|S1|.1|.15|.75|0|0|
+|S2|0|.1|.4|.5|0|
+|S3|0|0|.1|.65|.25|
+|S4|0|0|0|.1|.9||
+
+|P*^100|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|0|.01|.05|.27|.67|
+|S1|0|.01|.05|.27|.67|
+|S2|0|.01|.05|.27|.67|
+|S3|0|.01|.05|.27|.67|
+|S4|0|.01|.05|.27|.67|
+
+regardless of initial state, the population will mostly be in state 4 (all defection) because the stationary distribution says that.
+
+conveniently, because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because it's easy, just take the reciprocal of fixed vector elements:
+
+|R|expected recurrence time|
+|-|-|
+|S0|1/0 = +inf
+|S1|1/.01=100|
+|S2|20|
+|S3| 3.7
+|s4|1.5
+
+here is how to read **R**
+
+- r0 = 1/0 = +inf: state 0 never recurs again (i told you, ergodic is not always as good as regular)
+
+- r1 = 100: after 100 steps, this state S1 is expected to happen again
+
+- r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its time in state 4.
+
+we can calculate the fundamental matrix **Z**=(**I**-**P**+**W**)^-1 to calculate the matrix of mean first passage time **M**
+
+|M|S0|S1|S2|S3|S4|
+|-|-|-|-|-|
+|S0|n/a|1|2.8|4.9|9.8|
+|S1|+inf|0 1.6|3.8|8.7|+inf|
+|||....|||||
+
+i dont why it fucks up... let's just leave it & me be.
+
+###question
+
+- why does Nash do this to humanity?
+
+- what does [Nietzche say]()?
+
+- maybe it's true that we can't handle the fact that we are not real, in any sense of the word *real*.

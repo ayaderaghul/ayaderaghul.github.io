@@ -1014,485 +1014,508 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>markov</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
-<h1 id="markov-chain"><a name="user-content-markov-chain" href="#markov-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>markov chain</h1>
-<p>statistics is not something one can live without, but i may try to live with least. <em>if you say tl;dr (too long, didnt read), the frog will be very very sad.</em></p>
-<h2 id="independent-randomness"><a name="user-content-independent-randomness" href="#independent-randomness" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>independent randomness</h2>
-<p>there is a frog and a lily pond with many lily pads. the frog likes to hop around on the lily pads. it decides to jump on whatever lily pads it wants, regardless of whatever. maybe it decides to spend more time on the lily pad it favors, but still.</p>
-<p><img alt="frog1" src="https://cloud.githubusercontent.com/assets/7457301/6996048/e3c39532-db6f-11e4-8d30-742cd1771131.png" /></p>
-<p>that is independent randomness, each event is independent from any other.</p>
-<h2 id="dependent-randomness"><a name="user-content-dependent-randomness" href="#dependent-randomness" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>dependent randomness</h2>
-<p>the frog travels to a new pond over the mountain. this pond is simple.lily pads growing in that pond have rules. for example, when the frog hops on the first lily pad, the lily pad says:</p>
-<ul>
-<li>from here, you jump to the lily pad over there.</li>
-</ul>
-<p><img alt="frog2" src="https://cloud.githubusercontent.com/assets/7457301/6996049/e3d153fc-db6f-11e4-8e7e-e7609ee7b2c6.png" /></p>
-<p>the frog is quite surprised. so after an afternoon hopping around the pond, the frog discovers all the rules of all the lily pads.</p>
-<p><img alt="frog3" src="https://cloud.githubusercontent.com/assets/7457301/6996052/e3f767c2-db6f-11e4-97b7-27c69eeb60c9.png" /></p>
-<p>for example, from the lily pad number 3, the frog can jump back lily pad 1 or it can jump to lily pad 4. this means that the next event depends on its preceding event. events are hooked together like a chain - a Markov chain. let&rsquo;s start with a smaller pond:</p>
-<p><img alt="frog7" src="https://cloud.githubusercontent.com/assets/7457301/6996054/e4100f34-db6f-11e4-9fe3-3ee7e709474d.png" /></p>
-<p>here is the transition matrix of this markov process, each lily pad is a state:</p>
-<p><img alt="frog4" src="https://cloud.githubusercontent.com/assets/7457301/6996051/e3e8bf88-db6f-11e4-9edf-6e8e229f0c39.png" /></p>
-<p>if the frog starts at state 1, it comes out at state 2.</p>
-<p><img alt="frog8" src="https://cloud.githubusercontent.com/assets/7457301/6996055/e41d86c8-db6f-11e4-9691-f847eade3f09.png" /></p>
-<p><img alt="frog5" src="https://cloud.githubusercontent.com/assets/7457301/6996050/e3db9d1c-db6f-11e4-81e9-0958c312d5c6.png" /></p>
-<p>if the frog starts at state 2, in next step it can be at state 1 or 3, each at 50%.</p>
-<p><img alt="frog9" src="https://cloud.githubusercontent.com/assets/7457301/6996087/faefbfb4-db70-11e4-8a9c-ce8df2532fa9.png" /></p>
-<p>question: what if the frog starts out with probability?</p>
-<p><img alt="frog6" src="https://cloud.githubusercontent.com/assets/7457301/6996053/e402e6f6-db6f-11e4-9e33-c55ee5b528d7.png" /></p>
-<p><img alt="frog10" src="https://cloud.githubusercontent.com/assets/7457301/6996061/1b59c048-db70-11e4-8a7b-92c90ed45026.png" /></p>
-<p>so the next state of the world will depend on the current state.</p>
-<h3 id="after-n-steps"><a name="user-content-after-n-steps" href="#after-n-steps" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>after n steps?</h3>
-<p>question: if at step 1, the frog starts at state 2, where may the frog be in step n?</p>
-<p>-&gt; we just raise the transition matrix to power n.</p>
-<p>let&rsquo;s raise it to power 100 to see what happens. wherever the frog starts, after 100 steps, its probability is (1/3, 2/3, 0).</p>
-<p><img alt="frog11" src="https://cloud.githubusercontent.com/assets/7457301/6996056/e42da210-db6f-11e4-9bb0-7ce671fed9f9.png" /></p>
-<p>it means that, the frog can start with arbitrary distributions <strong>u</strong>, after n (large) steps, its distribution is always v (1/3,2/3,0).</p>
-<p><strong>u</strong>. <strong>P</strong>^n = <strong>v</strong></p>
-<p><strong>u</strong> . <strong>P</strong>^(n+1) = <strong>v</strong></p>
-<p>-&gt; <strong>u</strong> . <strong>P</strong>^n . <strong>P</strong> = <strong>v</strong></p>
-<p>-&gt; <strong>v</strong> . <strong>P</strong> = <strong>v</strong></p>
-<p>this vector <strong>v</strong> is eigenvector of transition matrix <strong>P</strong>. this distribution is the long-range prediction (stationary vector) of the frog, regardless of initial state.</p>
-<h2 id="what-do-you-think-when-you-think-of-matrix"><a name="user-content-what-do-you-think-when-you-think-of-matrix" href="#what-do-you-think-when-you-think-of-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>what do you think when you think of matrix?</h2>
-<p>matrix is a space. it&rsquo;s described by a system of linear equations. if we multiply a row vector with a matrix, it&rsquo;s like the row vector has to go through a bunch of transformation. these transformations are described by the equations of the matrix and these transformations are parallel.</p>
-<p>for some matrix, there are some row vectors that can survive the transformation and still emerge out to be itself (or a multiple of itself). these are eigenvectors of the matrix.</p>
-<p>calculating eigenvector is not funny. anyway, we examine some particular types of transition matrix that can guarantee the existence of eigenvectors or interesting information.</p>
-<h2 id="regular-chain"><a name="user-content-regular-chain" href="#regular-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>regular chain</h2>
-<p>a regular transition matrix is a matrix that doesnt have too many zeros in it. when you take power of it, some power of the matrix will not contain zeros anymore.</p>
-<p>question: if a matrix has some zeros, how long do you have to power them up before<br />
-you give up and say that it&rsquo;s not regular?</p>
-<p>-&gt; well, if <strong>P</strong>^(n+1) has zeros in the same place as <strong>P</strong>^n, it means that these zeros burn holes in those place of the matrix.<br />
-these places will forever have zeros in it. a regular chain will end up having eigenvector that is strictly positive.</p>
-<p>Example: the Land of Oz is blessed with many things but nice weather. here is the transition matrix of weather in Land of Oz:</p>
+</style><title>markov2</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+<h1 id="markov-chain-2-some-simple-games"><a name="user-content-markov-chain-2-some-simple-games" href="#markov-chain-2-some-simple-games" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>markov chain 2: some simple games</h1>
+<p><a href="https://ayaderaghul.github.io/markov.html">part 1: markov chain</a></p>
+<p><a href="https://ayaderaghul.github.io/markov2.html">part2: prisoners&rsquo; dilemma</a></p>
+<p>part3: not yet</p>
+<p><em>im very suspicious but the fastest way to see error is to have audience (effect).</em></p>
+<h2 id="prisoners-dilemma"><a name="user-content-prisoners-dilemma" href="#prisoners-dilemma" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>prisoners&rsquo; dilemma</h2>
+<p>everybody knows prisoners&rsquo; dilemma. this game even has name for each outcome:</p>
 <table>
 <thead>
 <tr>
-<th>weather</th>
-<th>rain</th>
-<th>nice</th>
-<th>snowy</th>
+<th></th>
+<th>C</th>
+<th>D</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>r</td>
-<td>1/2</td>
+<td>C</td>
+<td>3,3</td>
+<td>0,4</td>
+</tr>
+<tr>
+<td>D</td>
+<td>4,0</td>
+<td>1,1</td>
+</tr>
+</tbody>
+</table>
+<p>if the outcome is (C,C) -&gt; the payoff 3 for each is named Reward.</p>
+<p>if the outcome is (C,D) -&gt; the cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.</p>
+<p>if the outcome is (D,D) -&gt; the payoff 1 for both is Punishment payoff (because they could have been better together than that - both getting 3).</p>
+<h3 id="theoretical-back"><a name="user-content-theoretical-back" href="#theoretical-back" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>theoretical back</h3>
+<p>now if player 1 plays C, he&rsquo;ll either get Rewarded or become Sucker.</p>
+<p>if player 1 plays D, he&rsquo;ll either get Temptation or Punishment payoff.</p>
+<p><img alt="pd1" src="https://cloud.githubusercontent.com/assets/7457301/7022340/1bc414a4-dd2b-11e4-8a70-34a60f3dcfed.png" /></p>
+<p>in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, player 1 always better off playing Defect.</p>
+<h3 id="states"><a name="user-content-states" href="#states" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>states</h3>
+<p>we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -&gt; S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state hence calculate the optimal strategy to play. the agent will use the picture above, the optimal strategy is always Defect, the question is whether he has to switch to Defect or not (maybe he&rsquo;s playing Cooperate).</p>
+<p>-&gt; this means that: the population will tend toward all defection. the question is how is the details in the process?</p>
+<p><img alt="pd2" src="https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png" /></p>
+<p>in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing Cooperate -&gt; he&rsquo;ll switch to playing Defect. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).</p>
+<p>-&gt; this means that: from S0, there is probability 1 that the system will hop to state 1.</p>
+<p>in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a Cooperating agent.</p>
+<p>-&gt; hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.</p>
+<p>=&gt; the system can only switch one step back and forth because each time we allow only one agent to <em>learn</em>.</p>
+<h3 id="transition-matrix"><a name="user-content-transition-matrix" href="#transition-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>transition matrix</h3>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>0</td>
 <td>1/4</td>
-<td>1/4</td>
+<td>3/4</td>
+<td>0</td>
 </tr>
 <tr>
-<td>n</td>
-<td>1/2</td>
+<td>S2</td>
+<td>0</td>
 <td>0</td>
 <td>1/2</td>
-</tr>
-<tr>
-<td>s</td>
-<td>1/4</td>
-<td>1/4</td>
 <td>1/2</td>
 </tr>
+<tr>
+<td>S3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3/4</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
 </tbody>
 </table>
-<p>raise power of P up to 6, we have</p>
+<p>S4 is an absorbing state (the value 1 is in the diagonal)! this is because when everybody is defecting, nobody wants to switch.</p>
+<p>let&rsquo;s raise the transition matrix P to power 100 to see what happens.</p>
 <table>
 <thead>
 <tr>
-<th>weather</th>
-<th>rain</th>
-<th>nice</th>
-<th>snowy</th>
+<th>P^100</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>r</td>
-<td>.4</td>
-<td>.2</td>
-<td>.4</td>
-</tr>
-<tr>
-<td>n</td>
-<td>.4</td>
-<td>.2</td>
-<td>.4</td>
-</tr>
-<tr>
-<td>s</td>
-<td>.4</td>
-<td>.2</td>
-<td>.4</td>
-</tr>
-</tbody>
-</table>
-<p>the good thing about regular chain is that we can always use a very primitive method to find the stationary distribution of the system: take P to power of n and we&rsquo;ll have the eigenvector.</p>
-<h2 id="absorbing-chain"><a name="user-content-absorbing-chain" href="#absorbing-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>absorbing chain</h2>
-<p>a transition matrix that has some 1s on its diagonal is an absorbing matrix.</p>
-<table>
-<thead>
-<tr>
-<th>state</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
+<td>S0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
-<td>2</td>
-<td>.2</td>
-<td>.3</td>
-<td>.5</td>
-</tr>
-<tr>
-<td>3</td>
-<td>.4</td>
-<td>.2</td>
-<td>.4</td>
-</tr>
-</tbody>
-</table>
-<p>you can see that if the frog enters state 1, it can never leave that state again. death is an absorbing state. when you are alive, you can laugh, play, whine, smile.. but once you are dead, you are dead forever.</p>
-<p>after 3 steps:</p>
-<table>
-<thead>
-<tr>
-<th>state</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
+<td>S1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
-<td>2</td>
-<td>.64</td>
-<td>.13</td>
-<td>.23</td>
-</tr>
-<tr>
-<td>3</td>
-<td>.73</td>
-<td>.09</td>
-<td>.17</td>
-</tr>
-</tbody>
-</table>
-<p>we see that the probability of entering death increase quite fast. let&rsquo;s try to raise <strong>P</strong> to power of 100 to see what happens.</p>
-<table>
-<thead>
-<tr>
-<th>state</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
+<td>S2</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
-<td>2</td>
-<td>1</td>
+<td>S3</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
-<td>3</td>
-<td>1</td>
+<td>S4</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
-<p>regardless of initial state, we&rsquo;ll all die.</p>
-<h3 id="2-absorbing-states"><a name="user-content-2-absorbing-states" href="#2-absorbing-states" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2 absorbing states</h3>
-<p>consider a matrix with 2 absorbing states: state 1 and state 3</p>
-<table>
-<thead>
-<tr>
-<th>state</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>.2</td>
-<td>.3</td>
-<td>.25</td>
-<td>.25</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0</td>
-<td>.2</td>
-<td>.4</td>
-<td>.4</td>
-</tr>
-</tbody>
-</table>
+<p>no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, see section below)</p>
 <h3 id="canonical-form"><a name="user-content-canonical-form" href="#canonical-form" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>canonical form</h3>
-<p>in order to analyse this matrix, we rearrange rows and columns a little bit to have this canonical form:</p>
-<table>
-<thead>
-<tr>
-<th>I</th>
-<th>0</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>R</strong></td>
-<td><strong>Q</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>I</strong> is an identity matrix (diagonal = 1)</p>
-<p><strong>0</strong> is a zero matrix</p>
-<p><strong>Q</strong> is transient matrix because it composes of all transient states</p>
-<p>here is <strong>P</strong> after rearrangment:</p>
-<table>
-<thead>
-<tr>
-<th>state</th>
-<th>1</th>
-<th>3</th>
-<th>2</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>.2</td>
-<td>.25</td>
-<td>.3</td>
-<td>.25</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0</td>
-<td>.4</td>
-<td>.2</td>
-<td>.4</td>
-</tr>
-</tbody>
-</table>
-<p>here is <strong>Q</strong></p>
+<p>more fun about absorbing matrix is in its canonical form:</p>
 <table>
 <thead>
 <tr>
 <th>Q</th>
-<th>2</th>
-<th>4</th>
+<th>R</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>2</td>
-<td>.3</td>
-<td>.25</td>
-</tr>
-<tr>
-<td>4</td>
-<td>.2</td>
-<td>.4</td>
+<td><strong>0</strong></td>
+<td><strong>I</strong></td>
 </tr>
 </tbody>
 </table>
-<p>we can raise <strong>Q</strong> to 100 to see what happens. however, we know that in long-range all transient state will tend to 0 (the probability will be absorbed into absorbing states 1 and 3).</p>
-<h3 id="fundamental-matrix"><a name="user-content-fundamental-matrix" href="#fundamental-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>fundamental matrix</h3>
-<p>we calculate a more fun matrix: the fundamental matrix <strong>N</strong> = (<strong>I</strong>-<strong>Q</strong>)^-1</p>
+<p>we calculate the fundamental matrix <strong>N</strong> = (<strong>I</strong>-<strong>Q</strong>)^-1</p>
 <table>
 <thead>
 <tr>
 <th>N</th>
-<th>2</th>
-<th>4</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>S0</td>
+<td>1</td>
+<td>1.33</td>
 <td>2</td>
-<td>1.62</td>
-<td>.68</td>
+<td>4</td>
 </tr>
 <tr>
+<td>S1</td>
+<td>0</td>
+<td>1.33</td>
+<td>2</td>
 <td>4</td>
-<td>.54</td>
-<td>1.89</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>how to read <strong>N</strong>?</li>
-</ul>
-<p>if the frog starts in state 2, the frog will visits state 2 (in average) 1.62 times before it is absorbed. it will visit state 4 .68 times before absorbed.</p>
-<p>which means that if we sum the rows of matrix <strong>N</strong>, we have the expected number of steps the frog can hop (from an initial state) before being absorbed:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>2.3</td>
-</tr>
-<tr>
-<td>4</td>
-<td>2.43</td>
-</tr>
-</tbody>
-</table>
-<p>-&gt; it says, if the frog starts in state 4, it can hop averagely 2.43 steps before it hops into an absorbing state.</p>
-<ul>
-<li>but there are two absorbing states?</li>
-</ul>
-<p>we look at matrix <strong>R</strong>:</p>
+<p>what does this matrix says? it says that if the population starts in state 0, it will spend averagely 1 steps in state 0, 1.33 steps in state 1, 2 steps in  state 2 and 4 steps in state 3 before getting absorbed.</p>
+<p>we anticipate this! the amount of time (steps) the system stays in each state is proportional to the probability that we pick a guy already playing defect (so he doesnt switch and the population stay in the the same state). that probability of picking a guy already playing optimal grows as the amount of Defectors in the population increases.</p>
+<p>there is another piece of information: the <strong>NR</strong> matrix</p>
+<p>here is <strong>R</strong></p>
 <table>
 <thead>
 <tr>
 <th>R</th>
-<th>1</th>
-<th>3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>2</td>
-<td>.2</td>
-<td>.25</td>
+<td>S0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>4</td>
+<td>S1</td>
 <td>0</td>
-<td>.4</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>1/4</td>
 </tr>
 </tbody>
 </table>
-<p>we multiply <strong>NR</strong>:</p>
+<p>here is <strong>NR</strong></p>
 <table>
 <thead>
 <tr>
 <th>NR</th>
-<th>1</th>
-<th>3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>2</td>
-<td>.33</td>
-<td>.67</td>
+<td>S0</td>
+<td>1</td>
 </tr>
 <tr>
-<td>4</td>
-<td>.11</td>
-<td>.89</td>
+<td>S1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>how to read <strong>NR</strong>?</li>
-</ul>
-<p>if the frog starts in state 2, 33% of the time it will be absorbed by state 1, and 67% of the time it will end up in state 3.</p>
-<h2 id="ergodic-irreducible-chain"><a name="user-content-ergodic-irreducible-chain" href="#ergodic-irreducible-chain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ergodic (irreducible) chain</h2>
-<p>ergodic markov chain is a chain that from any state, you can go to any state (not necessarily in 1 step, but still). ergodic matrix has many zeros (more than regular one), but still not too many to be reducible.</p>
-<p>a reducible matrix can be fragmented into this:</p>
+<p>we anticipate this also, because there is only one abosrbing state in the chain. wherever you start, you are guaranteed to get absorbed in that state.</p>
+<h3 id="pertubation"><a name="user-content-pertubation" href="#pertubation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>pertubation</h3>
+<p>now we introduce mistake. for example, in state S1, when we pick up a random agent, he&rsquo;s already playing D, but at epsilon probability, he makes a mistake and switch to playing C.</p>
+<p>-&gt; this means that: at S1, there is an epsilon probability for the system to go back to S0.</p>
+<p>=&gt; we have the new pertubed version of the transition matrix:</p>
 <table>
 <thead>
 <tr>
-<th>0</th>
-<th>X</th>
+<th>P*</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Y</strong></td>
-<td><strong>0</strong></td>
+<td>S0</td>
+<td>e</td>
+<td>1-e</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>e</td>
+<td>1/4-e</td>
+<td>3/4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>0</td>
+<td>e</td>
+<td>1/2-e</td>
+<td>1/2</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0</td>
+<td>0</td>
+<td>e</td>
+<td>3/4-e</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>e</td>
 </tr>
 </tbody>
 </table>
-<p>it has two part of 0 matrices so it looks like two separate systems. if we have systems that can be fragmented into two smaller systems, we should be analyising them separately.</p>
-<p>ergodic matrix doesnt have value 1 in its diagonal, which means it&rsquo;s not absorbing matrix.</p>
-<p>ergodic can still have stationary distribution, but i dont think we can always solve for it by taking power 100 of the transition matrix. (not always, but still).</p>
-<p>-&gt; we have the following information:</p>
-<p>let <strong>w</strong> be the eigenvector of <strong>P</strong>:</p>
-<p><strong>w</strong> . <strong>P</strong> = <strong>w</strong></p>
-<p>also, the component of <strong>w</strong> has to sum up to 1:</p>
-<p>w1 + w2 + &hellip; = 1</p>
-<p>-&gt; we solve by setting w1=1 and extract the matrix equation <strong>w</strong> . <strong>P</strong> = <strong>w</strong> into linear equations.</p>
-<p>after solving for w1, w2,.., we sum up w1+w2+....=s.<br />
-this s &gt; 1 so we normalise s to 1, take percentage of w1/s&hellip;, and that&rsquo;ll be our eigenvector <strong>w</strong>.</p>
-<h3 id="mean-first-passage-time"><a name="user-content-mean-first-passage-time" href="#mean-first-passage-time" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>mean first passage time</h3>
-<p>question: how many steps does it take to go from state i to state j, averagely?</p>
-<p>if state j is an absorbing state, we can easily answer this question. so, just make j an absorbing state, we change the probability of state j so that pjj = 1, all other 0s.</p>
+<p>we can see that this matrix is not absorbing anymore. let e=.1 and raise P to power of 100 to see what happens.</p>
+<table>
+<thead>
+<tr>
+<th>P*</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>.1</td>
+<td>.9</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>.1</td>
+<td>.15</td>
+<td>.75</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>0</td>
+<td>.1</td>
+<td>.4</td>
+<td>.5</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0</td>
+<td>0</td>
+<td>.1</td>
+<td>.65</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>.1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>P*^100</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>0</td>
+<td>.01</td>
+<td>.05</td>
+<td>.27</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>0</td>
+<td>.01</td>
+<td>.05</td>
+<td>.27</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>0</td>
+<td>.01</td>
+<td>.05</td>
+<td>.27</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>0</td>
+<td>.01</td>
+<td>.05</td>
+<td>.27</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>0</td>
+<td>.01</td>
+<td>.05</td>
+<td>.27</td>
+</tr>
+</tbody>
+</table>
+<p>regardless of initial state, the population will mostly be in state 4 (all defection) because the stationary distribution says that.</p>
+<p>conveniently, because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because it&rsquo;s easy, just take the reciprocal of fixed vector elements:</p>
+<table>
+<thead>
+<tr>
+<th>R</th>
+<th>expected recurrence time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>1/0 = +inf</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>1/.01=100</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>20</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>3.7</td>
+</tr>
+<tr>
+<td>s4</td>
+<td>1.5</td>
+</tr>
+</tbody>
+</table>
+<p>here is how to read <strong>R</strong></p>
 <ul>
-<li>is there any other way that is easier?</li>
+<li>
+<p>r0 = 1/0 = +inf: state 0 never recurs again (i told you, ergodic is not always as good as regular)</p>
+</li>
+<li>
+<p>r1 = 100: after 100 steps, this state S1 is expected to happen again</p>
+</li>
+<li>
+<p>r4 = 1.5: the time expected for state 4 to recur is very short. the system will spend most of its time in state 4.</p>
+</li>
 </ul>
-<p>yes, we try to have something similar to the fundamental matrix <strong>N</strong> of the absorbing process.</p>
-<p><strong>Z</strong> = (<strong>I</strong> - <strong>P</strong> + <strong>W</strong>)^-1</p>
-<p>from this <strong>Z</strong>, we can calculate mean first passage time from state i to state j.</p>
-<p>mij = (zjj - zij)/wj</p>
-<p>(<strong>w</strong> is the matrix of fixed vector of <strong>P</strong>)</p>
-<h3 id="mean-recurrence-time"><a name="user-content-mean-recurrence-time" href="#mean-recurrence-time" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>mean recurrence time</h3>
-<p>question: how many steps does it take for the system to go back the state i after it<br />
-leaves state i?</p>
-<p>ri = 1/wi</p>
-<h2 id="eh-too-long-to-do-some-game"><a name="user-content-eh-too-long-to-do-some-game" href="#eh-too-long-to-do-some-game" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>eh, too long to do some game</h2>
-<p>&hellip; eh..too tired..</p>
-<p>anyway, i got results that look suspicious, better not post them =.=</p>
+<p>we can calculate the fundamental matrix <strong>Z</strong>=(<strong>I</strong>-<strong>P</strong>+<strong>W</strong>)^-1 to calculate the matrix of mean first passage time <strong>M</strong></p>
+<table>
+<thead>
+<tr>
+<th>M</th>
+<th>S0</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S0</td>
+<td>n/a</td>
+<td>1</td>
+<td>2.8</td>
+<td>4.9</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>+inf</td>
+<td>0 1.6</td>
+<td>3.8</td>
+<td>8.7</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>....</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>i dont why it fucks up&hellip; let&rsquo;s just leave it &amp; me be.</p>
+<h3 id="question"><a name="user-content-question" href="#question" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>question</h3>
+<ul>
+<li>
+<p>why does Nash do this to humanity?</p>
+</li>
+<li>
+<p>what does <a href="">Nietzche say</a>?</p>
+</li>
+<li>
+<p>maybe it&rsquo;s true that we can&rsquo;t handle the fact that we are not real, in any sense of the word <em>real</em>.</p>
+
 
 <p>
 <div id="disqus_thread"></div>
@@ -1510,4 +1533,5 @@ leaves state i?</p>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </p> 
 
-</article></body></html>
+</li>
+</ul></article></body></html>
