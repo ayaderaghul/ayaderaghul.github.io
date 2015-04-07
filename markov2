@@ -28,19 +28,17 @@ if the outcome is (D,D) -> the payoff 1 for both is Punishment payoff (because t
 
 ### theoretical back
 
-now if player 1 plays C, he'll either get Rewarded or become Sucker.
-
-if player 1 plays D, he'll either get Temptation or Punishment payoff.
+now if player 1 plays C, player 1'll either get Rewarded or become Sucker. if player 1 plays D, he'll either get Temptation or Punishment payoff.
 
 ![pd1](https://cloud.githubusercontent.com/assets/7457301/7022340/1bc414a4-dd2b-11e4-8a70-34a60f3dcfed.png)
 
-in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, player 1 always better off playing Defect.
+in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, the best thing to do for player 1 is always Defecting.
 
 ### states
 
-we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -> S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state hence calculate the optimal strategy to play. the agent will use the picture above, the optimal strategy is always Defect, the question is whether he has to switch to Defect or not (maybe he's playing Cooperate).
+we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -> S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state to calculate the optimal strategy to play. the agent will use the picture above, which says that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he's already playing D, maybe he's playing C).
 
--> this means that: the population will tend toward all defection. the question is how is the details in the process?
+-> this means that: the population will tend toward all Defect. we are curious about details in the process.
 
 ![pd2](https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png)
 
@@ -52,12 +50,12 @@ in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 p
 
 -> hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.
 
-=> the system can only switch one step back and forth because each time we allow only one agent to *learn*.
+note: the system can only switch one step back and forth because we allow only one agent to *learn* each time.
 
 ###transition matrix
 
 |P|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|0|1|0|0|0|
 |S1|0|1/4|3/4|0|0|
 |S2|0|0|1/2|1/2|0|
@@ -69,17 +67,17 @@ S4 is an absorbing state (the value 1 is in the diagonal)! this is because when 
 let's raise the transition matrix P to power 100 to see what happens.
 
 |P^100|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|0|0|0|0|1|
 |S1|0|0|0|0|1|
 |S2|0|0|0|0|1|
 |S3|0|0|0|0|1|
 |S4|0|0|0|0|1|
 
-no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, see section below)
+-> no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)
 
 ###canonical form
-more fun about absorbing matrix is in its canonical form:
+to look into details of the process, we see it in canonical form:
 
 |Q|R|
 |-|-|
@@ -98,8 +96,6 @@ what does this matrix says? it says that if the population starts in state 0, it
 
 we anticipate this! the amount of time (steps) the system stays in each state is proportional to the probability that we pick a guy already playing defect (so he doesnt switch and the population stay in the the same state). that probability of picking a guy already playing optimal grows as the amount of Defectors in the population increases.
 
-there is another piece of information: the **NR** matrix
-
 here is **R**
 
 |R|S4|
@@ -109,7 +105,7 @@ here is **R**
 |S2|0
 |S3|1/4
 
-here is **NR**
+we calculate **NR** matrix to answer the question, from an initial state, the system will end up in which absorbed state?
 
 |NR|S4|
 |-|-|
@@ -130,7 +126,7 @@ now we introduce mistake. for example, in state S1, when we pick up a random age
 
 
 |P*|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|e|1-e|0|0|0|
 |S1|e|1/4-e|3/4|0|0|
 |S2|0|e|1/2-e|1/2|0|
@@ -140,7 +136,7 @@ now we introduce mistake. for example, in state S1, when we pick up a random age
 we can see that this matrix is not absorbing anymore. let e=.1 and raise P to power of 100 to see what happens.
 
 |P*|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|.1|.9|0|0|0|
 |S1|.1|.15|.75|0|0|
 |S2|0|.1|.4|.5|0|
@@ -148,16 +144,14 @@ we can see that this matrix is not absorbing anymore. let e=.1 and raise P to po
 |S4|0|0|0|.1|.9||
 
 |P*^100|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|0|.01|.05|.27|.67|
 |S1|0|.01|.05|.27|.67|
 |S2|0|.01|.05|.27|.67|
 |S3|0|.01|.05|.27|.67|
 |S4|0|.01|.05|.27|.67|
 
-regardless of initial state, the population will mostly be in state 4 (all defection) because the stationary distribution says that.
-
-conveniently, because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because it's easy, just take the reciprocal of fixed vector elements:
+regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because we just need to take the reciprocal of fixed vector elements:
 
 |R|expected recurrence time|
 |-|-|
@@ -178,17 +172,13 @@ here is how to read **R**
 we can calculate the fundamental matrix **Z**=(**I**-**P**+**W**)^-1 to calculate the matrix of mean first passage time **M**
 
 |M|S0|S1|S2|S3|S4|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |S0|n/a|1|2.8|4.9|9.8|
 |S1|+inf|0 1.6|3.8|8.7|+inf|
 |||....|||||
 
-i dont why it fucks up... let's just leave it & me be.
+i dont know why it fucks up... let's just leave it & me be.
 
 ###question
 
-- why does Nash do this to humanity?
-
-- what does [Nietzche say](https://www.youtube.com/watch?v=i6esRZLAR1Q&list=LLPcV7wAnTzTaq9392rV6eLg&index=1)?
-
-- maybe it's true that we can't handle the fact that we are not real, in any sense of the word *real*.
+why does Nash do this to humanity? what does [Nietzche say](https://www.youtube.com/watch?v=i6esRZLAR1Q&list=LLPcV7wAnTzTaq9392rV6eLg&index=1) about infinite recurrence? maybe it's true that we can't handle the fact that we are not real, in any sense of the word *real*.

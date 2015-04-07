@@ -1047,19 +1047,18 @@ body .markdown-body
 <p>if the outcome is (C,D) -&gt; the cooperator sucks, the payoff 0 for him is called Sucker. the payoff for the defector is Temptation.</p>
 <p>if the outcome is (D,D) -&gt; the payoff 1 for both is Punishment payoff (because they could have been better together than that - both getting 3).</p>
 <h3 id="theoretical-back"><a name="user-content-theoretical-back" href="#theoretical-back" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>theoretical back</h3>
-<p>now if player 1 plays C, he&rsquo;ll either get Rewarded or become Sucker.</p>
-<p>if player 1 plays D, he&rsquo;ll either get Temptation or Punishment payoff.</p>
+<p>now if player 1 plays C, player 1&rsquo;ll either get Rewarded or become Sucker. if player 1 plays D, he&rsquo;ll either get Temptation or Punishment payoff.</p>
 <p><img alt="pd1" src="https://cloud.githubusercontent.com/assets/7457301/7022340/1bc414a4-dd2b-11e4-8a70-34a60f3dcfed.png" /></p>
-<p>in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, player 1 always better off playing Defect.</p>
+<p>in the picture, qD is the probability that player 2 playing Defect. we see that whatever player 2 does, the best thing to do for player 1 is always Defecting.</p>
 <h3 id="states"><a name="user-content-states" href="#states" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>states</h3>
-<p>we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -&gt; S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state hence calculate the optimal strategy to play. the agent will use the picture above, the optimal strategy is always Defect, the question is whether he has to switch to Defect or not (maybe he&rsquo;s playing Cooperate).</p>
-<p>-&gt; this means that: the population will tend toward all defection. the question is how is the details in the process?</p>
+<p>we start with a population of 4 agents playing pure strategy. the population can be in 5 states Si = S0 -&gt; S4. i is the number of agents playing Defect. at each step, we pick a random agent in the population and allow him to observe the population state to calculate the optimal strategy to play. the agent will use the picture above, which says that the optimal strategy always be Defect. the question is whether that agent has to switch to Defect or not (maybe he&rsquo;s already playing D, maybe he&rsquo;s playing C).</p>
+<p>-&gt; this means that: the population will tend toward all Defect. we are curious about details in the process.</p>
 <p><img alt="pd2" src="https://cloud.githubusercontent.com/assets/7457301/7022341/1bcdc2e2-dd2b-11e4-8952-652b4b02c9a5.png" /></p>
 <p>in state S0, 0 agents are playing Defect. when we pick up a random agent, 100% this agent is playing Cooperate -&gt; he&rsquo;ll switch to playing Defect. after he switches, we put him back into the population. the population now is in state 1 (one agent playing D).</p>
 <p>-&gt; this means that: from S0, there is probability 1 that the system will hop to state 1.</p>
 <p>in state 1, 1 agent is playing D. when we pick up a random agent, there is 1/4 probability that we pick the guy already playing D, and 3/4 probability we pick a Cooperating agent.</p>
 <p>-&gt; hence, with probability 1/4, the system stays in state S1, with probability 3/4, the system switches to state S2.</p>
-<p>=&gt; the system can only switch one step back and forth because each time we allow only one agent to <em>learn</em>.</p>
+<p>note: the system can only switch one step back and forth because we allow only one agent to <em>learn</em> each time.</p>
 <h3 id="transition-matrix"><a name="user-content-transition-matrix" href="#transition-matrix" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>transition matrix</h3>
 <table>
 <thead>
@@ -1069,6 +1068,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1078,12 +1078,14 @@ body .markdown-body
 <td>1</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S1</td>
 <td>0</td>
 <td>1/4</td>
 <td>3/4</td>
+<td>0</td>
 <td>0</td>
 </tr>
 <tr>
@@ -1092,6 +1094,7 @@ body .markdown-body
 <td>0</td>
 <td>1/2</td>
 <td>1/2</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S3</td>
@@ -1099,6 +1102,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>3/4</td>
+<td>1/4</td>
 </tr>
 <tr>
 <td>S4</td>
@@ -1106,6 +1110,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -1119,6 +1124,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1128,6 +1134,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 <tr>
 <td>S1</td>
@@ -1135,6 +1142,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 <tr>
 <td>S2</td>
@@ -1142,6 +1150,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 <tr>
 <td>S3</td>
@@ -1149,6 +1158,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 <tr>
 <td>S4</td>
@@ -1156,12 +1166,13 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<p>no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, see section below)</p>
+<p>-&gt; no matter where the population starts, it gets absorbed into all defection eventually. (this result is less obvious than you may think, it cant be explained fully here though)</p>
 <h3 id="canonical-form"><a name="user-content-canonical-form" href="#canonical-form" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>canonical form</h3>
-<p>more fun about absorbing matrix is in its canonical form:</p>
+<p>to look into details of the process, we see it in canonical form:</p>
 <table>
 <thead>
 <tr>
@@ -1220,7 +1231,6 @@ body .markdown-body
 </table>
 <p>what does this matrix says? it says that if the population starts in state 0, it will spend averagely 1 steps in state 0, 1.33 steps in state 1, 2 steps in  state 2 and 4 steps in state 3 before getting absorbed.</p>
 <p>we anticipate this! the amount of time (steps) the system stays in each state is proportional to the probability that we pick a guy already playing defect (so he doesnt switch and the population stay in the the same state). that probability of picking a guy already playing optimal grows as the amount of Defectors in the population increases.</p>
-<p>there is another piece of information: the <strong>NR</strong> matrix</p>
 <p>here is <strong>R</strong></p>
 <table>
 <thead>
@@ -1248,7 +1258,7 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<p>here is <strong>NR</strong></p>
+<p>we calculate <strong>NR</strong> matrix to answer the question, from an initial state, the system will end up in which absorbed state?</p>
 <table>
 <thead>
 <tr>
@@ -1288,6 +1298,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1297,12 +1308,14 @@ body .markdown-body
 <td>1-e</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S1</td>
 <td>e</td>
 <td>1/4-e</td>
 <td>3/4</td>
+<td>0</td>
 <td>0</td>
 </tr>
 <tr>
@@ -1311,6 +1324,7 @@ body .markdown-body
 <td>e</td>
 <td>1/2-e</td>
 <td>1/2</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S3</td>
@@ -1318,6 +1332,7 @@ body .markdown-body
 <td>0</td>
 <td>e</td>
 <td>3/4-e</td>
+<td>1/4</td>
 </tr>
 <tr>
 <td>S4</td>
@@ -1325,6 +1340,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>e</td>
+<td>1-e</td>
 </tr>
 </tbody>
 </table>
@@ -1337,6 +1353,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1346,12 +1363,14 @@ body .markdown-body
 <td>.9</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S1</td>
 <td>.1</td>
 <td>.15</td>
 <td>.75</td>
+<td>0</td>
 <td>0</td>
 </tr>
 <tr>
@@ -1360,6 +1379,7 @@ body .markdown-body
 <td>.1</td>
 <td>.4</td>
 <td>.5</td>
+<td>0</td>
 </tr>
 <tr>
 <td>S3</td>
@@ -1367,6 +1387,7 @@ body .markdown-body
 <td>0</td>
 <td>.1</td>
 <td>.65</td>
+<td>.25</td>
 </tr>
 <tr>
 <td>S4</td>
@@ -1374,6 +1395,7 @@ body .markdown-body
 <td>0</td>
 <td>0</td>
 <td>.1</td>
+<td>.9</td>
 </tr>
 </tbody>
 </table>
@@ -1385,6 +1407,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1394,6 +1417,7 @@ body .markdown-body
 <td>.01</td>
 <td>.05</td>
 <td>.27</td>
+<td>.67</td>
 </tr>
 <tr>
 <td>S1</td>
@@ -1401,6 +1425,7 @@ body .markdown-body
 <td>.01</td>
 <td>.05</td>
 <td>.27</td>
+<td>.67</td>
 </tr>
 <tr>
 <td>S2</td>
@@ -1408,6 +1433,7 @@ body .markdown-body
 <td>.01</td>
 <td>.05</td>
 <td>.27</td>
+<td>.67</td>
 </tr>
 <tr>
 <td>S3</td>
@@ -1415,6 +1441,7 @@ body .markdown-body
 <td>.01</td>
 <td>.05</td>
 <td>.27</td>
+<td>.67</td>
 </tr>
 <tr>
 <td>S4</td>
@@ -1422,11 +1449,11 @@ body .markdown-body
 <td>.01</td>
 <td>.05</td>
 <td>.27</td>
+<td>.67</td>
 </tr>
 </tbody>
 </table>
-<p>regardless of initial state, the population will mostly be in state 4 (all defection) because the stationary distribution says that.</p>
-<p>conveniently, because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because it&rsquo;s easy, just take the reciprocal of fixed vector elements:</p>
+<p>regardless of initial state, the population will mostly (67%) be in state 4 (all defection). because this new transition matrix is an ergodic matrix, we may try to calculate more information. for example, we try the mean recurrence time because we just need to take the reciprocal of fixed vector elements:</p>
 <table>
 <thead>
 <tr>
@@ -1478,6 +1505,7 @@ body .markdown-body
 <th>S1</th>
 <th>S2</th>
 <th>S3</th>
+<th>S4</th>
 </tr>
 </thead>
 <tbody>
@@ -1487,6 +1515,7 @@ body .markdown-body
 <td>1</td>
 <td>2.8</td>
 <td>4.9</td>
+<td>9.8</td>
 </tr>
 <tr>
 <td>S1</td>
@@ -1494,6 +1523,7 @@ body .markdown-body
 <td>0 1.6</td>
 <td>3.8</td>
 <td>8.7</td>
+<td>+inf</td>
 </tr>
 <tr>
 <td></td>
@@ -1501,20 +1531,13 @@ body .markdown-body
 <td>....</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>i dont why it fucks up&hellip; let&rsquo;s just leave it &amp; me be.</p>
+<p>i dont know why it fucks up&hellip; let&rsquo;s just leave it &amp; me be.</p>
 <h3 id="question"><a name="user-content-question" href="#question" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>question</h3>
-<ul>
-<li>
-<p>why does Nash do this to humanity?</p>
-</li>
-<li>
-<p>what does <a href="https://www.youtube.com/watch?v=i6esRZLAR1Q&amp;list=LLPcV7wAnTzTaq9392rV6eLg&amp;index=1">Nietzche say</a>?</p>
-</li>
-<li>
-<p>maybe it&rsquo;s true that we can&rsquo;t handle the fact that we are not real, in any sense of the word <em>real</em>.</p>
+<p>why does Nash do this to humanity? what does <a href="https://www.youtube.com/watch?v=i6esRZLAR1Q&amp;list=LLPcV7wAnTzTaq9392rV6eLg&amp;index=1">Nietzche say</a> about infinite recurrence? maybe it&rsquo;s true that we can&rsquo;t handle the fact that we are not real, in any sense of the word <em>real</em>.</p>
 
 <p>
 <div id="disqus_thread"></div>
@@ -1532,5 +1555,4 @@ body .markdown-body
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </p> 
 
-</li>
-</ul></article></body></html>
+</article></body></html>
