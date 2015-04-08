@@ -130,10 +130,10 @@ iteration is something summoning itself in the process. like in the iterated
 prisoners dilemma game, each instance of the iterated game is the one-shot game
 but it depends on the previous outcome. events hook into each other like a chain.
 
-now, this is what i understand. counterintuitively they use the word iteration
+it seems like counterintuitively they use the word iteration
 for the `for` loop in which one action
 is repeated and they use the word recursion for the loop that call itself in the
-process. just wording.
+process.
 
 anyway, we know that there are too kind of loops. let me just stick to the convention
 i feel
