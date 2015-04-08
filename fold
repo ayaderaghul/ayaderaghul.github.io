@@ -1,0 +1,285 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) / [Comics](https://ayaderaghul.github.io/comic.html)
+
+
+#fold
+
+many academic students may wonder which programming language to start,
+given that they are not
+in *that* field (like me) and they may not need more than one language in their career.
+
+i know a bunch of undergrads that can pull off their hobby in python to do
+bachelor thesis. i do scheme/racket for my master thesis. here is
+[Quantitative with Julia](http://quant-econ.net/_static/pdfs/jl-quant-econ.pdf).
+or R. these are stuffs that are so popular on the internet that you can search for help
+"how to do X in Y" on google and get what you want almost immediately.
+
+and things that the internet offers are things that are for free. the only limitation
+is you. if what people do make you think that programming language is pervasive, you are
+watching the wrong people. programming language above all is a language, like maths.
+maths look intidimating to me indeed, but i'm not scared to start on it because of
+the way people make it complicated. you shouldnt. in any other areas also.
+
+the most common thing people do in programming language to scare noobs is showing
+complicated syntax. scheme isnt one
+of those. the simplicity in scheme is in its incredible expressiveness. which is to
+say that it's among the most readable, english-like. scheme may not be the most
+succint, and [succintness is power](http://www.paulgraham.com/power.html)
+for the high level programmers, but for the newbies
+and non-professionals, expressiveness clearly has more weight.
+
+##function & contract
+
+functions are first class citizens in scheme (and in LISP family). functions are like
+verbs in the sentence. the verb always go first, objects follow.
+the whole single sentence is wrapped into a pair of brackets:
+
+```
+> (append "hello" "world")
+"helloworld"
+```
+
+the even more basic version of expressing function in functional languages is
+the lambda form:
+
+```
+(lambda (x) (* 2 x))
+```
+the above function says that if you give it x=2, it returns 2.x=2.2=4.
+
+the computer will obey whatever command you give, no questions
+asked as long as you dont violate assumptions and contracts with the language you use.
+like in this case, if you say
+
+```
+(+ 2 'a)
+```
+this sentence is grammatically right. but this sentence
+means that you are asking the computer to add a number and a symbol. you know what will
+it responses? it'll react like this:
+
+```
++: contract violation
+  expected: number?
+  given: 'a
+  argument position: 2nd
+  other arguments...:
+   2
+  context...:
+   /home/chi/racket/collects/racket/private/misc.rkt:87:7
+```
+
+it says you violate your contract with the function `+`. and the function `+` is sueing
+you with documents supporting its claim. sometimes it'll even claim:
+
+```
+blaming: top level
+```
+which means that it's rightfully blaming you.
+
+-> once you enter racket, you
+implicitly sign a lot of social contracts with it.
+
+##higher order function
+
+higher order functions are functions that can manipulate other functions. if you play
+Yugi-Oh, they are the wild cards that can activate another card or summon incredible
+monsters on the battle field.
+
+among those are fold, map, filter, apply... i like to write about fold because it
+takes me one year to grab the idea of fold, just like subgame perfect nash equilibrium,
+just like evolutionary stable strategy.. (also because suddently i want to).
+
+```
+> (filter odd? '(0 1 2 3 4 5))
+'(1 3 5)
+```
+`filter` collects a list of values that `odd?` says #t.
+
+```
+> (map add1 '(0 1 2))
+'(1 2 3)
+```
+`map` applies `add1` on each element of the list.
+`add1` accepts only one argument as its input hence we need only 1 list.
+but there are function that takes 2 arguments as inputs:
+
+```
+> (map + '(0 1 2) '(3 4 5))
+'(3 5 7)
+```
+this `+` takes more than 1 argument as its input, so i put 2 lists.
+
+```
+> (apply * '(1 2 3))
+9
+```
+
+-> it's like `apply` puts `*` in between the elements of the list while
+map applies the function onto all elements separately.
+
+what about fold? in racket, there is `foldl` (fold-left: fold
+from left to right) and `foldr` (fold-right).
+if you understand `foldl` early in the days, you are already better than me.
+
+##iteration and recursion
+
+recursion is something repeated. like in the repeated prisoners dilemma game, each
+instance of the repeated game is the one-shot game. events recur in a sequence.
+
+iteration is something summoning itself in the process. like in the iterated
+prisoners dilemma game, each instance of the iterated game is the one-shot game
+but it depends on the previous outcome. events hook into each other like a chain.
+
+now, this is what i understand. counterintuitively they use the word iteration
+for the `for` loop in which one action
+is repeated and they use the word recursion for the loop that call itself in the
+process. just wording.
+
+anyway, we know that there are too kind of loops. let me just stick to the convention
+i feel
+intuitive. it means that the nature of the loop in the beauty contest game is
+iterative. because you calculate the result, you save that result and loop the
+calculation process with that result of the previous calculation. and by doing that,
+you iteratively eliminate weakly dominated strategies.
+
+##foldl
+what `foldl` does is iteration.
+
+```
+> (foldl + 0 '(1 2 3))
+6
+```
+`foldl` doesnt take sum immediately, it takes accumulated sum in each step but throw away
+all the data history, it returns only the final step of 6. transparently,
+it takes 0 to be initial point, it recruits the first element of the list which
+is 1. it applies proc `+` to 0 and 1 which results in 1. now it takes 1 to be initial
+point again with the list to be '(2 3). continually doing this, it returns 6 finally.
+
+here is the syntax of `foldl`
+```
+(foldl procedure init-value a-list)
+```
+the procedure will take init-value and next-value = `(first a-list)` as its inputs:
+
+```
+(lambda (next-value init-value) (procedure ...init...next))
+```
+
+so in the above example, here is what happens
+
+```
+proc = +
+init = 0 ; a-list = '(1 2 3)
+next = (first '(1 2 3)) = 1
+
+(lambda (next init) (+ init next))
+
+(+ 1 0) -> 1
+init = 1 ; a-list = '(2 3)
+next = 2
+
+(+ 2 1) -> 3
+init = 3
+next = 3
+
+(+ 3 3) -> 6
+```
+another example of `foldl`
+```
+> (foldl * 1 '(1 2 3))
+6
+```
+this is the factorial 3!.
+
+###rewrite `map` and `filter` in `foldl`
+the fastest way to understand foldl is to rewrite map and filter in foldl.
+
+```
+> (map add1 '(0 1 2))
+'(1 2 3)
+```
+it looks like `map` does `add1` instantly to all elements but it doesnt.
+
+here are steps of `map`
+
+```
+'() '(1 2 3)
+'(1) '(1 2)
+'(1 2) '(2)
+'(1 2 3) '()
+```
+
+`map` has an empty list at the begining (init-list), it moves each element of the
+provided list into its intial list, and in the process of transportation, it applies
+the function `add1` on the element. when the provided list becomes empty, it stops, it
+throws away the empty list and returns the list of results.
+
+what about `foldl`?
+
+```
+> (foldl * 1 '(1 2 3))
+6
+```
+here are steps of `foldl`
+
+```
+1 '(1 2 3)
+1 '(2 3)
+2 '(3)
+6 '()
+```
+`foldl` has an initial value to start with (which you have to provide also).
+then it takes out first element of the provided list, applies the procedure `*` onto
+them, set that result into the init-value place and move on. when the provided list
+becomes empty, it throws away the empty list and returns the value in the init-value
+position.
+
+which means that if we want `foldl` to be like `map`, we have to give `foldl` an
+empty list as its init-value.
+
+```
+> (map add1 '(0 1 2))
+
+> (fold ? '() '(0 1 2))
+```
+
+we dont know what function we can give to `foldl` to have the behavior like the
+`add1` that
+we give to `map` yet. but we can list out the steps as following:
+
+```
+> (foldl ? '() '(0 1 2))
+
+> (foldl ? '(1) '(1 2))
+
+> (foldl ? '(1 2) '(2))
+
+> (foldl ? '(1 2 3) '())
+```
+
+we can see that the behavior of function `?`
+
+```
+(lambda (next init) (? ...init...next...))
+
+init = '()
+next = (first '(0 1 2)) = 0
+
+(lambda (0 '()) (? 0 '())) -> '(1)
+(lambda (1 '(1)) (? 1 '(1))) -> '(1 2)
+(lambda (2 '(1 2)) (? 2 '(1 2))) -> '(1 2 3)
+```
+
+it appends init to (list (add1 next))
+```
+(lambda (next init) (append init (list (add1 next))))
+```
+so, here is `map` rewritten in `foldl`
+
+```
+(foldl (lambda (next init) (append init (list (add1 next))))
+       '()
+       '(0 1 2)))
+```
+
+`filter` rewritten in `foldl` is exercise.
