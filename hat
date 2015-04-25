@@ -1,0 +1,307 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) / [Comics](https://ayaderaghul.github.io/comic.html)
+
+#the Alice's hat
+
+suddenly i become quite disposal these days, so i go back to watch nerdy movies
+(seriously, watch [batman: assault in arkham](https://www.youtube.com/watch?v=q_qkZI7no8M),
+harley quinn is batshit crazy).
+plus i'm inspired by this
+[post](http://nbviewer.ipython.org/url/norvig.com/ipython/Cheryl.ipynb)
+that based on a story that went very viral recently, i decide to translate the
+hat story into scheme/racket.
+
+## the hat story
+
+everybody knows the hat story. there are two girls Alice and Beatrice in a room.
+each wears a hat. a hat can be either red or black. each girl
+sees other hat but cant see her own hat. there is a public
+annoucement that "there is a red hat". after this annoucement,
+Alice still cant tell her color. Upon hearing that, Beatrice
+says her hat color is 'red'. Alice's still never able to tell her color.
+
+###possible states
+because there are 2 girls and 2
+colors for a hat, there are 2x2=4 states of the world:
+
+```
+(define states-of-the-world
+  (list (list 'red 'red)
+        (list 'red 'black)
+        (list 'black 'red)
+        (list 'black 'black)))
+```
+this is basic probabilistic maths. if Alice bets on the rationality
+of Beatrice, A may infer that B knows this. and vice versa.
+among these states, the truth materialises to be red-red:
+
+```
+(define truth
+  (hash 'a 'red 'b 'red))
+```
+
+with 'a is for Alice and 'b is for Beatrice. the `hash` function
+creates a yellow-page dictionary.
+
+```
+> truth
+'#hash((a . red) (b . red))
+```
+
+if you enter the key 'a, it
+returns 'red (the associated value) for you.
+
+```
+> (hash-ref truth 'a)
+'red
+> (hash-ref truth 'b)
+'red
+```
+(ref in `hash-ref` is reference)
+
+###they dont know their own colors
+now what not·everybody knows? each person doesnt know the color
+of their own hat, but they can see the color of the other's hat.
+
+```
+(define (see who whom)
+  (if (not (equal? who whom))
+      (hash-ref truth whom)
+      #f))
+
+```
+the function `see` works like this
+
+```
+(see 'a 'b)
+> 'red
+(see 'a 'a)
+> #f
+```
+`see` inputs two arguments: who and whom, who wants to see whom.
+if who is not whom, then we can proceed to
+look up the truth using the key.
+but if who = whom, then we can't access the book of truth,
+racket returns #f.
+technically, the function is shorter this way:
+
+```
+(define (see who whom)
+  (and (not (equal? who whom))
+       (hash-ref truth whom)))
+```
+
+`and` belongs to the famility of
+conditional sentence just like `if`, but `and`
+returns the last `#t` argument. if all arguments are `#f`,
+`and` returns `#f`.
+
+> what is `#t` and what is `#f` in racket?
+
+> every value is `true`, the only `false` is `#f` itself.
+
+anyway, at this point they both dont know the
+true state of the world. they know only the possible states of
+the world. now after they look at each other's hat, what do
+they know about feasible states of the world?
+
+###possible states given other color
+```
+(define (possible? a-color other a-state)
+  (and (equal? a-color
+               ((if (equal? 'a other) first second)
+                a-state))
+       a-state))
+```
+this function checks if a state is possible after a subject
+sees the color of the other. if true, it returns that state.
+
+```
+(possible? 'red 'b '(red red))
+> '(red red)
+
+(possible? 'red 'b '(red black))
+> #f
+```
+if Alice sees that Beatrice is red,
+the state red-red is possible but the state
+red-black can't be possible.
+this function `possible?` is a stepping-stone for another function
+`possible-states`,
+which will check the whole state set to return
+a list of possible states after one sees other color.
+```
+(define (possible-states a-color other a-world-state-list)
+  (for/list ([i (length a-world-state-list)])
+    (possible? a-color other
+               (list-ref a-world-state-list i))))
+```
+this is a loop, when *i* run fully through the state list,
+racket checks what state is possible,
+then returns the result in a list.
+
+```
+> (possible-states 'red 'b states-of-the-world)
+'((red red) #f (black red) #f)
+```
+
+to get rid of the `#f` in the list, we use `filter` to collect
+the `not false` arguments only:
+
+```
+(define (true? x)
+  (not (false? x)))
+
+(define (possible-states a-color other a-world-state-list)
+  (filter true?
+          (for/list ([i (length a-world-state-list)])
+            (possible? a-color other
+                       (list-ref a-world-state-list i)))))
+
+```
+
+now the returned list is clean:
+```
+> (possible-states 'red 'b states-of-the-world)
+'((red red) (black red))
+```
+the above sentence says that if (Alice sees) Beatrice is red,
+then possible states of the world is red-red and black-red.
+again, this is basic probability, these *possible* speculations of
+*what-ifs* rest firmly on the rationality assumption.
+
+### feasible states, given the truth
+
+given the true state red-red, Alice can only see red and
+Beatrice can only see red. so they knows that the possible state set
+can be narrowed down into a smaller state set that is more
+feasible:
+
+```
+(define (know who a-world-state-list)
+  (possible-states
+      (if (equal? 'a who) 'b 'a)
+      (see who (if (equal? 'a who) 'b 'a))
+      a-world-state-list
+                   ))
+```
+this function'll tell you who knows what.
+```
+> (know 'a states-of-the-world)
+'((red red) (black red))
+> (know 'b state-of-the-world)
+'((red red) (red black))
+```
+the function is just a nested function built upon the smaller
+fragments that we wrote in previous section. semantically,
+if the subject is Alice (who), then the other will be Beatrice (whom)
+and vice versa.
+
+note that given the truth, after they see other color,
+each of them will have a different set of feasible states
+(length 2). that'd be private inforamation.
+the common knowledge here is that if
+we see through each player eye, we *may* see a
+completely different reality. it's a lovely coincidence
+of this riddle that
+the truth materialises for their reality to be the same.
+but they dont know that. Alice doesnt know what Beatrice sees,
+so she can't
+infer the feasible set of Beatrice and vice versa.
+what one can iterately infer (a higher order inference) is a
+larger range of what-ifs:
+
+Beatrice can fold her reasoning once like this:
+- if A sees a red in me, A's feasible set will be '((red red) (black red))
+- if A sees a black in me, A's feasible set will be '((red black) (black black))
+
+and vice versa. the code of that Beatrice reasoning about Alice's
+thinking is:
+```
+> (possible-states 'red 'b states-of-the-world)
+'((red red) (black red))
+> (possible-states 'black 'b states-of-the-world)
+'((red black) (black black))
+```
+
+###announcement: there is a red hat
+now, with this piece of information that is publicly annouced,
+everybody knows that there can't be black-black state,
+so we remove the state that couldnt have materialised: black-black
+```
+(define (everybody-knows not-state a-world-state-list)
+  (remove not-state a-world-state-list))
+
+(everybody-knows '(black black) states-of-the-world)
+> '((red red) (red black) (black red))
+```
+we can define a new state set of the world (a narrower one)
+
+```
+(define reduced-states-of-the-world
+  (everybody-knows '(black black) states-of-the-world))
+```
+
+### Alice still cant tell her color
+
+with a shrinked set of states of the world, we'll see how it affects
+the speculation of Beatrice about the reality through Alice's eye:
+```
+> (possible-states 'red 'b reduced-states-of-the-world)
+'((red red) (black red))
+> (possible-states 'black 'b reduced-states-of-the-world)
+'((red black))
+```
+Beatrice still doesnt know which reality is the reality of
+Alice, but the set of what-ifs clearly gets smaller.
+and one feasible reality has only length 1. which means that
+if that reality is the case, Alice will be able to tell the true
+state of the world, (and her color).
+but, Alice still can't tell the color of her hat.
+which means that the length-one reality is not possible.
+which means that the other reality is true. and it's the reality
+that Alice sees red color in Beatrice.
+
+if every single chain in this logic is not broken, Beatrice can go
+that far.
+
+### Alice never knows her color
+
+after beatrice says her color is red, nothing changes to Alice.
+her reality still have two feasible states red-red, black-red.
+but if Beatrice was asked before Alice (after the announcement),
+the situtation will reversed. so the thing is
+Alice doesnt know how Beatrice knows. At best, Alice can make
+a higher order inference (a big range of what-ifs) like this:
+
+- if Beatrice knows B hat in a
+trivial way: Beatrice sees that Alice has a black hat:
+```
+> (possible-states 'black 'a reduced-states-of-the-world)
+'((black red))
+```
+then Alice knows that Alice hat is black
+
+- if Beatrice knows B hat only after B knows that A cant tell,
+it means that B has to project A mind in order to infer
+that information. B was trying to think about the possible
+realities of Alice. in that case A's hat is red.
+
+but Beatrice never tells how B knows.
+
+##common knowledge
+
+Myerson has to make a section in his textbook to note that common knowledge
+doesnt sound trivial as this: everybody knows everything
+or everybody knows that everybody knows .... about everything.
+
+one of not-so-trivial reasoning path is that
+we do some recursive and iterative reasoning to
+infer (at infinite level) about what others know and we dont
+know but we know that others know something... blah
+
+so, it happens with probability that if we face two minds of two people like
+we arrange two mirrors facing each other, we got to infinity.
+
+the sad thing is that sometimes it doesnt happen,
+
+but we still think so.

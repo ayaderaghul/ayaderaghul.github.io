@@ -860,29 +860,351 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>post</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
+}</style><title>hat</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> / <a href="https://ayaderaghul.github.io/comic.html">Comics</a></p>
 
-<p><em>some posts were deleted</em></p>
+<h1>
+<a id="user-content-the-alices-hat" class="anchor" href="#the-alices-hat" aria-hidden="true"><span class="octicon octicon-link"></span></a>the Alice's hat</h1>
+
+<p>suddenly i become quite disposal these days, so i go back to watch nerdy movies
+(seriously, watch <a href="https://www.youtube.com/watch?v=q_qkZI7no8M">batman: assault in arkham</a>,
+harley quinn is batshit crazy).
+plus i'm inspired by this
+<a href="http://nbviewer.ipython.org/url/norvig.com/ipython/Cheryl.ipynb">post</a>
+that based on a story that went very viral recently, i decide to translate the
+hat story into scheme/racket.</p>
+
+<h2>
+<a id="user-content-the-hat-story" class="anchor" href="#the-hat-story" aria-hidden="true"><span class="octicon octicon-link"></span></a>the hat story</h2>
+
+<p>everybody knows the hat story. there are two girls Alice and Beatrice in a room.
+each wears a hat. a hat can be either red or black. each girl
+sees other hat but cant see her own hat. there is a public
+annoucement that "there is a red hat". after this annoucement,
+Alice still cant tell her color. Upon hearing that, Beatrice
+says her hat color is 'red'. Alice's still never able to tell her color.</p>
+
+<h3>
+<a id="user-content-possible-states" class="anchor" href="#possible-states" aria-hidden="true"><span class="octicon octicon-link"></span></a>possible states</h3>
+
+<p>because there are 2 girls and 2
+colors for a hat, there are 2x2=4 states of the world:</p>
+
+<pre><code>(define states-of-the-world
+  (list (list 'red 'red)
+        (list 'red 'black)
+        (list 'black 'red)
+        (list 'black 'black)))
+</code></pre>
+
+<p>this is basic probabilistic maths. if Alice bets on the rationality
+of Beatrice, A may infer that B knows this. and vice versa.
+among these states, the truth materialises to be red-red:</p>
+
+<pre><code>(define truth
+  (hash 'a 'red 'b 'red))
+</code></pre>
+
+<p>with 'a is for Alice and 'b is for Beatrice. the <code>hash</code> function
+creates a yellow-page dictionary.</p>
+
+<pre><code>&gt; truth
+'#hash((a . red) (b . red))
+</code></pre>
+
+<p>if you enter the key 'a, it
+returns 'red (the associated value) for you.</p>
+
+<pre><code>&gt; (hash-ref truth 'a)
+'red
+&gt; (hash-ref truth 'b)
+'red
+</code></pre>
+
+<p>(ref in <code>hash-ref</code> is reference)</p>
+
+<h3>
+<a id="user-content-they-dont-know-their-own-colors" class="anchor" href="#they-dont-know-their-own-colors" aria-hidden="true"><span class="octicon octicon-link"></span></a>they dont know their own colors</h3>
+
+<p>now what not·everybody knows? each person doesnt know the color
+of their own hat, but they can see the color of the other's hat.</p>
+
+<pre><code>(define (see who whom)
+  (if (not (equal? who whom))
+      (hash-ref truth whom)
+      #f))
+
+</code></pre>
+
+<p>the function <code>see</code> works like this</p>
+
+<pre><code>(see 'a 'b)
+&gt; 'red
+(see 'a 'a)
+&gt; #f
+</code></pre>
+
+<p><code>see</code> inputs two arguments: who and whom, who wants to see whom.
+if who is not whom, then we can proceed to
+look up the truth using the key.
+but if who = whom, then we can't access the book of truth,
+racket returns #f.
+technically, the function is shorter this way:</p>
+
+<pre><code>(define (see who whom)
+  (and (not (equal? who whom))
+       (hash-ref truth whom)))
+</code></pre>
+
+<p><code>and</code> belongs to the famility of
+conditional sentence just like <code>if</code>, but <code>and</code>
+returns the last <code>#t</code> argument. if all arguments are <code>#f</code>,
+<code>and</code> returns <code>#f</code>.</p>
+
+<blockquote>
+<p>what is <code>#t</code> and what is <code>#f</code> in racket?</p>
+
+<p>every value is <code>true</code>, the only <code>false</code> is <code>#f</code> itself.</p>
+</blockquote>
+
+<p>anyway, at this point they both dont know the
+true state of the world. they know only the possible states of
+the world. now after they look at each other's hat, what do
+they know about feasible states of the world?</p>
+
+<h3>
+<a id="user-content-possible-states-given-other-color" class="anchor" href="#possible-states-given-other-color" aria-hidden="true"><span class="octicon octicon-link"></span></a>possible states given other color</h3>
+
+<pre><code>(define (possible? a-color other a-state)
+  (and (equal? a-color
+               ((if (equal? 'a other) first second)
+                a-state))
+       a-state))
+</code></pre>
+
+<p>this function checks if a state is possible after a subject
+sees the color of the other. if true, it returns that state.</p>
+
+<pre><code>(possible? 'red 'b '(red red))
+&gt; '(red red)
+
+(possible? 'red 'b '(red black))
+&gt; #f
+</code></pre>
+
+<p>if Alice sees that Beatrice is red,
+the state red-red is possible but the state
+red-black can't be possible.
+this function <code>possible?</code> is a stepping-stone for another function
+<code>possible-states</code>,
+which will check the whole state set to return
+a list of possible states after one sees other color.</p>
+
+<pre><code>(define (possible-states a-color other a-world-state-list)
+  (for/list ([i (length a-world-state-list)])
+    (possible? a-color other
+               (list-ref a-world-state-list i))))
+</code></pre>
+
+<p>this is a loop, when <em>i</em> run fully through the state list,
+racket checks what state is possible,
+then returns the result in a list.</p>
+
+<pre><code>&gt; (possible-states 'red 'b states-of-the-world)
+'((red red) #f (black red) #f)
+</code></pre>
+
+<p>to get rid of the <code>#f</code> in the list, we use <code>filter</code> to collect
+the <code>not false</code> arguments only:</p>
+
+<pre><code>(define (true? x)
+  (not (false? x)))
+
+(define (possible-states a-color other a-world-state-list)
+  (filter true?
+          (for/list ([i (length a-world-state-list)])
+            (possible? a-color other
+                       (list-ref a-world-state-list i)))))
+
+</code></pre>
+
+<p>now the returned list is clean:</p>
+
+<pre><code>&gt; (possible-states 'red 'b states-of-the-world)
+'((red red) (black red))
+</code></pre>
+
+<p>the above sentence says that if (Alice sees) Beatrice is red,
+then possible states of the world is red-red and black-red.
+again, this is basic probability, these <em>possible</em> speculations of
+<em>what-ifs</em> rest firmly on the rationality assumption.</p>
+
+<h3>
+<a id="user-content-feasible-states-given-the-truth" class="anchor" href="#feasible-states-given-the-truth" aria-hidden="true"><span class="octicon octicon-link"></span></a>feasible states, given the truth</h3>
+
+<p>given the true state red-red, Alice can only see red and
+Beatrice can only see red. so they knows that the possible state set
+can be narrowed down into a smaller state set that is more
+feasible:</p>
+
+<pre><code>(define (know who a-world-state-list)
+  (possible-states
+      (if (equal? 'a who) 'b 'a)
+      (see who (if (equal? 'a who) 'b 'a))
+      a-world-state-list
+                   ))
+</code></pre>
+
+<p>this function'll tell you who knows what.</p>
+
+<pre><code>&gt; (know 'a states-of-the-world)
+'((red red) (black red))
+&gt; (know 'b state-of-the-world)
+'((red red) (red black))
+</code></pre>
+
+<p>the function is just a nested function built upon the smaller
+fragments that we wrote in previous section. semantically,
+if the subject is Alice (who), then the other will be Beatrice (whom)
+and vice versa.</p>
+
+<p>note that given the truth, after they see other color,
+each of them will have a different set of feasible states
+(length 2). that'd be private inforamation.
+the common knowledge here is that if
+we see through each player eye, we <em>may</em> see a
+completely different reality. it's a lovely coincidence
+of this riddle that
+the truth materialises for their reality to be the same.
+but they dont know that. Alice doesnt know what Beatrice sees,
+so she can't
+infer the feasible set of Beatrice and vice versa.
+what one can iterately infer (a higher order inference) is a
+larger range of what-ifs:</p>
+
+<p>Beatrice can fold her reasoning once like this:</p>
 
 <ul>
-<li><p><a href="https://ayaderaghul.github.io/hat.html">the Alice's hat</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mensa.html">who do i see at mensa</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fail.html">how does failure taste like</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/sense.html">common sense</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fold.html">fold</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov2.html">markov chain 2: prisoners' dilemma</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov.html">markov chain</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/demoralise.html">dont be demoralised and dont be intimidated by labels</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/cat.html">a cat story</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/crazy.html">how much of that is possible</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/bargaining.html">stories that we'd tell in sunset</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mystique.html">mystique</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/love.html">is it today yet?</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/acad.html">the one thing that i like about academia</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/behavior.html">theoretical &amp; empirical: on the tension between game theory &amp; behavioral economics in me</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/blame.html">the veil of ignorance for a reality check</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/anticipation.html">utility, &amp; utility of anticipation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda2.html">functional language, &amp; the nature of copyright</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda1.html">lambda calculus, infinite regress and rational expectation</a></p></li>
+<li>if A sees a red in me, A's feasible set will be '((red red) (black red))</li>
+<li>if A sees a black in me, A's feasible set will be '((red black) (black black))</li>
 </ul>
+
+<p>and vice versa. the code of that Beatrice reasoning about Alice's
+thinking is:</p>
+
+<pre><code>&gt; (possible-states 'red 'b states-of-the-world)
+'((red red) (black red))
+&gt; (possible-states 'black 'b states-of-the-world)
+'((red black) (black black))
+</code></pre>
+
+<h3>
+<a id="user-content-announcement-there-is-a-red-hat" class="anchor" href="#announcement-there-is-a-red-hat" aria-hidden="true"><span class="octicon octicon-link"></span></a>announcement: there is a red hat</h3>
+
+<p>now, with this piece of information that is publicly annouced,
+everybody knows that there can't be black-black state,
+so we remove the state that couldnt have materialised: black-black</p>
+
+<pre><code>(define (everybody-knows not-state a-world-state-list)
+  (remove not-state a-world-state-list))
+
+(everybody-knows '(black black) states-of-the-world)
+&gt; '((red red) (red black) (black red))
+</code></pre>
+
+<p>we can define a new state set of the world (a narrower one)</p>
+
+<pre><code>(define reduced-states-of-the-world
+  (everybody-knows '(black black) states-of-the-world))
+</code></pre>
+
+<h3>
+<a id="user-content-alice-still-cant-tell-her-color" class="anchor" href="#alice-still-cant-tell-her-color" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alice still cant tell her color</h3>
+
+<p>with a shrinked set of states of the world, we'll see how it affects
+the speculation of Beatrice about the reality through Alice's eye:</p>
+
+<pre><code>&gt; (possible-states 'red 'b reduced-states-of-the-world)
+'((red red) (black red))
+&gt; (possible-states 'black 'b reduced-states-of-the-world)
+'((red black))
+</code></pre>
+
+<p>Beatrice still doesnt know which reality is the reality of
+Alice, but the set of what-ifs clearly gets smaller.
+and one feasible reality has only length 1. which means that
+if that reality is the case, Alice will be able to tell the true
+state of the world, (and her color).
+but, Alice still can't tell the color of her hat.
+which means that the length-one reality is not possible.
+which means that the other reality is true. and it's the reality
+that Alice sees red color in Beatrice.</p>
+
+<p>if every single chain in this logic is not broken, Beatrice can go
+that far.</p>
+
+<h3>
+<a id="user-content-alice-never-knows-her-color" class="anchor" href="#alice-never-knows-her-color" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alice never knows her color</h3>
+
+<p>after beatrice says her color is red, nothing changes to Alice.
+her reality still have two feasible states red-red, black-red.
+but if Beatrice was asked before Alice (after the announcement),
+the situtation will reversed. so the thing is
+Alice doesnt know how Beatrice knows. At best, Alice can make
+a higher order inference (a big range of what-ifs) like this:</p>
+
+<ul>
+<li>if Beatrice knows B hat in a
+trivial way: Beatrice sees that Alice has a black hat:</li>
+</ul>
+
+<pre><code>&gt; (possible-states 'black 'a reduced-states-of-the-world)
+'((black red))
+</code></pre>
+
+<p>then Alice knows that Alice hat is black</p>
+
+<ul>
+<li>if Beatrice knows B hat only after B knows that A cant tell,
+it means that B has to project A mind in order to infer
+that information. B was trying to think about the possible
+realities of Alice. in that case A's hat is red.</li>
+</ul>
+
+<p>but Beatrice never tells how B knows.</p>
+
+<h2>
+<a id="user-content-common-knowledge" class="anchor" href="#common-knowledge" aria-hidden="true"><span class="octicon octicon-link"></span></a>common knowledge</h2>
+
+<p>Myerson has to make a section in his textbook to note that common knowledge
+doesnt sound trivial as this: everybody knows everything
+or everybody knows that everybody knows .... about everything.</p>
+
+<p>one of not-so-trivial reasoning path is that
+we do some recursive and iterative reasoning to
+infer (at infinite level) about what others know and we dont
+know but we know that others know something... blah</p>
+
+<p>so, it happens with probability that if we face two minds of two people like
+we arrange two mirrors facing each other, we got to infinity.</p>
+
+<p>the sad thing is that sometimes it doesnt happen,</p>
+
+<p>but we still think so.</p>
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
 </article></body></html>
