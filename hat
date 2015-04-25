@@ -241,7 +241,7 @@ we can define a new state set of the world (a narrower one)
   (everybody-knows '(black black) states-of-the-world))
 ```
 
-### Alice still cant tell her color
+### Alice can never tell her color
 
 with a shrinked set of states of the world, we'll see how it affects
 the speculation of Beatrice about the reality through Alice's eye:
