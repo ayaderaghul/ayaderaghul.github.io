@@ -241,7 +241,7 @@ we can define a new state set of the world (a narrower one)
   (everybody-knows '(black black) states-of-the-world))
 ```
 
-### Alice can never tell her color
+### Alice still cant tell her color
 
 with a shrinked set of states of the world, we'll see how it affects
 the speculation of Beatrice about the reality through Alice's eye:
@@ -264,7 +264,7 @@ that Alice sees red color in Beatrice.
 if every single chain in this logic is not broken, Beatrice can go
 that far.
 
-### Alice never knows her color
+### Alice can never tell her color
 
 after beatrice says her color is red, nothing changes to Alice.
 her reality still have two feasible states red-red, black-red.
