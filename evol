@@ -1,0 +1,134 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html)
+
+
+# evolutionary game Q&A
+
+
+i want to write this for some reasons (i started long time ago but couldnt progress to finish
+because i fucked up. but i discover that from now on i have this unit test: if i'm unable to articulate stuff
+in a blog post, i dont understand it):
+
+- for the sake of clarification to the ones who wasnt able to refute me when i was narrow in scope.
+
+- the main purpose is for ones who ask: what do you study to do evolutionary game and simulation and stuff. i write this as
+an insufficient answer[1].
+
+- btw hopefully create a side-effect: lure students that doing this is fun, which it is, 5% of the time,
+statistically significant
+
+[1] the problem with insufficient and narrow encounter is that it makes you cling on with deep and isolated idea
+and think that it's all there is. a wrong model itself is not harmful, but a wrong model in isolation without
+constant update and fixing bugs can cause quite much systematic trouble.
+
+
+##1. small talks
+neither cooperative game theory nor noncooperative game theory will go away.
+they live to validate the existence of each other.
+it's like 2 sides: some situation assumes that moral is to be taken for granted and
+some others believe that moral traits has functional and evolutionary explanation.
+
+saying about dividing the pie, in the realm of what should be,
+nash's barganining solution is the ultimate of what-should-be.
+you want perfect world, the solution he proposes is invariant to everything,
+you want no-discrimimation, it is under the veil of ignorance blah blah..
+
+in the parallel school of what really happens,
+nash defines an equilibrium based on best response regarding to own interest.
+if it's in our interest to do anything, we do it.
+the result may be *perceived* to be sweet and touching as we love each other we trust this world...
+it doesnt really matter. after the result materialises, observers can decorate it with fancy moral subjectively
+whatever they want. we believe in trust in love in righteousness in the color of the bright eyes of each other
+whatever.. but if we push the rationale to the core of it,
+the drive of the action is singlehandedly to our own interest, strictly speaking, to our best interest.
+based on our own belief of the world.
+
+(there is a dangerous temptation to interpret after maths manipulation. the result is the maths result, making it sound culturally relevant may get sympathy from readers but
+try to keep in mind that it isnt necessarily to be that.
+
+for example, Dyson articulates in maths an extremely interesting aspects of PD game that is a huge
+oversight for game theorists in the field.
+however if you read the interpretation of that,
+(worse is the interpretation of the press coverage for public),
+the idea sounds like a far-away stranger.
+)
+
+back to NE, nash equilibrium is always right, it is right by definition. it's a self-fulfilling prophecy.
+and it is very broad concept because it bases only on belief, not necessarily on what's real.
+if the expectation converges in equilibrium + the action is consistent in equilibrium,
+then what wasnt real before becomes real now. pause at that to feel the profound.
+what wasnt justified before becomes justified now and only now (in equilibrium),
+as everything (expectation and action)
+converges neatly.
+
+(i doubt if i understand correctly Wittgenstein says language doesnt have exogenous
+meaning, its meaning is created endogenously IN the equiblibrium, not out of it.
+first time people said languages define our world, restrict our imagination, restrain
+our thought, i was quite surprised. how is that even possible, language is a tool
+and a tool isnt supposed to have that much power on our mind. i mean it can affect
+to some extent but i never thought it can dictate what we are. but it does.)
+
+anyway, back to NE,
+the inherent issue is that concept is a bit too large in general. certainly it is.
+i never see common sense that is strict. common sense needs to be general and flexible enough to be interpreted
+with common sense in a large number of cases.
+hence, many giants have tried to develop stricter concept of equilibrium, mostly founded on nash
+equilibrium. NE concept is so fundamental it is like the unit test for any kind of equilibrium concept you
+would like to build.
+
+the essence of these refinements is usually to test the robustness of the NE with some criterion. it's like
+you let the NEs under push and pull to see how tough it is. different refinements are trembling hands while you
+pick strategy, pertube payoff, proper mistake... evolutionary stable and stochastic.. jargons blah blah..
+
+*[skip a big part of explaining refinement concepts and stuff]*
+
+*[skip because i dont fully grasp it, maybe i give it a try next time]*
+
+the thing about these refinements is that they are created by giants.
+so they inherit the mega-rationality from their creators.
+mega-rationality assumption for the players they create
+and infinite recursive thinking of common knowledge!
+so of course people rebel. successful spin offs are behavioral, experimental, neuro-economics,
+psychological economics.. people have different toys and there is no way mega-theorists
+can get all the fun.
+
+##2. fun times
+Maynard Smith (biologist?) brings in evolution concept in game theory
+(not-surprising, Nash mentioned this idea too).
+the good thing about this refinement is that it doesnt even need
+the slightest assumption of
+rationality
+but it still narrows down the NE set significantly, in some case achieving the same
+rationality amount as other refinements, in some case even more strict.
+
+first let's set this baby-step convention, we call players in game, and we call agents in population of simulation.
+(i read this in a paper and cant let go).
+
+until this point i seriously think that this post unfolds to be a series.
+to my best hope, this can be useful for my thesis because
+i fucked up so bad i havent even written a single word of it yet!!!
+
+so my *plan* is let run some simulations of 2x2 repeated games for fun.
+and in the process, hopefully i can deliver the illustration of these following concepts:
+- replicator dynamics (which is basically a vector field, describing law of motion)
+
+- agents and their spectrum of sophistication
+
+- machines classified from dimensions of states vs rules
+
+- code the machines[2]
+
+- the survival of fittest mechanism (let run prisoner dilemma)
+
+- the round-robin mechanism (let run hawk-dove game)
+
+[2]: i embrace the narrow set of machines: deterministic (when they move, they move
+pure strategy, not mixed) and not even stochastic, so we can cover them all =))
+
+hope you dont mind the future that one day, you look at 0 0 0 1 0 and you yell out happily: TWEEDLE DEE!!!
+
+
+
+
+
+
+
