@@ -72,6 +72,8 @@ now i search google how to export graph in mathematica:
 Export["allD.png", AllDPic]
 ```
 
+##tit for tat
+
 this is another exapmle for tit for tat:
 
 ![tft](https://cloud.githubusercontent.com/assets/7457301/7670020/999823f8-fc92-11e4-9efc-9333cfcf75a2.png)
