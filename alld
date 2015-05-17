@@ -71,8 +71,6 @@ now i search google how to export graph in mathematica:
 ```
 Export["allD.png", AllDPic]
 ```
-(i dont know why the shape of the state turns from circle into round square, dont
-ask me).
 
 this is another exapmle for tit for tat:
 
