@@ -1,0 +1,97 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) 
+
+
+#mass production of machines
+
+[prequel]():
+how to code individual machines and matching pairs
+
+- are you sure you read the prequel?
+
+- hm.. ye
+- anyway, you know how the guy tit for tat is written?
+- 1 1 0 1 0
+- what about the grim trigger guy?
+- 1 1 0 0 0
+- ok
+
+
+##rationale
+there are two points that explode when they clash into each other:
+
+- each machine has 5 slots in its dna.
+- each of these slot can hold only value 0 or 1.
+
+-> there are 2^5 = 32 of them, and they are base-2 numbers:
+
+```
+0 0 0 0 0 -> 0
+0 0 0 0 1 -> 1
+0 0 0 1 0 -> 2
+0 0 0 1 1 -> 3
+0 0 1 0 0 -> 4
+0 0 1 0 1
+...
+1 1 1 1 0
+1 1 1 1 1 -> 31
+```
+this magnificient :D findings rests in the case that machines are deterministic.
+
+##mass produce
+so let's mass produce them all.
+
+```
+(define (base10->base2 n)
+  (~r n #:base 2 #:min-width 5 #:pad-string "0"))
+```
+try:
+```
+> (base10->base2 31)
+"11111"
+> (base10->base2 5)
+"00101"
+```
+so you want to see what is the base10 version of tit-for-tat guy?
+
+
+```
+> (string->number "11000" 2) ; this is grim-trigger dna
+24
+> (string->number "11010" 2)
+26
+```
+anyway, we see that we havent really created *automaton*, we only convert a base10 number
+into a string of base2 equivalent. now we have to separate the string
+(using `string->list`) into a list of characters then
+convert the characters into digits:
+
+```
+(define (char->digit c)
+  (case c
+    [(#\0) 0]
+    [(#\1) 1]))
+
+(define (base2->digits a-string)
+  (map char->digit (string->list a-string)))
+
+```
+try:
+```
+> (base2->digits (base10->base2 24))
+'(1 1 0 0 0)
+```
+this is clearly the dna of the grim-trigger guy.
+but this is just a list, it's not yet in *automaton* structure.
+we need to do this in order to register this list as an *automaton*:
+
+```
+> (make-automaton 1 1 0 0 0)
+#<automaton>
+```
+
+which is done by using `apply`:
+
+```
+(define (number->automaton n)
+  (apply make-automaton (base2->digits (base10->base2 n))))
+```

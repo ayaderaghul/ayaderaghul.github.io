@@ -860,34 +860,124 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>post</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
+}</style><title>mass</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
 
-<p><em>some posts were deleted</em></p>
+<h1>
+<a id="user-content-mass-production-of-machines" class="anchor" href="#mass-production-of-machines" aria-hidden="true"><span class="octicon octicon-link"></span></a>mass production of machines</h1>
+
+<p><a href="">prequel</a>:
+how to code individual machines and matching pairs</p>
 
 <ul>
-<li><p><a href="https://ayaderaghul.github.io/mass.html">machine: mass production</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/auto.html">machine: state-based vs rule-based</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/alld.html">machine visualisation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/evol.html">evolutionary game Q&amp;A</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/quinn.html">harley quinn</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/hat.html">the Alice's hat</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mensa.html">who do i see at mensa</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fail.html">how does failure taste like</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/sense.html">common sense</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fold.html">fold</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov2.html">markov chain 2: prisoners' dilemma</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov.html">markov chain</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/demoralise.html">dont be demoralised and dont be intimidated by labels</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/cat.html">a cat story</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/crazy.html">how much of that is possible</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/bargaining.html">stories that we'd tell in sunset</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mystique.html">mystique</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/love.html">is it today yet?</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/acad.html">the one thing that i like about academia</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/behavior.html">theoretical &amp; empirical: on the tension between game theory &amp; behavioral economics in me</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/blame.html">the veil of ignorance for a reality check</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/anticipation.html">utility, &amp; utility of anticipation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda2.html">functional language, &amp; the nature of copyright</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda1.html">lambda calculus, infinite regress and rational expectation</a></p></li>
+<li><p>are you sure you read the prequel?</p></li>
+<li><p>hm.. ye</p></li>
+<li>anyway, you know how the guy tit for tat is written?</li>
+<li>1 1 0 1 0</li>
+<li>what about the grim trigger guy?</li>
+<li>1 1 0 0 0</li>
+<li>ok</li>
 </ul>
+
+<h2>
+<a id="user-content-rationale" class="anchor" href="#rationale" aria-hidden="true"><span class="octicon octicon-link"></span></a>rationale</h2>
+
+<p>there are two points that explode when they clash into each other:</p>
+
+<ul>
+<li>each machine has 5 slots in its dna.</li>
+<li>each of these slot can hold only value 0 or 1.</li>
+</ul>
+
+<p>-&gt; there are 2^5 = 32 of them, and they are base-2 numbers:</p>
+
+<pre><code>0 0 0 0 0 -&gt; 0
+0 0 0 0 1 -&gt; 1
+0 0 0 1 0 -&gt; 2
+0 0 0 1 1 -&gt; 3
+0 0 1 0 0 -&gt; 4
+0 0 1 0 1
+...
+1 1 1 1 0
+1 1 1 1 1 -&gt; 31
+</code></pre>
+
+<p>this magnificient :D findings rests in the case that machines are deterministic.</p>
+
+<h2>
+<a id="user-content-mass-produce" class="anchor" href="#mass-produce" aria-hidden="true"><span class="octicon octicon-link"></span></a>mass produce</h2>
+
+<p>so let's mass produce them all.</p>
+
+<pre><code>(define (base10-&gt;base2 n)
+  (~r n #:base 2 #:min-width 5 #:pad-string "0"))
+</code></pre>
+
+<p>try:</p>
+
+<pre><code>&gt; (base10-&gt;base2 31)
+"11111"
+&gt; (base10-&gt;base2 5)
+"00101"
+</code></pre>
+
+<p>so you want to see what is the base10 version of tit-for-tat guy?</p>
+
+<pre><code>&gt; (string-&gt;number "11000" 2) ; this is grim-trigger dna
+24
+&gt; (string-&gt;number "11010" 2)
+26
+</code></pre>
+
+<p>anyway, we see that we havent really created <em>automaton</em>, we only convert a base10 number
+into a string of base2 equivalent. now we have to separate the string
+(using <code>string-&gt;list</code>) into a list of characters then
+convert the characters into digits:</p>
+
+<pre><code>(define (char-&gt;digit c)
+  (case c
+    [(#\0) 0]
+    [(#\1) 1]))
+
+(define (base2-&gt;digits a-string)
+  (map char-&gt;digit (string-&gt;list a-string)))
+
+</code></pre>
+
+<p>try:</p>
+
+<pre><code>&gt; (base2-&gt;digits (base10-&gt;base2 24))
+'(1 1 0 0 0)
+</code></pre>
+
+<p>this is clearly the dna of the grim-trigger guy.
+but this is just a list, it's not yet in <em>automaton</em> structure.
+we need to do this in order to register this list as an <em>automaton</em>:</p>
+
+<pre><code>&gt; (make-automaton 1 1 0 0 0)
+#&lt;automaton&gt;
+</code></pre>
+
+<p>which is done by using <code>apply</code>:</p>
+
+<pre><code>(define (number-&gt;automaton n)
+  (apply make-automaton (base2-&gt;digits (base10-&gt;base2 n))))
+</code></pre>
+
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
 </article></body></html>
