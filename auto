@@ -121,9 +121,11 @@ automaton:
       (automaton-dc automaton)
       (automaton-dd automaton)))
 
-       ```
+```
+
 you can see that the code of the function `identify` has repeated pattern on its own,
 so technically, a shorter way is `map`:
+
 ```
 (define (identify automaton)
   (map (lambda (f) (f automaton))
