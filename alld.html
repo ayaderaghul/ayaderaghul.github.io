@@ -894,7 +894,7 @@ prisoner dilemma game:</p>
 
 <p>the best illustration for a machine is its selfie:</p>
 
-<p><a href="https://cloud.githubusercontent.com/assets/7457301/7670019/9994070a-fc92-11e4-8a2f-225a7dbf6d89.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/7457301/7670019/9994070a-fc92-11e4-8a2f-225a7dbf6d89.png" alt="allD" style="max-width:100%;"></a></p>
+<p><a href="https://cloud.githubusercontent.com/assets/7457301/7670046/e19e03ba-fc93-11e4-984e-f6c35042e6df.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/7457301/7670046/e19e03ba-fc93-11e4-984e-f6c35042e6df.png" alt="allD" style="max-width:100%;"></a></p>
 
 <p>i know that it's a horrid selfie, but that's the best i can do in mathematica.
 first i define the machine as a discrete markov process:
@@ -916,16 +916,16 @@ calculator online). this all-defection machine has only one state.</p></li>
 
 <p>now after defining it, we draw it, this is the simplest working graph of the machine:</p>
 
-<pre><code>AllDPic = Graph[{"allD"}, AllD, EdgeLabels -&gt; "C/D"];
+<pre><code>AllDPic = Graph[{"D"}, AllD, EdgeLabels -&gt; "C/D"];
 </code></pre>
 
 <p>if you <code>shift+Enter</code> to execute this line, you kinda understand the syntax right?
-function <code>Graph</code> will draw the label "allD" on the object <code>AllD</code> (previously defined),
+function <code>Graph</code> will draw the label "D" on the only state of object <code>AllD</code> (previously defined),
 we add the EdgeLabels as "C/D".</p>
 
 <p>however, it still looks untolerable, i add more details in the <code>Graph</code> function:</p>
 
-<pre><code>AllDPic = Graph[{"allD"}, AllD, EdgeLabels -&gt; "C/D",
+<pre><code>AllDPic = Graph[{"D"}, AllD, EdgeLabels -&gt; "C/D",
   VertexStyle -&gt; Pink, VertexSize -&gt; Tiny, GraphStyle -&gt; "Automatic"]
 </code></pre>
 

@@ -29,7 +29,7 @@ prisoner dilemma game:
 ##all defection
 the best illustration for a machine is its selfie:
 
-![allD](https://cloud.githubusercontent.com/assets/7457301/7670019/9994070a-fc92-11e4-8a2f-225a7dbf6d89.png)
+![allD](https://cloud.githubusercontent.com/assets/7457301/7670046/e19e03ba-fc93-11e4-984e-f6c35042e6df.png)
 
 i know that it's a horrid selfie, but that's the best i can do in mathematica.
 first i define the machine as a discrete markov process:
@@ -50,15 +50,15 @@ calculator online). this all-defection machine has only one state.
 now after defining it, we draw it, this is the simplest working graph of the machine:
 
 ```
-AllDPic = Graph[{"allD"}, AllD, EdgeLabels -> "C/D"];
+AllDPic = Graph[{"D"}, AllD, EdgeLabels -> "C/D"];
 ```
 if you `shift+Enter` to execute this line, you kinda understand the syntax right?
-function `Graph` will draw the label "allD" on the object `AllD` (previously defined),
+function `Graph` will draw the label "D" on the only state of object `AllD` (previously defined),
 we add the EdgeLabels as "C/D".
 
 however, it still looks untolerable, i add more details in the `Graph` function:
 ```
-AllDPic = Graph[{"allD"}, AllD, EdgeLabels -> "C/D",
+AllDPic = Graph[{"D"}, AllD, EdgeLabels -> "C/D",
   VertexStyle -> Pink, VertexSize -> Tiny, GraphStyle -> "Automatic"]
 ```
 I add `VertexStyle`, `VertexSize`, `GraphStyle` keywords. and tadaa!!
