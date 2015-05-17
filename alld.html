@@ -860,32 +860,121 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>post</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
+}</style><title>alld</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a></p>
 
-<p><em>some posts were deleted</em></p>
+<h1>
+<a id="user-content-machine-visualisation" class="anchor" href="#machine-visualisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>machine visualisation</h1>
+
+<p><em>(this post is in a series of evolutionary game stuff,
+i *may</em> try to weave them together better after all of them has been materialised,
+for now i'll just write them in messy fragments)*</p>
+
+<p><a href="https://news.ycombinator.com/item?id=9553168">mathematica</a>
+is a tool that solves specific domain problems, an expensive tool in the toolset
+that is used for particular purpose. do you have a tool to only cut apples (or
+round-shape apple-size stone-fruit) in your kitchen? or a banana-only slicer?
+or an avocado-only slicer?
+that's mathematica.</p>
+
+<p>(wolfram is a weird person, what you do when you watch his video or read his book
+is that you discount completely his self introduction and hyper self praise, you go
+directly to the functional part.)</p>
+
+<p>racket is the plain knife that i use for all purposes. of course no one makes thing
+that is strictly dominated by another. so things like this coexist for its
+reasons. (you may try R, python)</p>
+
+<p>mathematica doesnt really matter for grad student at <strong>general</strong> level because it is
+expensive, requires background knowledge, costs a lot to learn syntax.
+but anyway, here is how to draw a horrid all-defection machine for the repeated
+prisoner dilemma game:</p>
+
+<h2>
+<a id="user-content-all-defection" class="anchor" href="#all-defection" aria-hidden="true"><span class="octicon octicon-link"></span></a>all defection</h2>
+
+<p>the best illustration for a machine is its selfie:</p>
+
+<p>[allD]()</p>
+
+<p>i know that it's a horrid selfie, but that's the best i can do in mathematica.
+first i define the machine as a discrete markov process:
+(well i dont know other ways, i search on google and they say they draw machines like
+this)</p>
+
+<pre><code>AllD = DiscreteMarkovProcess[1, {{1}}];
+</code></pre>
+
+<p>when you type function DiscreteMarkovProcess, mathematica will suggest a help menu
+-&gt; you click that menu icon (the hamburger icon) and
+try to read the Details and the Example part.</p>
 
 <ul>
-<li><p><a href="https://ayaderaghul.github.io/alld.html">machine visualisation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/evol.html">evolutionary game Q&amp;A</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/quinn.html">harley quinn</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/hat.html">the Alice's hat</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mensa.html">who do i see at mensa</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fail.html">how does failure taste like</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/sense.html">common sense</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fold.html">fold</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov2.html">markov chain 2: prisoners' dilemma</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov.html">markov chain</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/demoralise.html">dont be demoralised and dont be intimidated by labels</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/cat.html">a cat story</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/crazy.html">how much of that is possible</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/bargaining.html">stories that we'd tell in sunset</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mystique.html">mystique</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/love.html">is it today yet?</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/acad.html">the one thing that i like about academia</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/behavior.html">theoretical &amp; empirical: on the tension between game theory &amp; behavioral economics in me</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/blame.html">the veil of ignorance for a reality check</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/anticipation.html">utility, &amp; utility of anticipation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda2.html">functional language, &amp; the nature of copyright</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda1.html">lambda calculus, infinite regress and rational expectation</a></p></li>
+<li><p>in the above sentence, number 1 means it starts with state 1</p></li>
+<li><p>{{1}} is the way transition matrix is written in mathematica (if you use wolfram
+calculator online). this all-defection machine has only one state.</p></li>
 </ul>
+
+<p>now after defining it, we draw it, this is the simplest working graph of the machine:</p>
+
+<pre><code>AllDPic = Graph[{"allD"}, AllD, EdgeLabels -&gt; "C/D"];
+</code></pre>
+
+<p>if you <code>shift+Enter</code> to execute this line, you kinda understand the syntax right?
+function <code>Graph</code> will draw the label "allD" on the object <code>AllD</code> (previously defined),
+we add the EdgeLabels as "C/D".</p>
+
+<p>however, it still looks untolerable, i add more details in the <code>Graph</code> function:</p>
+
+<pre><code>AllDPic = Graph[{"allD"}, AllD, EdgeLabels -&gt; "C/D",
+  VertexStyle -&gt; Pink, VertexSize -&gt; Tiny, GraphStyle -&gt; "Automatic"]
+</code></pre>
+
+<p>I add <code>VertexStyle</code>, <code>VertexSize</code>, <code>GraphStyle</code> keywords. and tadaa!!
+the thing about mathematica
+is that when it's a built-in stuff, it'll suggest a menu icon when you are typing -&gt;
+you click that menu icon to open help windows and you read the Details and Example part
+in that pop-up window.</p>
+
+<p>now i search google how to export graph in mathematica:</p>
+
+<pre><code>Export["allD.png", AllDPic]
+</code></pre>
+
+<p>(i dont know why the shape of the state turns from circle into round square, dont
+ask me).</p>
+
+<p>this is another exapmle for tit for tat:</p>
+
+<p>[tft]()</p>
+
+<p>code:</p>
+
+<pre><code>TitForTat = DiscreteMarkovProcess[1, {{1/2, 1/2}, {1/2, 1/2}}];
+TFTPic = Graph[{"C", "D"}, TitForTat,
+   VertexStyle -&gt; Pink, VertexSize -&gt; Medium,
+   GraphStyle -&gt; "Automatic"];
+Export["tft.png", TFTPic]
+</code></pre>
+
+<p>well this time i use the same value
+<code>Tiny</code> for keyword <code>VertexSize</code> but it turns out real tiny
+so i use <code>Medium</code> and it works, the shape is magically circle again.
+please dont ask me why there is no <code>EdgeLabels</code> keyword.</p>
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
 </article></body></html>

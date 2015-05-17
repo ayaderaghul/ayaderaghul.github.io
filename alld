@@ -1,0 +1,92 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html)
+
+#machine visualisation
+
+*(this post is in a series of evolutionary game stuff,
+i *may* try to weave them together better after all of them has been materialised,
+for now i'll just write them in messy fragments)*
+
+[mathematica](https://news.ycombinator.com/item?id=9553168)
+is a tool that solves specific domain problems, an expensive tool in the toolset
+that is used for particular purpose. do you have a tool to only cut apples (or
+round-shape apple-size stone-fruit) in your kitchen? or a banana-only slicer?
+or an avocado-only slicer?
+that's mathematica.
+
+(wolfram is a weird person, what you do when you watch his video or read his book
+is that you discount completely his self introduction and hyper self praise, you go
+directly to the functional part.)
+
+racket is the plain knife that i use for all purposes. of course no one makes thing
+that is strictly dominated by another. so things like this coexist for its
+reasons. (you may try R, python)
+
+mathematica doesnt really matter for grad student at **general** level because it is
+expensive, requires background knowledge, costs a lot to learn syntax.
+but anyway, here is how to draw a horrid all-defection machine for the repeated
+prisoner dilemma game:
+
+##all defection
+the best illustration for a machine is its selfie:
+
+![allD]()
+
+i know that it's a horrid selfie, but that's the best i can do in mathematica.
+first i define the machine as a discrete markov process:
+(well i dont know other ways, i search on google and they say they draw machines like
+this)
+```
+AllD = DiscreteMarkovProcess[1, {{1}}];
+```
+when you type function DiscreteMarkovProcess, mathematica will suggest a help menu
+-> you click that menu icon (the hamburger icon) and
+try to read the Details and the Example part.
+
+- in the above sentence, number 1 means it starts with state 1
+
+- {{1}} is the way transition matrix is written in mathematica (if you use wolfram
+calculator online). this all-defection machine has only one state.
+
+now after defining it, we draw it, this is the simplest working graph of the machine:
+
+```
+AllDPic = Graph[{"allD"}, AllD, EdgeLabels -> "C/D"];
+```
+if you `shift+Enter` to execute this line, you kinda understand the syntax right?
+function `Graph` will draw the label "allD" on the object `AllD` (previously defined),
+we add the EdgeLabels as "C/D".
+
+however, it still looks untolerable, i add more details in the `Graph` function:
+```
+AllDPic = Graph[{"allD"}, AllD, EdgeLabels -> "C/D",
+  VertexStyle -> Pink, VertexSize -> Tiny, GraphStyle -> "Automatic"]
+```
+I add `VertexStyle`, `VertexSize`, `GraphStyle` keywords. and tadaa!!
+the thing about mathematica
+is that when it's a built-in stuff, it'll suggest a menu icon when you are typing ->
+you click that menu icon to open help windows and you read the Details and Example part
+in that pop-up window.
+
+now i search google how to export graph in mathematica:
+```
+Export["allD.png", AllDPic]
+```
+(i dont know why the shape of the state turns from circle into round square, dont
+ask me).
+
+this is another exapmle for tit for tat:
+
+![tft]()
+
+code:
+```
+TitForTat = DiscreteMarkovProcess[1, {{1/2, 1/2}, {1/2, 1/2}}];
+TFTPic = Graph[{"C", "D"}, TitForTat,
+   VertexStyle -> Pink, VertexSize -> Medium,
+   GraphStyle -> "Automatic"];
+Export["tft.png", TFTPic]
+```
+well this time i use the same value
+`Tiny` for keyword `VertexSize` but it turns out real tiny
+so i use `Medium` and it works, the shape is magically circle again.
+please dont ask me why there is no `EdgeLabels` keyword.
