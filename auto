@@ -1,0 +1,245 @@
+[About](https://ayaderaghul.github.io/) / [Posts](https://ayaderaghul.github.io/post.html) 
+
+
+#machine: state-based vs rule-based
+
+##state-based
+state-based looks good in picture.
+very elucidating. because picture is
+appealing to our reptile brain.
+
+in the repeated prisoner dilemma game, the all-defection guy has only one state (circle)
+and it loops forever on that one circle, no matter what.
+you can see state-based visualisation of it
+[here](https://ayaderaghul.github.io/alld.html).
+
+however, we can look at the PD from another perspective, another approach, another
+route to probe it: the iterated way. for a loose distinguish of
+two kinds of loops: iteration vs recursion, see
+[here](https://ayaderaghul.github.io/fold.html).
+
+in the iterated PD, the stage game is played conditionally on the previous move.
+it's like players have memory about previous rounds and they use that information to
+choose strategies. they can remember as many states as they want, but Dyson says that
+the shortest-memory player sets the rule of the game. if A forgets everything,
+B doesnt need to remember either. (please go read Dyson for further maths).
+so we just need to work with memory-one machines.
+
+(note that this rule-based can be analysed as a markov chain, how neat)
+
+##rule-based
+this new standpoint requires a new representation of the machines. machines will
+condition their current move on the previous outcome of the stage game. like this:
+
+all-Defection:
+
+- starts with D
+- outcome CC -> D
+- outcome CD -> D
+- outcome DC -> D
+- outcome DD -> D
+
+
+the machine will have this structure:
+```
+initial-strategy if-CC if-CD if-DC if-DD
+```
+
+let each value of these above arguments to be the probability
+that the machine will cooperate,
+the all-Defection guy will be written like this:
+
+```
+0 0 0 0 0
+```
+here is the grim-trigger guy:
+```
+1 1 0 0 0
+```
+the grim trigger guy starts with Cooperate (pC=1), it only cooperates again if the
+outcome is CC, otherwise it defect (pC=0). once the outcome is different from CC,
+this guy never cooperate again -> the outcome CC can never happen again. it
+never forgives, and never forgets.
+
+the convenient thing here is that, 1 can be read as C also. it's like symbol 1 doesnt
+only hold value 1 but it holds value C also. because this is deterministic machine.
+a probabilistic guy will look like this
+
+```
+.5 0 .5 .3
+```
+in this case the symbol .5 holds value .5 but you cant read the symbol .5 as value
+Cooperate (because the probability to cooperate is only .5, not full).
+
+##define machine
+anyway, now we see that machines have the same structure, so we can define this general
+structure first:
+
+```
+(define-struct automaton (init-claim cc cd dc dd))
+```
+(sorry, machine and automaton are roughly the same,
+so i'll use it interchangeably, pardon my ignorance. but i think
+the details for the word automaton is not particularly necessarily to remember.
+and i use init-claim not init-strat
+because this code was written for bargaining game =)
+
+after we define a general structure of *automaton*, let's *make* some good guys:
+```
+(define all-Cs (make-automaton 1 1 1 1 1))
+(define tit-for-tat (make-automaton 1 1 0 1 0))
+(define grim-trigger (make-automaton 1 1 0 0 0))
+```
+
+however if we call these guys by name, racket will not return their *dna*:
+
+```
+> all-Cs
+#<automaton>
+```
+we know that the symbol `all-Cs`
+holds an *automaton* (with structure as defined) but we dont *see*
+its *dna*. i have to define a function to identify an `#<automaton>`.
+racket only have some built-in function to call each part of an `#<automaton>`:
+
+```
+> (automaton-init-claim all-Cs)
+1
+> (automaton-cc all-Cs)
+1
+> (automaton-dd tit-for-tat)
+0
+```
+so i just need to assemble these function together in order to identify the whole
+automaton:
+```
+(define (identify automaton)
+  (list
+      (automaton-init-claim automaton)
+      (automaton-cc automaton)
+      (automaton-cd automaton)
+      (automaton-dc automaton)
+      (automaton-dd automaton)))
+
+       ```
+you can see that the code of the function `identify` has repeated pattern on its own,
+so technically, a shorter way is `map`:
+```
+(define (identify automaton)
+  (map (lambda (f) (f automaton))
+       (list
+        automaton-init-claim
+        automaton-cc
+        automaton-cd
+        automaton-dc
+        automaton-dd)))
+```
+
+try
+
+```
+> (identify all-Cs)
+'(1 1 1 1 1)
+```
+good!
+##next move
+we need a function to look up the dna of the machine to spit out the next strategy
+based on previous outcome:
+```
+(define (next-claim automaton previous-claims)
+  (let ([look-up
+         (cond
+          [(equal? previous-claims '(1 1)) automaton-cc]
+          [(equal? previous-claims '(1 0)) automaton-cd]
+          [(equal? previous-claims '(0 1)) automaton-dc]
+          [(equal? previous-claims '(0 0)) automaton-dd])])
+    (look-up automaton)))
+    ```
+
+`cond` is a conditional sentence, it's a more complex `if`. because it has a bunch
+of booleans. the first boolean that returns #t -> the function after that boolean will be
+executed.
+
+`let` is the `define` that doesnt bind globally. if i `(define a 2)` then the symbol
+a holds the value 2 permanently until we define a by another value or until we
+exit racket. `let` only binds locally, in this case, `let` binds inside a definition.
+
+the above procedure means that, given the input of previous-claim, we can look up
+the equivalent strategy for the current move.
+
+try
+
+```
+> (next-claim tit-for-tat '(0 0))
+0
+
+```
+this means that if the previous outcome was 0 0 (D D), the tit for tat guy will play
+0 (D) in this current round.
+
+##payoff matrix
+here is the payoff matrix, i use 3 and 6. with this value, two agents alternate C-D, D-C
+will get averagely the same as two agents C-C all the time. so in equilibrium, we
+may find that people alternate.
+
+you can use other conventional payoff values, no problem.
+```
+(define (match-claims claims)
+  (cond [(equal? claims '(1 1)) (list 3 3)]
+        [(equal? claims '(1 0)) (list 0 6)]
+        [(equal? claims '(0 1)) (list 6 0)]
+        [(equal? claims '(0 0)) (list 1 1)]))
+```
+try
+```
+> (match-claims '(1 1))
+'(3 3)
+```
+
+##match
+
+now we assemble all these above parts to make a bigger function: match 2 machines for
+a number of rounds. that sounds like a loop. there are 2 kinds of loops to go: iteration
+and recursion. `for` loop is a recursion, but we do iteration here. iteration loop
+is less elegant and look more primitive, but it is cheap and efficient. here is the loop:
+
+```
+(define (match-pair* au1 au2 results previous-claims countdown)
+  (if (zero? countdown)
+      results
+      (match-pair* au1 au2
+                   (append results (list (match-claims previous-claims)))
+                   (list (next-claim au1 previous-claims)
+                         (next-claim au2 (reverse previous-claims)))
+                   (sub1 countdown))))
+
+```
+it's simple, if we want 200 rounds, we set a number of 200, and in each loop, the
+two machines will be matched once, and the countdown will be minus 1 until it reaches 0.
+when it reaches 0, racket returns the results that it has been collecting the whole
+time. try:
+
+```
+> (match-pair* tit-for-tat all-Ds '() '(1 0) 10)
+'((0 6) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1))
+```
+(note that the `results` initially is an empty list '() and we need to give the
+initial claims)
+
+here is the full function `match-pair` using `match-pair*` as helper:
+```
+(define (match-pair automaton-pair rounds-per-match)
+  (match-pair* (first automaton-pair)
+               (second automaton-pair)
+               '()
+               (map automaton-init-claim automaton-pair)
+               rounds-per-match))
+```
+
+try:
+```
+> (match-pair (list tit-for-tat all-Ds) 10)
+'((0 6) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1))
+```
+
+at this point, we are done with coding individual machines and matching pair.

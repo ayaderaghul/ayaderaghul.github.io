@@ -860,33 +860,283 @@ body .markdown-body
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
-}</style><title>post</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
+}</style><title>auto</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
 
-<p><em>some posts were deleted</em></p>
+<h1>
+<a id="user-content-machine-state-based-vs-rule-based" class="anchor" href="#machine-state-based-vs-rule-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>machine: state-based vs rule-based</h1>
+
+<h2>
+<a id="user-content-state-based" class="anchor" href="#state-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>state-based</h2>
+
+<p>state-based looks good in picture.
+very elucidating. because picture is
+appealing to our reptile brain.</p>
+
+<p>in the repeated prisoner dilemma game, the all-defection guy has only one state (circle)
+and it loops forever on that one circle, no matter what.
+you can see state-based visualisation of it
+<a href="https://ayaderaghul.github.io/alld.html">here</a>.</p>
+
+<p>however, we can look at the PD from another perspective, another approach, another
+route to probe it: the iterated way. for a loose distinguish of
+two kinds of loops: iteration vs recursion, see
+<a href="https://ayaderaghul.github.io/fold.html">here</a>.</p>
+
+<p>in the iterated PD, the stage game is played conditionally on the previous move.
+it's like players have memory about previous rounds and they use that information to
+choose strategies. they can remember as many states as they want, but Dyson says that
+the shortest-memory player sets the rule of the game. if A forgets everything,
+B doesnt need to remember either. (please go read Dyson for further maths).
+so we just need to work with memory-one machines.</p>
+
+<p>(note that this rule-based can be analysed as a markov chain, how neat)</p>
+
+<h2>
+<a id="user-content-rule-based" class="anchor" href="#rule-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>rule-based</h2>
+
+<p>this new standpoint requires a new representation of the machines. machines will
+condition their current move on the previous outcome of the stage game. like this:</p>
+
+<p>all-Defection:</p>
 
 <ul>
-<li><p><a href="https://ayaderaghul.github.io/auto.html">machine: state-based vs rule-based</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/alld.html">machine visualisation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/evol.html">evolutionary game Q&amp;A</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/quinn.html">harley quinn</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/hat.html">the Alice's hat</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mensa.html">who do i see at mensa</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fail.html">how does failure taste like</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/sense.html">common sense</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/fold.html">fold</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov2.html">markov chain 2: prisoners' dilemma</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/markov.html">markov chain</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/demoralise.html">dont be demoralised and dont be intimidated by labels</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/cat.html">a cat story</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/crazy.html">how much of that is possible</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/bargaining.html">stories that we'd tell in sunset</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/mystique.html">mystique</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/love.html">is it today yet?</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/acad.html">the one thing that i like about academia</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/behavior.html">theoretical &amp; empirical: on the tension between game theory &amp; behavioral economics in me</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/blame.html">the veil of ignorance for a reality check</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/anticipation.html">utility, &amp; utility of anticipation</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda2.html">functional language, &amp; the nature of copyright</a></p></li>
-<li><p><a href="https://ayaderaghul.github.io/lambda1.html">lambda calculus, infinite regress and rational expectation</a></p></li>
+<li>starts with D</li>
+<li>outcome CC -&gt; D</li>
+<li>outcome CD -&gt; D</li>
+<li>outcome DC -&gt; D</li>
+<li>outcome DD -&gt; D</li>
 </ul>
+
+<p>the machine will have this structure:</p>
+
+<pre><code>initial-strategy if-CC if-CD if-DC if-DD
+</code></pre>
+
+<p>let each value of these above arguments to be the probability
+that the machine will cooperate,
+the all-Defection guy will be written like this:</p>
+
+<pre><code>0 0 0 0 0
+</code></pre>
+
+<p>here is the grim-trigger guy:</p>
+
+<pre><code>1 1 0 0 0
+</code></pre>
+
+<p>the grim trigger guy starts with Cooperate (pC=1), it only cooperates again if the
+outcome is CC, otherwise it defect (pC=0). once the outcome is different from CC,
+this guy never cooperate again -&gt; the outcome CC can never happen again. it
+never forgives, and never forgets.</p>
+
+<p>the convenient thing here is that, 1 can be read as C also. it's like symbol 1 doesnt
+only hold value 1 but it holds value C also. because this is deterministic machine.
+a probabilistic guy will look like this</p>
+
+<pre><code>.5 0 .5 .3
+</code></pre>
+
+<p>in this case the symbol .5 holds value .5 but you cant read the symbol .5 as value
+Cooperate (because the probability to cooperate is only .5, not full).</p>
+
+<h2>
+<a id="user-content-define-machine" class="anchor" href="#define-machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>define machine</h2>
+
+<p>anyway, now we see that machines have the same structure, so we can define this general
+structure first:</p>
+
+<pre><code>(define-struct automaton (init-claim cc cd dc dd))
+</code></pre>
+
+<p>(sorry, machine and automaton are roughly the same,
+so i'll use it interchangeably, pardon my ignorance. but i think
+the details for the word automaton is not particularly necessarily to remember.
+and i use init-claim not init-strat
+because this code was written for bargaining game =)</p>
+
+<p>after we define a general structure of <em>automaton</em>, let's <em>make</em> some good guys:</p>
+
+<pre><code>(define all-Cs (make-automaton 1 1 1 1 1))
+(define tit-for-tat (make-automaton 1 1 0 1 0))
+(define grim-trigger (make-automaton 1 1 0 0 0))
+</code></pre>
+
+<p>however if we call these guys by name, racket will not return their <em>dna</em>:</p>
+
+<pre><code>&gt; all-Cs
+#&lt;automaton&gt;
+</code></pre>
+
+<p>we know that the symbol <code>all-Cs</code>
+holds an <em>automaton</em> (with structure as defined) but we dont <em>see</em>
+its <em>dna</em>. i have to define a function to identify an <code>#&lt;automaton&gt;</code>.
+racket only have some built-in function to call each part of an <code>#&lt;automaton&gt;</code>:</p>
+
+<pre><code>&gt; (automaton-init-claim all-Cs)
+1
+&gt; (automaton-cc all-Cs)
+1
+&gt; (automaton-dd tit-for-tat)
+0
+</code></pre>
+
+<p>so i just need to assemble these function together in order to identify the whole
+automaton:</p>
+
+<pre><code>(define (identify automaton)
+  (list
+      (automaton-init-claim automaton)
+      (automaton-cc automaton)
+      (automaton-cd automaton)
+      (automaton-dc automaton)
+      (automaton-dd automaton)))
+
+       ```
+you can see that the code of the function `identify` has repeated pattern on its own,
+so technically, a shorter way is `map`:
+</code></pre>
+
+<p>(define (identify automaton)
+  (map (lambda (f) (f automaton))
+       (list
+        automaton-init-claim
+        automaton-cc
+        automaton-cd
+        automaton-dc
+        automaton-dd)))</p>
+
+<pre><code>
+try
+
+</code></pre>
+
+<blockquote>
+<p>(identify all-Cs)
+'(1 1 1 1 1)</p>
+
+<pre><code>good!
+##next move
+we need a function to look up the dna of the machine to spit out the next strategy
+based on previous outcome:
+</code></pre>
+
+<p>(define (next-claim automaton previous-claims)
+  (let ([look-up
+         (cond
+          [(equal? previous-claims '(1 1)) automaton-cc]
+          [(equal? previous-claims '(1 0)) automaton-cd]
+          [(equal? previous-claims '(0 1)) automaton-dc]
+          [(equal? previous-claims '(0 0)) automaton-dd])])
+    (look-up automaton)))
+    ```</p>
+</blockquote>
+
+<p><code>cond</code> is a conditional sentence, it's a more complex <code>if</code>. because it has a bunch
+of booleans. the first boolean that returns #t -&gt; the function after that boolean will be
+executed.</p>
+
+<p><code>let</code> is the <code>define</code> that doesnt bind globally. if i <code>(define a 2)</code> then the symbol
+a holds the value 2 permanently until we define a by another value or until we
+exit racket. <code>let</code> only binds locally, in this case, <code>let</code> binds inside a definition.</p>
+
+<p>the above procedure means that, given the input of previous-claim, we can look up
+the equivalent strategy for the current move.</p>
+
+<p>try</p>
+
+<pre><code>&gt; (next-claim tit-for-tat '(0 0))
+0
+
+</code></pre>
+
+<p>this means that if the previous outcome was 0 0 (D D), the tit for tat guy will play
+0 (D) in this current round.</p>
+
+<h2>
+<a id="user-content-payoff-matrix" class="anchor" href="#payoff-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>payoff matrix</h2>
+
+<p>here is the payoff matrix, i use 3 and 6. with this value, two agents alternate C-D, D-C
+will get averagely the same as two agents C-C all the time. so in equilibrium, we
+may find that people alternate.</p>
+
+<p>you can use other conventional payoff values, no problem.</p>
+
+<pre><code>(define (match-claims claims)
+  (cond [(equal? claims '(1 1)) (list 3 3)]
+        [(equal? claims '(1 0)) (list 0 6)]
+        [(equal? claims '(0 1)) (list 6 0)]
+        [(equal? claims '(0 0)) (list 1 1)]))
+</code></pre>
+
+<p>try</p>
+
+<pre><code>&gt; (match-claims '(1 1))
+'(3 3)
+</code></pre>
+
+<h2>
+<a id="user-content-match" class="anchor" href="#match" aria-hidden="true"><span class="octicon octicon-link"></span></a>match</h2>
+
+<p>now we assemble all these above parts to make a bigger function: match 2 machines for
+a number of rounds. that sounds like a loop. there are 2 kinds of loops to go: iteration
+and recursion. <code>for</code> loop is a recursion, but we do iteration here. iteration loop
+is less elegant and look more primitive, but it is cheap and efficient. here is the loop:</p>
+
+<pre><code>(define (match-pair* au1 au2 results previous-claims countdown)
+  (if (zero? countdown)
+      results
+      (match-pair* au1 au2
+                   (append results (list (match-claims previous-claims)))
+                   (list (next-claim au1 previous-claims)
+                         (next-claim au2 (reverse previous-claims)))
+                   (sub1 countdown))))
+
+</code></pre>
+
+<p>it's simple, if we want 200 rounds, we set a number of 200, and in each loop, the
+two machines will be matched once, and the countdown will be minus 1 until it reaches 0.
+when it reaches 0, racket returns the results that it has been collecting the whole
+time. try:</p>
+
+<pre><code>&gt; (match-pair* tit-for-tat all-Ds '() '(1 0) 10)
+'((0 6) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1))
+</code></pre>
+
+<p>(note that the <code>results</code> initially is an empty list '() and we need to give the
+initial claims)</p>
+
+<p>here is the full function <code>match-pair</code> using <code>match-pair*</code> as helper:</p>
+
+<pre><code>(define (match-pair automaton-pair rounds-per-match)
+  (match-pair* (first automaton-pair)
+               (second automaton-pair)
+               '()
+               (map automaton-init-claim automaton-pair)
+               rounds-per-match))
+</code></pre>
+
+<p>try:</p>
+
+<pre><code>&gt; (match-pair (list tit-for-tat all-Ds) 10)
+'((0 6) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1) (1 1))
+</code></pre>
+
+<p>at this point, we are done with coding individual machines and matching pair.</p>
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
 </article></body></html>
