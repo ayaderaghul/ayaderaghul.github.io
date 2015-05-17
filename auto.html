@@ -1028,54 +1028,50 @@ based on previous outcome:</p>
           [(equal? previous-claims '(0 1)) automaton-dc]
           [(equal? previous-claims '(0 0)) automaton-dd])])
     (look-up automaton)))
-    ```
+</code></pre>
 
-`cond` is a conditional sentence, it's a more complex `if`. because it has a bunch
+<p><code>cond</code> is a conditional sentence, it's a more complex <code>if</code>. because it has a bunch
 of booleans. the first boolean that returns #t -&gt; the function after that boolean will be
-executed.
+executed.</p>
 
-`let` is the `define` that doesnt bind globally. if i `(define a 2)` then the symbol
+<p><code>let</code> is the <code>define</code> that doesnt bind globally. if i <code>(define a 2)</code> then the symbol
 a holds the value 2 permanently until we define a by another value or until we
-exit racket. `let` only binds locally, in this case, `let` binds inside a definition.
+exit racket. <code>let</code> only binds locally, in this case, <code>let</code> binds inside a definition.</p>
 
-the above procedure means that, given the input of previous-claim, we can look up
-the equivalent strategy for the current move.
+<p>the above procedure means that, given the input of previous-claim, we can look up
+the equivalent strategy for the current move.</p>
 
-try
+<p>try</p>
+
+<pre><code>&gt; (next-claim tit-for-tat '(0 0))
+0
 
 </code></pre>
 
-<blockquote>
-<p>(next-claim tit-for-tat '(0 0))
-0</p>
-</blockquote>
+<p>this means that if the previous outcome was 0 0 (D D), the tit for tat guy will play
+0 (D) in this current round.</p>
 
-<pre><code>this means that if the previous outcome was 0 0 (D D), the tit for tat guy will play
-0 (D) in this current round.
+<h2>
+<a id="user-content-payoff-matrix" class="anchor" href="#payoff-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>payoff matrix</h2>
 
-##payoff matrix
-here is the payoff matrix, i use 3 and 6. with this value, two agents alternate C-D, D-C
+<p>here is the payoff matrix, i use 3 and 6. with this value, two agents alternate C-D, D-C
 will get averagely the same as two agents C-C all the time. so in equilibrium, we
-may find that people alternate.
+may find that people alternate.</p>
 
-you can use other conventional payoff values, no problem.
-</code></pre>
+<p>you can use other conventional payoff values, no problem.</p>
 
-<p>(define (match-claims claims)
+<pre><code>(define (match-claims claims)
   (cond [(equal? claims '(1 1)) (list 3 3)]
         [(equal? claims '(1 0)) (list 0 6)]
         [(equal? claims '(0 1)) (list 6 0)]
-        [(equal? claims '(0 0)) (list 1 1)]))</p>
-
-<pre><code>try
+        [(equal? claims '(0 0)) (list 1 1)]))
 </code></pre>
 
-<blockquote>
-<p>(match-claims '(1 1))
-'(3 3)</p>
+<p>try</p>
 
-<pre><code></code></pre>
-</blockquote>
+<pre><code>&gt; (match-claims '(1 1))
+'(3 3)
+</code></pre>
 
 <h2>
 <a id="user-content-match" class="anchor" href="#match" aria-hidden="true"><span class="octicon octicon-link"></span></a>match</h2>

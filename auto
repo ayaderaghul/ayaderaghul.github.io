@@ -147,6 +147,7 @@ good!
 ##next move
 we need a function to look up the dna of the machine to spit out the next strategy
 based on previous outcome:
+
 ```
 (define (next-claim automaton previous-claims)
   (let ([look-up
@@ -156,7 +157,7 @@ based on previous outcome:
           [(equal? previous-claims '(0 1)) automaton-dc]
           [(equal? previous-claims '(0 0)) automaton-dd])])
     (look-up automaton)))
-    ```
+```
 
 `cond` is a conditional sentence, it's a more complex `if`. because it has a bunch
 of booleans. the first boolean that returns #t -> the function after that boolean will be
