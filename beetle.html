@@ -1,0 +1,1142 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>beetle</title></head><body><article class="markdown-body"><p><a href="https://ayaderaghul.github.io/">About</a> / <a href="https://ayaderaghul.github.io/post.html">Posts</a> </p>
+
+<h1>
+<a id="user-content-im-curious-about-beetles-too" class="anchor" href="#im-curious-about-beetles-too" aria-hidden="true"><span class="octicon octicon-link"></span></a>im curious about beetles, too</h1>
+
+<p>since the last year of my bachelor, my life has been on non-stop fast forward.
+i dont feel march, i dont feel april, i dont feel may.. i dont feel time at all.</p>
+
+<p>anyway, this is about my interview :D
+looking back from the preparation phase to now, the funny thing is that:
+i prepared to talk to 4 professors by asking young dudes :D
+the young dudes have very different perspective on what is cool about
+this world compared to 4 professors. they ask me to be creative, to be soulful, to have
+personality, to be modern... well, all of these sounds useless fancy to the old
+generation i must say. they think i'm head over heel.</p>
+
+<p>as disasterous as it sounds,
+it was a very good experience for me
+talking to these young and old people, in my own term, and i'll explain now.
+(i hope you'll grab the feeling why i dont recommend others to do like me).</p>
+
+<h2>
+<a id="user-content-preparation" class="anchor" href="#preparation" aria-hidden="true"><span class="octicon octicon-link"></span></a>preparation</h2>
+
+<h3>
+<a id="user-content-first-guy" class="anchor" href="#first-guy" aria-hidden="true"><span class="octicon octicon-link"></span></a>first guy</h3>
+
+<p>(aka boyfriend)</p>
+
+<p>profile: young freelancer,</p>
+
+<ul>
+<li>currently working for a tech company.</li>
+<li>as a side project, also working for a start up selling furniture</li>
+</ul>
+
+<p>i ask him to tell me his interview experience.
+beside the code and technical questions, he has some general questions that are
+useful for me</p>
+
+<blockquote>
+<p>why do you think you fit us in present and future?</p>
+</blockquote>
+
+<p>this is a general question which means that eventually it will lead back to introduction
+about yourself. you should write down 3-4 types of introductions, different narratives,
+when you are too nervous, you tend to forget everything, some practiced speech will
+help. the question is not important, it's the way and the content of your answer that
+deals.</p>
+
+<p>you should prepare stories about what you do, if it's succint, when you say it, people
+see that you get the core.</p>
+
+<blockquote>
+<p>what is your biggest achievement? tell us about what you can be proud of</p>
+</blockquote>
+
+<p>this question is to see your ego, your value system, your degree of
+compatibility with the team, your own evaluation..</p>
+
+<h2></h2>
+
+<p>it's clear that this guy has no idea about academia, but he speaks important and useful
+idea.</p>
+
+<h3>
+<a id="user-content-second-guy" class="anchor" href="#second-guy" aria-hidden="true"><span class="octicon octicon-link"></span></a>second guy</h3>
+
+<p>profile: undergrad, speaking python, drives car (i know that every one drives car
+here but the way this guy speaks about driving car from his home town to school and back
+like he has independent spirit is funny and cute)</p>
+
+<p>so, after talking to the first guy, i come to see an academic guy to talk about the
+questions and my answers. the questions are boiled down to this:</p>
+
+<blockquote>
+<p>why you want to study in trento</p>
+
+<p>what is your research topic in master</p>
+
+<p>what do you do in phd</p>
+</blockquote>
+
+<p>i was messing every words up but finally i kinda push the
+message through and he provides some feedbacks on spot.
+he searches on his smartphone to show me trento rank, good public school, he says.</p>
+
+<p>though i have vague idea of the answer in my head, the first
+attempts to verbalise it is always a mess. and it's so important i have some
+audience to hear my version 1 (a unit test).
+i need their spontaneous and instant response.
+however, showing your half-baked idea is embarrassing and dont push yourself too hard.
+i believe in these mantra to make it easier:
+"if you are not embarassed about your version 1, you've waited too long", "fail fast,
+fail often", "dont worry about failure, you only need to be right once"..</p>
+
+<h3>
+<a id="user-content-me" class="anchor" href="#me" aria-hidden="true"><span class="octicon octicon-link"></span></a>me</h3>
+
+<p>after this, i start to write spoken script to see how the whole picture of me looks like.
+it's right that the questions are actually not important at all. the questions are
+just to get you started to paint you in the way you want.
+so i start to jot down what do i do, and what i have..</p>
+
+<p>i prepare a concise version (an elevator pitch) of my thesis master, of an experiment,
+of programming, of my bachelor thesis of m&amp;a, of my working experience, of my
+internship experience (stuff i wrote on my cv).</p>
+
+<p>my boyfriend reads it and suggests some details in some place,
+like: focus on what you learned,
+what you do.. more interesting.. (well, i have to disregard his interesting spirit
+because acad is less lively fun than real world)</p>
+
+<h2>
+<a id="user-content-and-it-bombed-d" class="anchor" href="#and-it-bombed-d" aria-hidden="true"><span class="octicon octicon-link"></span></a>and it bombed :D</h2>
+
+<h3>
+<a id="user-content-waiting" class="anchor" href="#waiting" aria-hidden="true"><span class="octicon octicon-link"></span></a>waiting</h3>
+
+<p>i had very bad anxiety in the morning before interview. i always have. it's nothing
+to do with the context, it's the fear that invoke before formal interaction.
+i came to the building and i
+fucking saw people in SUITs. screw me. i got relief a bit while i saw a guy from
+same school, he wears a bit like me.</p>
+
+<p>but then, we wait for hours. and everyone shows nervous. one guy keeps walking from
+this side to the other, one girl keeps waving her legs. the thing about anxiety is that
+if you start to mirror each other, it fucking escalates. so i try to sit still on
+the umbrella rack and it hurts like hell after a while.
+despite the fact that i sit in the corner, the atmostphere is thick.
+everyone is rehearsing their
+scripts and i'm just sitting there trying to have enough oxygen.</p>
+
+<p>and i hate that building. it looks nice but the isles are designed so that the air
+circulates around the building to generate quiet flow of winds on its own.
+and these silent winds are DEADLY for me. it lowers the temperature in an alarming way.
+and it hits me. my body system screws up and i got cold and chills like in winter.
+this is just my problem, and the solution for this situation is just as simple as
+walking into the hot sun/hot room or
+staying in a warm room that all doors closed and the air stays still and calm as a bay.
+and i cant leave because they say nothing about the schedule.</p>
+
+<p>so i start to convert alphabets into numbers, then i start to encode
+messages into numbers, like "thank you" is ... (i dont remember the sequence),
+"hello" is ... as i'm encoding "pig latin"..
+a guy comes to help and gives us the most confusing schedule i've ever seen. there is
+no estimated time, there is just mixed between skype slots and 3D interview slots...</p>
+
+<p>but finally i figure out that i'd be at earlest in begining afternoon. so i write my
+phone number on the list and go home. many leave somewhere else too.
+it comes to the point i'm so frustrated i'm tired of being anxious,
+i go home to get some clothes on though the sun is sweatingly hot
+walking on the pavement.</p>
+
+<h3>
+<a id="user-content-how-it-went" class="anchor" href="#how-it-went" aria-hidden="true"><span class="octicon octicon-link"></span></a>how it went</h3>
+
+<p>the structure is like this: the student will sit behind the table (where
+professor supossed to sit) and they sit around the table like your audience. that's
+a bit unexpected. but it's fine. it's an interview anyway.</p>
+
+<p>i never bring my ID, no way i will do that. i lose my stuff all the time. and losing
+ID card is extremely painful, especially in italy. so i have my student card (for
+the mensa) and my bus card. my student card have my information and
+my bus card will have my picture. (they except me doing this in exam also).</p>
+
+<p>i start to speak my conscise version of my thesis and no one understand. just very vaguely.
+so they cant judge me. and it comes to the point that one asks: who is your advisor?</p>
+
+<p>i start to see the disaster and here is why the judging committee of thesis or
+interview or
+anything needs to be made public before the event happens:</p>
+
+<p>there is a psychologist in the room and i completely fail him. communication just dies
+and never gets to any mutual understanding. no mutual ground was founded so i never
+get to the phase of starting to building some idea on that to show them.
+it's devastating because i waste his time and others time, also,
+and i waste my time not doing real work or not enjoying life to prepare for all this
+formal interaction also.</p>
+
+<p>it gets a bit better when i start to speak about experiment. it is not the best of me
+but at least it is still what i do and what i think about.
+(btw, the conversation never gets to
+programming or working experiment or any whatsoevers other hehe. i guess it'd be
+even more deadly silence). because the point is
+that it shares some ground so that the discussion can be on. but it is bad for me.
+i know that as i go along. but i keep going.
+because i dont want to walk in a room of 4 professors and walk out without
+getting anything from them. i just dont.</p>
+
+<p>some of them start to respond. at least something is established. they show and talk
+about their ideology and what they think. they refute me (not just respond me, refute).
+and hell yes, the idea is beaten very very hard.</p>
+
+<p>finally, to conclude, they ask about what is the meaning of my project to the world :)</p>
+
+<p>i'm there to be honest, so i say i do it because of curiousity.</p>
+
+<p>another one asks, what do you think it means to be economist?</p>
+
+<p>i say economics is not a fundamental science on its own, it stands at the cross road
+of many other things, we got psychology here, cognitive science here, mathematics here,
+and some programming here.. together it's intellectually gratifying, and trento has
+a network for that..blah</p>
+
+<p>he says, if it's pure curiousity, you can be curious about beetles, too, what's so speciall..</p>
+
+<p>and OMFG i reply instantly with this line and a happy face:</p>
+
+<blockquote>
+<p>i'm curious about beetles, too</p>
+</blockquote>
+
+<p>this is truly the climax of me, i have to frame this sentence on my wall !!!</p>
+
+<p>he smiles and says, but as economist, i think we should have policy suggestions.</p>
+
+<p>i think a bit and says, i never think that my project will have policy sugestions. (and
+i was being real about that. asked me that question again, and i still say that.)</p>
+
+<p>(out of the room, one friend says you could have replied that quantum mechanics doesnt
+have policy suggestions, too but it still benefits everyone. he's so true.)</p>
+
+<h3>
+<a id="user-content-i-dont-regret-but-i-dont-recommend-the-similar-route" class="anchor" href="#i-dont-regret-but-i-dont-recommend-the-similar-route" aria-hidden="true"><span class="octicon octicon-link"></span></a>i dont regret but i dont recommend the similar route</h3>
+
+<p>in general, the advice is that, KNOWING your audience is a must. by knowing, i mean
+not just search about them on google to see what they write in their researchgate
+profile but the better is to have some face to face (even normal) conversation with them,
+or the best is you have experience in their class.
+this is completely NOT to please them,
+but to avoid the disaster case of getting lost in words and symbols.</p>
+
+<p>i have more time to discuss thesis, and i surely take this lesson to heart.
+the interview was not good. they dont think high of me. but what can i do.
+if the conversation cant be pushed to somewhere that we have the same ground,
+all parties leave the room feeling emptied and wasted. i try to
+make the best out of the situation, keep the positive lesson and discard the rest.
+if they dont mind talking to me again, i'll start over.
+if they mind, i'm fine keeping the distance. the status quo
+is that everyone was born strangers. im fine with that status quo to almost all people.
+for some rare others, i dont have free will.</p>
+
+<p>i dont say that i want to join in pushing conversion all the time.
+i suffer from negative emotions of others, too.
+but occasionally, it needs to. and under pushing, people reveal layers of
+who they are, what they do, they offer you a peak into their value system..
+and vice versa.
+in these occasions of the masks falling off, we may find what we
+really like about each other.</p>
+
+<p>i'm also not the creepy kind of guy that enjoy pushing people to
+peel back to their inner layers of intimacy. no way. i hate that also.
+i think it's important that we have our intimacy privacy. there is an outside layer
+for hanging smiles. and there is a line that we can
+kindly ask people to let us in and share some thoughts, but after that line, it's not
+for curiousity anymore, it is the decision on their side exclusively if they want to
+share their intimate secrets or not. (for example of me, the secret is that
+me and my sisters speak farts and shits to hysterically laugh our lungs out,
+we do that since born).
+one thing for sure is that when it happens, it sweeps us to a secret dimension
+that only exists between not among.</p>
+
+<p>
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ayaderaghul'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p> 
+
+</article></body></html>
