@@ -4,22 +4,24 @@
 
 a student in Economics in Trento University, Italy
 
-#what do i do
-it's needless to elaborate on how much there are for us to see
-constrainted to how short we live, how limited we are and how fast things go by
-if we just stand·by to let them go by.
+#research interest
 
-hence, as any typical grad kids, i:
+evolutionary game theory, bargaining game, simulation.
 
-- do exercises, do some writing (mostly on game theory)
+i like talking to people, mostly about beetles :)
 
-- program some toy software to solve daily problems (in Racket/Scheme)
+drop me a line.
 
-- sketch graphic inspired by things seen online
+# tools
 
-- surf internet to read cool stuff produced by cool people
+i code simulation for my thesis in Racket/Scheme
 
-#what do i produce
+i also code small programs that solve daily student problems,
+on my [github](https://github.com/ayaderaghul)
+& [gist](https://gist.github.com/ayaderaghul)
+
+
+#other random things
 
 - writing posts
 
@@ -29,20 +31,19 @@ hence, as any typical grad kids, i:
 
   see full at [Posts](https://ayaderaghul.github.io/post.html)
 
-- my evolutionary model is no longer in buffering cemetery, it is now on my [github](https://github.com/ayaderaghul)
-  - my boyfriend [github](https://github.com/myguidingstar)
-
 - Retold Vietnamese folklore in game theory
 
   - [Dê đen và dê trắng](https://www.flickr.com/photos/ayaderaghul/sets/72157650195176425/)
   - [Thạch Sanh và Lý Thông: Săn Chằn tinh](https://www.flickr.com/photos/ayaderaghul/sets/72157650182675641/)
   - [Thạch Sanh và Lý Thông: Giết đại bàng cứu công chúa](https://www.flickr.com/photos/ayaderaghul/sets/72157649780045700/)
 
-- small programs that solve toy problems on my [github](https://github.com/ayaderaghul) & [gist](https://gist.github.com/ayaderaghul) account
-
-# random comics
+- random comics
 
 ![talent-comic](https://cloud.githubusercontent.com/assets/7457301/7427194/51aaee86-efd6-11e4-90e2-857149a028f9.jpg)
+
+
+<img src="https://cloud.githubusercontent.com/assets/7457301/7427194/51aaee86-efd6-11e4-90e2-857149a028f9.jpg"  width="200" alt="talent-comic">
+
 
 # license
 
@@ -67,4 +68,4 @@ hence, as any typical grad kids, i:
         })();
   </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</p> 
+</p>
