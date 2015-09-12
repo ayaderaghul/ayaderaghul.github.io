@@ -1,0 +1,132 @@
+# i love racket community
+###(or dont ever give up, the internet has your back)
+
+###1. a toy model
+I started my master in economics by trying to make replica of schelling's
+segregation model. At that time there was this boy (mostly a programmer)
+teaching me racket. He cried over my code and because that was the time of
+my exam session, he had no choice but wrote me the version 0 of the model
+so that i could let go of the obsession and go back to my exams.
+
+(*Remember how many times you invented smt great over the break time between semesters?*)
+
+I watched the population toy moving around red and blue and arranging itself into
+clusters. The clusters cant grow too big because the same force that accumulates
+the cluster at one end will make it fall apart at the other end. Then i went back
+to studying.
+
+**lesson**: dont repress your obsession, instead of wasting effort on resisting it,
+rechannel it directly toward the obsession
+
+###2. so many iterations
+The next semester, the code comes back to me in a bigger exercise: make replica of
+a recent paper. I'd summarise it here:
+
+I need to generate a population of machines playing a repeated game, say,
+prisoner's dilemma. They get payoff and the stronger grows big over time at
+the expense of poor doers. These machines are conditional ones with memory 1.
+So they remember the previous round and make the next move based on that.
+
+People relentlessly read my versions despite the marginal value of reading me
+drops to zero. I'm forever grateful for that and for their huge amount of effort
+and intellectual spending on me and for me. Others who can't care, i deeply understand.
+
+**lesson**: someone said you really are the average of people you spend time the most with.
+so the best way to learn is to sit at the feet of leading practitioners in your industry
+and work your ass off. this is by far the most profound career advice i see so far.
+
+###3. focus on your effort
+
+> im pessimistic by nature. people fight because they hope they'll win.
+> i always think i'll lose. i fight anyway. sometimes i win.
+
+> -rms-
+
+even when my thesis was still a naive and very premature one, i started to send it
+to events. just to fail. i expect failure.
+but after each submission, i see the naive details and can
+rewrite it better. this is a procedure of progressing forward.
+
+i never dare to read their comments (if they do comment)
+when i get rejected, though. very frustrating
+and i'm kinda coward. i just take the no and move on. dont take the why, jessica
+livingston said so.
+
+there is this summer school in rostock that insists on phd students *with experience*
+so i wait after i got accepted into a phd to appyl :)
+the phd result was out online just a few days before the deadline.
+my supervisor was very kind to write a paragraph supporting me (they require supervisor
+to say something).
+and i submit with the application my thesis to increase the chance of getting accepted
+in the course :)
+
+I didnt even think that i'd get accepted, i really didnt plan to buy flight ticket to
+be back in trento before november. But there it is.
+people in rostock are so nice they pay me to come, to stay and say that i can
+join a small workshop also. i completely surely would come.
+
+**lesson**: dont hesitate to ask for a favor.
+
+then the second shock hits me, a small meeting in lisbon says i can join them also.
+that's absolutely good for me because i didnt expect a single acceptance.
+but Im not sure yet. they dont pay me but i'd try if i can.
+I never want to lose a chance to talk to
+people who would like to listen to what i do.
+
+**lesson**: keep sending out your thesis versions and keep improving it.
+im the person that does that and i'd continue to do so.
+rejection is stressful but not for long, you'd be more regretful for not
+making the effort.
+
+**lesson**: dont read the feedback of rejection
+if you dont want. usually when they dont want to accept, they need to generate
+some reasonable reasons, but sometimes these reasons dont matter. take the no, dont
+take the why (jessica livingston).
+
+###4. accepted, and denial phase
+
+when i search for
+coursemates on google i freak out. They really are *phd with experience*.
+I bragged in my application that i know racket and basic mathematica, some
+net logo also.
+
+but I imagine when everybody'd open their github and mathematica ...they'd see my
+github as an offense to the simulation society. So im working to make an (other)
+iteration. I officially make the agents to be finite state automata. I have to say
+that fsm and conditional machine are fundamentally technically the same.
+Just like i cant draw a separate line between them in my thesis, i cant draw them
+separate in my code.
+
+###5. (another) version 0
+I search google and find a very good way to structure data, in this
+[blog](http://timthornton.net/blog/id/538fa6f2f09a16ba0674813d)
+by tim thornton, he's so nice he answers fully to my questions, suggest incredible idea
+and will up part 2 soon.
+
+I started a
+[thread](https://groups.google.com/forum/#!topic/racket-users/4o1goSwrLHA)
+on racket mailing list and went on irc #racket also (IRC chat log
+[here](http://pastebin.com/sxrCnwRV)). Everybody
+works on mailing list and IRC. That's where working people come and share and work
+together. If you understand
+[this message](https://www.youtube.com/watch?v=Xe1TZaElTAs),
+you understand the internet.
+
+Why irc is so efficient? Because it's so simple.  It's a network since the beginning
+of the internet, before yahoo itself. you choose a nickname, choose a channel
+(#racket) You ask your question,
+and somewhere around the world, some guy who is going to have lunch will opt in and
+answer you right before he goes. The global network with full range of expertise just
+never sleeps. I felt like i was in a room with experts on different domains
+that bring their own experience, and cultivated intuition from their matured project?
+It's like that for me. Everyone has smt to
+share and say and each informative comment comes and illuminates different aspects
+of the big problem.
+
+I code a version 0 here [on github](https://github.com/ayaderaghul/sample-fsm),
+with the game as prisoner's dilemma. This is like a blueprint for simulations to come.
+I'd explain this version 0 fully in the next posts..
+
+i feel like it belongs to the community.
+
+
