@@ -2,6 +2,7 @@
 # the science of choice
 
 topic: Evolution of behavior in the repeated bargaining game. A simulation.
+
 keywords: bargaining game, evolutionary game theory, agent based model
 
 this talk initiates from my master thesis so it is an amateur work.
@@ -18,6 +19,7 @@ the audience Q&A is cut off but it's very good questions coming from very young 
 
 i still take Q&A.
 
+the code is available on my github.
 here are videos of the talk and slides, 
 make sure you run these two together:
 
