@@ -1,6 +1,11 @@
 {
+  "title": "the science of choice",
   "chapters": [
     {
+      "duration": 0,
+      "video": {
+        "url": "https://www.youtube.com/watch?v=vROFb3o1aT4"
+      },
       "slides": [
         {
           "url": "choice-slides/01.png",
@@ -12,7 +17,7 @@
         },
         {
           "url": "choice-slides/03.png",
-          "time": "64"
+          "time": "37"
         },
         {
           "url": "choice-slides/04.png",
@@ -24,62 +29,70 @@
         },
         {
           "url": "choice-slides/06.png",
-          "time": "186"
-        },
-        {
-          "url": "choice-slides/07.png",
           "time": "283"
         },
         {
-          "url": "choice-slides/08.png",
+          "url": "choice-slides/07.png",
           "time": "324"
         },
         {
-          "url": "choice-slides/09.png",
+          "url": "choice-slides/08.png",
           "time": "373"
         },
         {
-          "url": "choice-slides/10.png",
+          "url": "choice-slides/09.png",
           "time": "416"
         },
         {
-          "url": "choice-slides/11.png",
+          "url": "choice-slides/10.png",
           "time": "474"
         },
         {
-          "url": "choice-slides/12.png",
+          "url": "choice-slides/11.png",
           "time": "492"
         },
         {
+          "url": "choice-slides/12.png",
+          "time": "496"
+        },
+        {
           "url": "choice-slides/13.png",
-          "time": "524"
+          "time": "505"
         },
         {
           "url": "choice-slides/14.png",
-          "time": "548"
+          "time": "521"
         },
         {
           "url": "choice-slides/15.png",
-          "time": "581"
+          "time": "524"
         },
         {
           "url": "choice-slides/16.png",
-          "time": "605"
+          "time": "548"
         },
         {
           "url": "choice-slides/17.png",
-          "time": "660"
+          "time": "581"
         },
         {
           "url": "choice-slides/18.png",
-          "time": "678"
+          "time": "605"
         },
         {
           "url": "choice-slides/19.png",
-          "time": "694"
+          "time": "660"
         },
         {
           "url": "choice-slides/20.png",
+          "time": "678"
+        },
+        {
+          "url": "choice-slides/21.png",
+          "time": "694"
+        },
+        {
+          "url": "choice-slides/22.png",
           "time": "797"
         },
         {
@@ -170,12 +183,7 @@
           "url": "choice-slides/42.png",
           "time": "1514"
         }
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=vROFb3o1aT4"
-      },
-      "duration": 0
+      ]
     }
-  ],
-  "title": "the science of choice"
+  ]
 }
