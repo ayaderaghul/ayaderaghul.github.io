@@ -1,0 +1,49 @@
+<div id="player">
+  <div id="player_video"></div>
+  <div id="slideshow_player"></div>
+</div>
+
+<link href="assets/mediaelementplayer.min.css" rel="stylesheet" type="text/css"/>
+<style>
+    #player {
+      display: inline-block;
+    }
+    #player_video, #slideshow_player {
+      width: 460px;
+      height: 420px;
+      max-width: 460px;
+      max-height: 420px;
+    }
+
+    #slideshow_player img {
+      max-width: 460px;
+      max-height: 420px;
+    }
+</style>
+
+<script type="text/javascript" src="assets/jquery.js"></script>
+<script type="text/javascript" src="assets/swfobject-2.2.js"></script>
+<script type="text/javascript" src="assets/presentz-1.2.2.min.js"></script>
+<script type="text/javascript" src="assets/mediaelement-and-player.min.js"></script>
+<script type="text/javascript">
+  var presentation;
+  var presentz;
+
+  function initPresentz(pres) {
+    presentation = pres;
+
+    presentz = new Presentz("#player_video", "460x420", "#slideshow_player", "460x420")
+    presentz.init(presentation);
+    presentz.changeChapter(0, 0, true, function(err) {
+      if (err) {
+        alert(err);
+      }
+    });
+  };
+
+  $().ready(function() {
+    $.get("choice.json", function(json) {
+      initPresentz(json);
+    });
+  });
+</script>
