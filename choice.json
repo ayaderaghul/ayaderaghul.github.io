@@ -1,0 +1,181 @@
+{
+  "chapters": [
+    {
+      "slides": [
+        {
+          "url": "choice-slides/01.png",
+          "time": "0"
+        },
+        {
+          "url": "choice-slides/02.png",
+          "time": "22"
+        },
+        {
+          "url": "choice-slides/03.png",
+          "time": "64"
+        },
+        {
+          "url": "choice-slides/04.png",
+          "time": "115"
+        },
+        {
+          "url": "choice-slides/05.png",
+          "time": "173"
+        },
+        {
+          "url": "choice-slides/06.png",
+          "time": "186"
+        },
+        {
+          "url": "choice-slides/07.png",
+          "time": "283"
+        },
+        {
+          "url": "choice-slides/08.png",
+          "time": "324"
+        },
+        {
+          "url": "choice-slides/09.png",
+          "time": "373"
+        },
+        {
+          "url": "choice-slides/10.png",
+          "time": "416"
+        },
+        {
+          "url": "choice-slides/11.png",
+          "time": "474"
+        },
+        {
+          "url": "choice-slides/12.png",
+          "time": "492"
+        },
+        {
+          "url": "choice-slides/13.png",
+          "time": "524"
+        },
+        {
+          "url": "choice-slides/14.png",
+          "time": "548"
+        },
+        {
+          "url": "choice-slides/15.png",
+          "time": "581"
+        },
+        {
+          "url": "choice-slides/16.png",
+          "time": "605"
+        },
+        {
+          "url": "choice-slides/17.png",
+          "time": "660"
+        },
+        {
+          "url": "choice-slides/18.png",
+          "time": "678"
+        },
+        {
+          "url": "choice-slides/19.png",
+          "time": "694"
+        },
+        {
+          "url": "choice-slides/20.png",
+          "time": "797"
+        },
+        {
+          "url": "choice-slides/21.png",
+          "time": "801"
+        },
+        {
+          "url": "choice-slides/22.png",
+          "time": "808"
+        },
+        {
+          "url": "choice-slides/23.png",
+          "time": "837"
+        },
+        {
+          "url": "choice-slides/24.png",
+          "time": "875"
+        },
+        {
+          "url": "choice-slides/25.png",
+          "time": "892"
+        },
+        {
+          "url": "choice-slides/26.png",
+          "time": "917"
+        },
+        {
+          "url": "choice-slides/27.png",
+          "time": "940"
+        },
+        {
+          "url": "choice-slides/28.png",
+          "time": "951"
+        },
+        {
+          "url": "choice-slides/29.png",
+          "time": "960"
+        },
+        {
+          "url": "choice-slides/30.png",
+          "time": "967"
+        },
+        {
+          "url": "choice-slides/31.png",
+          "time": "979"
+        },
+        {
+          "url": "choice-slides/32.png",
+          "time": "1011"
+        },
+        {
+          "url": "choice-slides/33.png",
+          "time": "1048"
+        },
+        {
+          "url": "choice-slides/34.png",
+          "time": "1080"
+        },
+        {
+          "url": "choice-slides/35.png",
+          "time": "1101"
+        },
+        {
+          "url": "choice-slides/36.png",
+          "time": "1109"
+        },
+        {
+          "url": "choice-slides/37.png",
+          "time": "1259"
+        },
+        {
+          "url": "choice-slides/38.png",
+          "time": "1267"
+        },
+        {
+          "url": "choice-slides/39.png",
+          "time": "1311"
+        },
+        {
+          "url": "choice-slides/40.png",
+          "time": "1356"
+        },
+        {
+          "url": "choice-slides/41.png",
+          "time": "1454"
+        },
+        {
+          "url": "choice-slides/42.png",
+          "time": "1514"
+        }
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=vROFb3o1aT4"
+      },
+      "duration": 0
+    }
+  ],
+  "title": "the science of choice"
+}
